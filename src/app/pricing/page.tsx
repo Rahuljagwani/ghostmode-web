@@ -81,8 +81,7 @@ export default function PricingPage() {
       router.push("/dashboard");
       return;
     }
-    // Payment will be implemented in Phase 2
-    router.push(`/dashboard/billing?plan=${plan.name.toLowerCase()}`);
+    router.push(`/dashboard/billing`);
   };
 
   return (
