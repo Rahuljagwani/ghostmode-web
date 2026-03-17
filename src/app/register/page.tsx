@@ -1,21 +1,33 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { Suspense, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth";
 import { ApiError } from "@/lib/api";
 import GoogleSignInButton from "@/components/GoogleSignInButton";
-import { Ghost, Loader2 } from "lucide-react";
+import { Ghost, Loader2, CheckCircle2 } from "lucide-react";
 
 export default function RegisterPage() {
+  return (
+    <Suspense>
+      <RegisterForm />
+    </Suspense>
+  );
+}
+
+function RegisterForm() {
   const { register } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const fromApp = searchParams.get("from") === "app";
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [registered, setRegistered] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,7 +41,11 @@ export default function RegisterPage() {
     setLoading(true);
     try {
       await register(email, password, name);
-      router.push("/dashboard");
+      if (fromApp) {
+        setRegistered(true);
+      } else {
+        router.push("/dashboard");
+      }
     } catch (err) {
       if (err instanceof ApiError) {
         setError(err.message);
@@ -40,6 +56,27 @@ export default function RegisterPage() {
       setLoading(false);
     }
   };
+
+  // ── Success screen for desktop app users ──
+  if (registered && fromApp) {
+    return (
+      <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6">
+        <div className="w-full max-w-sm text-center">
+          <CheckCircle2 className="w-12 h-12 text-green-400 mx-auto mb-4" />
+          <h1 className="text-2xl font-bold mb-2">Account created!</h1>
+          <p className="text-gray-400 text-sm mb-6">
+            Go back to the GhostMode app and sign in with your credentials.
+          </p>
+          <div className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-gray-300">
+            <span className="text-white font-medium">{email}</span>
+          </div>
+          <p className="text-gray-500 text-xs mt-4">
+            You can close this tab now.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6">

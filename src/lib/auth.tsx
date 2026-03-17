@@ -50,8 +50,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const fetchProfile = useCallback(async (t: string) => {
     try {
-      const data = await apiFetch<{ user: User }>("/auth/me", { token: t });
-      setUser(data.user);
+      const user = await apiFetch<User>("/auth/me", { token: t });
+      setUser(user);
     } catch (err) {
       if (err instanceof ApiError && err.status === 401) {
         clearToken();
