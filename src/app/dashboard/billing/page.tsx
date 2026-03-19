@@ -64,7 +64,8 @@ export default function BillingPage() {
     } else if (payment === "cancelled") {
       setMessage({ type: "error", text: "Payment was cancelled." });
     }
-  }, [searchParams, refreshProfile]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
   const handleBuy = async (plan: (typeof plans)[0]) => {
     setMessage(null);

@@ -111,9 +111,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     clearToken();
   };
 
-  const refreshProfile = async () => {
+  const refreshProfile = useCallback(async () => {
     if (token) await fetchProfile(token);
-  };
+  }, [token, fetchProfile]);
 
   return (
     <AuthContext.Provider

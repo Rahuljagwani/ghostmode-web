@@ -29,7 +29,8 @@ export default function DashboardPage() {
   useEffect(() => {
     refreshProfile();
     apiFetch<CreditDetails>("/credits/details").then(setCredits).catch(() => {});
-  }, [refreshProfile]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const usagePercent = credits
     ? Math.min(

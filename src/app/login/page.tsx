@@ -1,20 +1,37 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth";
 import { ApiError } from "@/lib/api";
 import GoogleSignInButton from "@/components/GoogleSignInButton";
 import { Ghost, Loader2 } from "lucide-react";
 
+const ERROR_MESSAGES: Record<string, string> = {
+  google_failed: "Google sign-in failed. Please try again.",
+  session_expired: "Session expired. Please try again.",
+  token_exchange_failed: "Authentication failed. Please try again.",
+  no_token: "Could not complete sign-in. Please try again.",
+  invalid_token: "Invalid authentication. Please try again.",
+};
+
 export default function LoginPage() {
   const { login } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // Show error from Google OAuth redirect
+  useEffect(() => {
+    const errorParam = searchParams.get("error");
+    if (errorParam) {
+      setError(ERROR_MESSAGES[errorParam] || "Login failed. Please try again.");
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
