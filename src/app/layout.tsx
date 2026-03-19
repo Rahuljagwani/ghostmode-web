@@ -18,9 +18,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "GhostMode — Invisible AI Interview Assistant",
+  title: "Renekin AI — AI Tools for the Real World",
   description:
-    "GhostMode is a stealth desktop overlay that provides real-time AI assistance during interviews. Invisible during screen sharing.",
+    "Renekin AI builds intelligent tools that work alongside you. Renaissance knowledge meets modern AI.",
 };
 
 export default function RootLayout({

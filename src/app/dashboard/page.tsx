@@ -84,7 +84,7 @@ export default function DashboardPage() {
               Need more credits?
             </h2>
             <p className="text-gray-400 text-sm mt-1">
-              Top up your balance to keep using GhostMode.
+              Top up your balance to keep using Ghost.
             </p>
           </div>
           <div className="flex items-center gap-1 text-purple-400 text-sm mt-4">

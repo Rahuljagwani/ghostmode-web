@@ -65,7 +65,7 @@ function RegisterForm() {
           <CheckCircle2 className="w-12 h-12 text-green-400 mx-auto mb-4" />
           <h1 className="text-2xl font-bold mb-2">Account created!</h1>
           <p className="text-gray-400 text-sm mb-6">
-            Go back to the GhostMode app and sign in with your credentials.
+            Go back to the Ghost app and sign in with your credentials.
           </p>
           <div className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-gray-300">
             <span className="text-white font-medium">{email}</span>

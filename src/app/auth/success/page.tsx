@@ -2,13 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useAuth } from "@/lib/auth";
 import { Ghost, CheckCircle, XCircle } from "lucide-react";
 
 export default function AuthSuccessPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const { login: _login } = useAuth();
+
   const [status, setStatus] = useState<"loading" | "ok" | "error">("loading");
   const [message, setMessage] = useState("");
 
@@ -27,7 +26,7 @@ export default function AuthSuccessPage() {
     } else if (statusParam === "ok" && source === "desktop") {
       // Desktop flow: just show success message
       setStatus("ok");
-      setMessage("Login successful! You can close this tab and return to GhostMode.");
+      setMessage("Login successful! You can close this tab and return to Ghost.");
     } else if (statusParam === "error") {
       setStatus("error");
       setMessage(messageParam || "Login failed. Please try again.");

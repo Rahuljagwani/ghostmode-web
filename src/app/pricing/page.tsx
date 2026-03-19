@@ -9,7 +9,7 @@ const plans = [
     name: "Free",
     price: 0,
     credits: 50,
-    description: "Get started with GhostMode",
+    description: "Get started with Ghost",
     features: [
       "50 credits on signup",
       "AI-powered answers",

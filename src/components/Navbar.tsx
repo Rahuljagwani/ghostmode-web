@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useAuth } from "@/lib/auth";
-import { Ghost, LogOut, LayoutDashboard } from "lucide-react";
+import { Brain, LogOut, LayoutDashboard } from "lucide-react";
 
 export default function Navbar() {
   const { user, logout } = useAuth();
@@ -10,12 +10,16 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 w-full z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 text-white font-bold text-xl">
-          <Ghost className="w-6 h-6 text-purple-400" />
-          GhostMode
+        <Link href="/" className="flex items-center gap-2.5">
+          <Brain className="w-6 h-6 text-purple-400" />
+          <span className="text-white font-bold text-xl">Renekin</span>
+          <span className="text-purple-400 font-medium text-sm">AI</span>
         </Link>
 
         <div className="hidden md:flex items-center gap-8 text-sm text-gray-300">
+          <Link href="/#products" className="hover:text-white transition">
+            Products
+          </Link>
           <Link href="/pricing" className="hover:text-white transition">
             Pricing
           </Link>

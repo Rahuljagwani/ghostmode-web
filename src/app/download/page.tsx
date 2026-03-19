@@ -17,23 +17,23 @@ const platforms = {
   macos: {
     label: "macOS",
     icon: Apple,
-    filename: "GhostMode.dmg",
+    filename: "Ghost.dmg",
     instructions: [
       "Open the downloaded .dmg file",
-      "Drag GhostMode to your Applications folder",
+      "Drag Ghost to your Applications folder",
       "Right-click the app and select Open (first time only, to bypass Gatekeeper)",
-      "Sign in with your GhostMode account",
+      "Sign in with your Ghost account",
     ],
   },
   windows: {
     label: "Windows",
     icon: Monitor,
-    filename: "GhostMode-Setup.exe",
+    filename: "Ghost-Setup.exe",
     instructions: [
       "Run the downloaded .exe installer",
       'If Windows Defender warns you, click "More info" then "Run anyway"',
       "Follow the installation wizard",
-      "Launch GhostMode and sign in",
+      "Launch Ghost and sign in",
     ],
   },
 };
@@ -52,7 +52,7 @@ export default function DownloadPage() {
     <div className="max-w-4xl mx-auto px-6 py-24">
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          Download GhostMode
+          Download Ghost
         </h1>
         <p className="text-gray-400 text-lg">
           Available for macOS and Windows. Linux coming soon.
@@ -67,7 +67,7 @@ export default function DownloadPage() {
             return <Icon className="w-8 h-8 text-purple-400" />;
           })()}
           <h2 className="text-2xl font-bold">
-            GhostMode for {platforms[primary].label}
+            Ghost for {platforms[primary].label}
           </h2>
         </div>
 

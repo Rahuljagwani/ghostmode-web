@@ -57,7 +57,7 @@ export async function payWithRazorpay(planName: string): Promise<{ credits_added
       key: order.razorpay_key_id,
       amount: order.amount,
       currency: order.currency,
-      name: "GhostMode",
+      name: "Ghost",
       description: `${order.plan_name} — ${order.credits} credits`,
       order_id: order.order_id,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

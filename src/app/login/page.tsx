@@ -58,7 +58,7 @@ export default function LoginPage() {
           <Ghost className="w-10 h-10 text-purple-400 mx-auto mb-4" />
           <h1 className="text-2xl font-bold">Welcome back</h1>
           <p className="text-gray-400 text-sm mt-1">
-            Sign in to your GhostMode account
+            Sign in to your Ghost account
           </p>
         </div>
 
