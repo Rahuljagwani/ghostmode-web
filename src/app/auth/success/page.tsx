@@ -19,7 +19,7 @@ export default function AuthSuccessPage() {
 
     if (token) {
       // Web flow: save token and redirect to dashboard
-      localStorage.setItem("ghostmode_token", token);
+      localStorage.setItem("renekin_token", token);
       setStatus("ok");
       setMessage("Login successful! Redirecting...");
       setTimeout(() => router.push("/dashboard"), 1500);

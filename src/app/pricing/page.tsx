@@ -8,10 +8,10 @@ const plans = [
   {
     name: "Free",
     price: 0,
-    credits: 50,
-    description: "Get started with Ghost",
+    credits: 20,
+    description: "Try Ghost free",
     features: [
-      "50 credits on signup",
+      "20 credits on signup",
       "AI-powered answers",
       "Voice transcription",
       "Screenshot analysis",
@@ -19,51 +19,39 @@ const plans = [
   },
   {
     name: "Starter",
-    price: 5,
+    price: 10,
     credits: 100,
-    description: "For occasional interviews",
+    description: "For a single interview",
     features: [
       "100 credits",
-      "All free features",
-      "Priority processing",
-      "Email support",
+      "~1-2 full interviews",
+      "All features included",
+      "Text: 1cr · Voice: 3cr · Screenshot: 2cr",
     ],
   },
   {
-    name: "Pro",
-    price: 10,
-    credits: 250,
+    name: "Popular",
+    price: 19,
+    credits: 220,
     description: "For active job seekers",
     features: [
-      "250 credits",
-      "All Starter features",
-      "Best value per credit",
-      "Priority support",
+      "220 credits",
+      "~3-4 full interviews",
+      "Best value for most users",
+      "Text: 1cr · Voice: 3cr · Screenshot: 2cr",
     ],
     highlighted: true,
   },
   {
-    name: "Power",
-    price: 25,
-    credits: 750,
-    description: "For heavy usage",
+    name: "Best Value",
+    price: 28,
+    credits: 400,
+    description: "Best credits per dollar",
     features: [
-      "750 credits",
-      "All Pro features",
-      "Bulk discount",
-      "Priority support",
-    ],
-  },
-  {
-    name: "Unlimited",
-    price: 50,
-    credits: 2000,
-    description: "Maximum preparation",
-    features: [
-      "2000 credits",
-      "All Power features",
+      "400 credits",
+      "~6-7 full interviews",
       "Lowest cost per credit",
-      "Priority support",
+      "Text: 1cr · Voice: 3cr · Screenshot: 2cr",
     ],
   },
 ];
@@ -91,12 +79,12 @@ export default function PricingPage() {
           Simple, Credit-Based Pricing
         </h1>
         <p className="text-gray-400 text-lg max-w-xl mx-auto">
-          Buy credits when you need them. No subscriptions, no hidden fees. Each
-          AI request costs 1-2 credits.
+          Buy credits when you need them. No subscriptions, no hidden fees.
+          Text: 1 credit · Voice: 3 credits · Screenshot: 2 credits.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {plans.map((plan) => (
           <PricingCard
             key={plan.name}

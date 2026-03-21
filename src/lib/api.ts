@@ -18,7 +18,7 @@ export async function apiFetch<T = unknown>(
   if (token) {
     headers["Authorization"] = `Bearer ${token}`;
   } else if (typeof window !== "undefined") {
-    const stored = localStorage.getItem("ghostmode_token");
+    const stored = localStorage.getItem("renekin_token");
     if (stored) headers["Authorization"] = `Bearer ${stored}`;
   }
 

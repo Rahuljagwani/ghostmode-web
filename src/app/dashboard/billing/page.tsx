@@ -31,10 +31,9 @@ interface PaymentItem {
 }
 
 const plans = [
-  { name: "Starter", price: 5, credits: 100 },
-  { name: "Pro", price: 10, credits: 250 },
-  { name: "Power", price: 25, credits: 750 },
-  { name: "Unlimited", price: 50, credits: 2000 },
+  { name: "Starter", price: 10, credits: 100 },
+  { name: "Popular", price: 19, credits: 220 },
+  { name: "Best Value", price: 28, credits: 400 },
 ];
 
 export default function BillingPage() {
@@ -149,7 +148,7 @@ export default function BillingPage() {
 
       {/* Buy credits */}
       <h2 className="text-lg font-semibold mb-4">Buy Credits</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
         {plans.map((plan) => (
           <button
             key={plan.name}

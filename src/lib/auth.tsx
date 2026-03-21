@@ -38,12 +38,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   const saveToken = (t: string) => {
-    localStorage.setItem("ghostmode_token", t);
+    localStorage.setItem("renekin_token", t);
     setToken(t);
   };
 
   const clearToken = () => {
-    localStorage.removeItem("ghostmode_token");
+    localStorage.removeItem("renekin_token");
     setToken(null);
     setUser(null);
   };
@@ -61,7 +61,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Load token on mount
   useEffect(() => {
-    const stored = localStorage.getItem("ghostmode_token");
+    const stored = localStorage.getItem("renekin_token");
     if (stored) {
       setToken(stored);
       fetchProfile(stored).finally(() => setLoading(false));
