@@ -1,6 +1,6 @@
 # Renekin AI — Website
 
-Next.js 15 website and user dashboard for Renekin AI products.
+Next.js website and user dashboard for Renekin AI products.
 
 ## Pages
 
@@ -16,34 +16,53 @@ Next.js 15 website and user dashboard for Renekin AI products.
 | `/privacy` | Privacy policy |
 | `/terms` | Terms of service |
 
-## Setup
+## Environment Setup
+
+Copy `.env.example` and create env files:
+
+| File | Purpose | Backend |
+|------|---------|---------|
+| `.env.local` | Local development | `http://localhost:8000/api/v1` |
+| `.env.dev` | Dev (deployed backend) | `https://api.renekin.com/api/v1` |
+
+## Development
 
 ```bash
 npm install
-cp .env.example .env.local
-# Edit .env.local with your API URL
+
+# Local — uses localhost backend
+npm run local
+
+# Dev — uses api.renekin.com
 npm run dev
 ```
 
 Open http://localhost:3000
 
-## Environment Variables
+## Scripts
 
-```
-NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1
-```
+| Command | Env | Description |
+|---------|-----|-------------|
+| `npm run local` | `.env.local` | Next.js dev server (localhost backend) |
+| `npm run dev` | `.env.dev` | Next.js dev server (deployed backend) |
+| `npm run build:local` | `.env.local` | Next.js production build (localhost) |
+| `npm run build:dev` | `.env.dev` | Next.js production build (deployed) |
+| `npm start` | — | Start production server |
 
 ## Tech Stack
 
-- Next.js 15 (App Router)
-- React 19
+- Next.js 14 (App Router)
+- React 18
 - Tailwind CSS
 - Lucide Icons
 - TypeScript
+- dotenv-cli (env file loading)
 
-## Build
+## Credit Plans
 
-```bash
-npm run build
-npm start
-```
+| Plan | Price | Credits |
+|------|-------|---------|
+| Free | $0 | 20 |
+| Starter | $10 | 100 |
+| Popular | $19 | 220 |
+| Best Value | $28 | 400 |
