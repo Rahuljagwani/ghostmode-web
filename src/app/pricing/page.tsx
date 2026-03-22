@@ -1,76 +1,71 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth";
+import { fetchPlans, PlanData } from "@/lib/api";
 import PricingCard from "@/components/PricingCard";
-import { Zap, Eye, Mic } from "lucide-react";
+import { Zap, Eye, Mic, Loader2 } from "lucide-react";
 
-const plans = [
-  {
-    name: "Free",
-    price: 0,
-    credits: 20,
-    description: "Try Ghost risk-free",
-    features: [
-      "20 credits on signup",
-      "AI-powered answers",
-      "Voice transcription",
-      "Screenshot analysis",
-    ],
-  },
-  {
-    name: "Starter",
-    price: 10,
-    credits: 100,
-    description: "For a single interview",
-    features: [
-      "100 credits",
-      "~1-2 full interviews",
-      "All features included",
-      "Email support",
-    ],
-  },
-  {
-    name: "Popular",
-    price: 19,
-    credits: 220,
-    description: "For active job seekers",
-    features: [
-      "220 credits",
-      "~3-4 full interviews",
-      "Best value for most users",
-      "Priority support",
-    ],
-    highlighted: true,
-  },
-  {
-    name: "Best Value",
-    price: 28,
-    credits: 400,
-    description: "Maximum credits per dollar",
-    features: [
-      "400 credits",
-      "~6-7 full interviews",
-      "Lowest cost per credit ($0.07)",
-      "Priority support",
-    ],
-  },
-];
+// Free tier is always shown (not in DB)
+const FREE_PLAN = {
+  name: "Free",
+  price: 0,
+  credits: 20,
+  description: "Try Ghost risk-free",
+  features: [
+    "20 credits on signup",
+    "AI-powered answers",
+    "Voice transcription",
+    "Screenshot analysis",
+  ],
+};
+
+// Feature lists per plan name (enriches API data)
+const PLAN_FEATURES: Record<string, (credits: number) => string[]> = {
+  Starter: (cr) => [
+    `${cr} credits`,
+    `~${Math.floor(cr / 60)}-${Math.ceil(cr / 50)} full interviews`,
+    "All features included",
+    "Email support",
+  ],
+  Popular: (cr) => [
+    `${cr} credits`,
+    `~${Math.floor(cr / 60)}-${Math.ceil(cr / 50)} full interviews`,
+    "Best value for most users",
+    "Priority support",
+  ],
+  "Best Value": (cr) => [
+    `${cr} credits`,
+    `~${Math.floor(cr / 60)}-${Math.ceil(cr / 50)} full interviews`,
+    `Lowest cost per credit ($${(cr > 0 ? (28 / cr) : 0).toFixed(2)})`,
+    "Priority support",
+  ],
+};
 
 export default function PricingPage() {
   const { user } = useAuth();
   const router = useRouter();
+  const [plans, setPlans] = useState<PlanData[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleBuy = (plan: (typeof plans)[0]) => {
+  useEffect(() => {
+    fetchPlans()
+      .then(setPlans)
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, []);
+
+  const handleBuy = (price: number) => {
     if (!user) {
       router.push("/register");
       return;
     }
-    if (plan.price === 0) {
+    if (price === 0) {
       router.push("/dashboard");
       return;
     }
-    router.push(`/dashboard/billing`);
+    router.push("/dashboard/billing");
   };
 
   return (
@@ -84,15 +79,40 @@ export default function PricingPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-        {plans.map((plan) => (
+      {loading ? (
+        <div className="flex justify-center py-20">
+          <Loader2 className="w-8 h-8 text-violet-500 animate-spin" />
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {/* Free tier */}
           <PricingCard
-            key={plan.name}
-            {...plan}
-            onBuy={() => handleBuy(plan)}
+            {...FREE_PLAN}
+            onBuy={() => handleBuy(0)}
           />
-        ))}
-      </div>
+
+          {/* Dynamic plans from API */}
+          {plans.map((plan) => {
+            const featureFn = PLAN_FEATURES[plan.name];
+            const features = featureFn
+              ? featureFn(plan.credits)
+              : [`${plan.credits} credits`, "All features included"];
+
+            return (
+              <PricingCard
+                key={plan.id}
+                name={plan.name}
+                price={plan.price}
+                credits={plan.credits}
+                description={plan.description || ""}
+                features={features}
+                highlighted={plan.name === "Popular"}
+                onBuy={() => handleBuy(plan.price)}
+              />
+            );
+          })}
+        </div>
+      )}
 
       {/* Credit costs breakdown */}
       <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">

@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { apiFetch } from "@/lib/api";
+import { apiFetch, fetchPlans, PlanData } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 import {
   detectPaymentProvider,
@@ -30,15 +30,19 @@ interface PaymentItem {
   created_at: string;
 }
 
-const plans = [
-  { name: "Starter", price: 10, credits: 100, label: "For a single interview" },
-  { name: "Popular", price: 19, credits: 220, label: "Best for most users", highlighted: true },
-  { name: "Best Value", price: 28, credits: 400, label: "Lowest per credit" },
-];
-
 export default function BillingPage() {
+  return (
+    <Suspense>
+      <BillingContent />
+    </Suspense>
+  );
+}
+
+function BillingContent() {
   const { refreshProfile } = useAuth();
   const searchParams = useSearchParams();
+  const [plans, setPlans] = useState<PlanData[]>([]);
+  const [plansLoading, setPlansLoading] = useState(true);
   const [history, setHistory] = useState<PaymentItem[]>([]);
   const [provider, setProvider] = useState<PaymentProvider>("stripe");
   const [buying, setBuying] = useState<string | null>(null);
@@ -46,6 +50,10 @@ export default function BillingPage() {
 
   useEffect(() => {
     setProvider(detectPaymentProvider());
+    fetchPlans()
+      .then(setPlans)
+      .catch(() => {})
+      .finally(() => setPlansLoading(false));
   }, []);
 
   useEffect(() => {
@@ -65,7 +73,7 @@ export default function BillingPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
-  const handleBuy = async (plan: (typeof plans)[0]) => {
+  const handleBuy = async (plan: PlanData) => {
     setMessage(null);
     setBuying(plan.name);
 
@@ -146,44 +154,53 @@ export default function BillingPage() {
 
       {/* Buy credits */}
       <h2 className="text-lg font-semibold text-gray-900 mb-4">Buy Credits</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
-        {plans.map((plan) => (
-          <button
-            key={plan.name}
-            onClick={() => handleBuy(plan)}
-            disabled={buying !== null}
-            className={`relative rounded-xl p-6 text-left transition-all disabled:opacity-50 cursor-pointer ${
-              plan.highlighted
-                ? "bg-white border-2 border-violet-400 hover:border-violet-500 shadow-sm"
-                : "bg-white border border-gray-200 hover:border-violet-300 hover:shadow-sm"
-            }`}
-          >
-            {plan.highlighted && (
-              <span className="absolute -top-2.5 left-4 bg-violet-600 text-white text-[10px] px-2.5 py-0.5 rounded-full font-medium">
-                Popular
-              </span>
-            )}
-            <p className="text-gray-900 font-semibold">{plan.name}</p>
-            <p className="text-3xl font-bold text-violet-600 mt-2">
-              ${plan.price}
-            </p>
-            <p className="text-gray-500 text-sm mt-1">
-              {plan.credits} credits
-            </p>
-            <p className="text-xs text-gray-400 mt-0.5">{plan.label}</p>
-            {buying === plan.name ? (
-              <div className="flex items-center gap-2 mt-4 text-xs text-violet-600">
-                <Loader2 className="w-3 h-3 animate-spin" />
-                Processing...
-              </div>
-            ) : (
-              <p className="text-xs text-gray-400 mt-4">
-                {provider === "razorpay" ? "UPI / Cards / Netbanking" : "Card (Visa, Mastercard, etc.)"}
-              </p>
-            )}
-          </button>
-        ))}
-      </div>
+      {plansLoading ? (
+        <div className="flex justify-center py-10">
+          <Loader2 className="w-6 h-6 text-violet-500 animate-spin" />
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+          {plans.map((plan) => {
+            const isPopular = plan.name === "Popular";
+            return (
+              <button
+                key={plan.id}
+                onClick={() => handleBuy(plan)}
+                disabled={buying !== null}
+                className={`relative rounded-xl p-6 text-left transition-all disabled:opacity-50 cursor-pointer ${
+                  isPopular
+                    ? "bg-white border-2 border-violet-400 hover:border-violet-500 shadow-sm"
+                    : "bg-white border border-gray-200 hover:border-violet-300 hover:shadow-sm"
+                }`}
+              >
+                {isPopular && (
+                  <span className="absolute -top-2.5 left-4 bg-violet-600 text-white text-[10px] px-2.5 py-0.5 rounded-full font-medium">
+                    Popular
+                  </span>
+                )}
+                <p className="text-gray-900 font-semibold">{plan.name}</p>
+                <p className="text-3xl font-bold text-violet-600 mt-2">
+                  ${plan.price}
+                </p>
+                <p className="text-gray-500 text-sm mt-1">
+                  {plan.credits} credits
+                </p>
+                <p className="text-xs text-gray-400 mt-0.5">{plan.description}</p>
+                {buying === plan.name ? (
+                  <div className="flex items-center gap-2 mt-4 text-xs text-violet-600">
+                    <Loader2 className="w-3 h-3 animate-spin" />
+                    Processing...
+                  </div>
+                ) : (
+                  <p className="text-xs text-gray-400 mt-4">
+                    {provider === "razorpay" ? "UPI / Cards / Netbanking" : "Card (Visa, Mastercard, etc.)"}
+                  </p>
+                )}
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       {/* Payment history */}
       <h2 className="text-lg font-semibold text-gray-900 mb-4">Payment History</h2>

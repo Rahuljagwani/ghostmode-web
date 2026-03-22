@@ -39,3 +39,20 @@ export class ApiError extends Error {
     this.status = status;
   }
 }
+
+// ── Plans ──
+
+export interface PlanData {
+  id: string;
+  name: string;
+  description: string | null;
+  price: number;
+  credits: number;
+}
+
+/**
+ * Fetch all available credit plans (public, no auth needed).
+ */
+export async function fetchPlans(): Promise<PlanData[]> {
+  return apiFetch<PlanData[]>("/plans");
+}
