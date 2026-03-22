@@ -5,7 +5,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth";
 import { ApiError } from "@/lib/api";
-import GoogleSignInButton from "@/components/GoogleSignInButton";
+// TODO: Uncomment after Google OAuth verification
+// import GoogleSignInButton from "@/components/GoogleSignInButton";
 import { Ghost, Loader2 } from "lucide-react";
 
 const ERROR_MESSAGES: Record<string, string> = {
