@@ -1,10 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Ghost, CheckCircle, XCircle } from "lucide-react";
 
 export default function AuthSuccessPage() {
+  return (
+    <Suspense>
+      <AuthSuccessContent />
+    </Suspense>
+  );
+}
+
+function AuthSuccessContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
