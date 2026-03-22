@@ -29,28 +29,28 @@ export default function SettingsPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-1">Settings</h1>
-      <p className="text-gray-400 text-sm mb-8">Manage your account settings.</p>
+      <h1 className="text-2xl font-bold text-gray-900 mb-1">Settings</h1>
+      <p className="text-gray-500 text-sm mb-8">Manage your account settings.</p>
 
       {/* Profile */}
-      <div className="bg-white/5 border border-white/10 rounded-xl p-6 mb-6">
-        <h2 className="text-lg font-semibold mb-4">Profile</h2>
-        <div className="space-y-3">
+      <div className="bg-white border border-gray-200 rounded-xl p-6 mb-6 shadow-sm">
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">Profile</h2>
+        <div className="space-y-4">
           <div>
-            <label className="block text-sm text-gray-400 mb-1">Name</label>
-            <p className="text-white">{user?.name || "—"}</p>
+            <label className="block text-sm text-gray-500 mb-1">Name</label>
+            <p className="text-gray-900 font-medium">{user?.name || "\u2014"}</p>
           </div>
           <div>
-            <label className="block text-sm text-gray-400 mb-1">Email</label>
-            <p className="text-white">{user?.email || "—"}</p>
+            <label className="block text-sm text-gray-500 mb-1">Email</label>
+            <p className="text-gray-900 font-medium">{user?.email || "\u2014"}</p>
           </div>
         </div>
       </div>
 
       {/* BYOK */}
-      <div className="bg-white/5 border border-white/10 rounded-xl p-6">
-        <h2 className="text-lg font-semibold mb-2">Bring Your Own Key (BYOK)</h2>
-        <p className="text-gray-400 text-sm mb-4">
+      <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+        <h2 className="text-lg font-semibold text-gray-900 mb-2">Bring Your Own Key (BYOK)</h2>
+        <p className="text-gray-500 text-sm mb-4 leading-relaxed">
           When enabled, the desktop app uses your own Claude API key instead of
           consuming credits. You pay Anthropic directly.
         </p>
@@ -58,21 +58,21 @@ export default function SettingsPage() {
           <button
             onClick={toggleByok}
             disabled={saving}
-            className={`relative w-12 h-6 rounded-full transition-colors ${
-              byokEnabled ? "bg-purple-600" : "bg-white/10"
+            className={`relative w-11 h-6 rounded-full transition-colors ${
+              byokEnabled ? "bg-violet-600" : "bg-gray-200"
             }`}
           >
             <div
-              className={`absolute top-0.5 w-5 h-5 rounded-full bg-white transition-transform ${
-                byokEnabled ? "translate-x-6" : "translate-x-0.5"
+              className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow-sm transition-transform ${
+                byokEnabled ? "translate-x-5" : "translate-x-0.5"
               }`}
             />
           </button>
-          <span className="text-sm text-gray-300">
+          <span className="text-sm text-gray-600 font-medium">
             {byokEnabled ? "Enabled" : "Disabled"}
           </span>
-          {saving && <Loader2 className="w-4 h-4 animate-spin text-gray-500" />}
-          {saved && <Check className="w-4 h-4 text-green-400" />}
+          {saving && <Loader2 className="w-4 h-4 animate-spin text-gray-400" />}
+          {saved && <Check className="w-4 h-4 text-green-500" />}
         </div>
       </div>
     </div>

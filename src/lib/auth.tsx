@@ -17,14 +17,15 @@ interface User {
   remaining_credits: number;
   total_credits: number;
   is_byok_enabled: boolean;
+  is_email_verified: boolean;
 }
 
 interface AuthContextValue {
   user: User | null;
   token: string | null;
   loading: boolean;
-  login: (email: string, password: string) => Promise<void>;
-  register: (email: string, password: string, name: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<User>;
+  register: (email: string, password: string, name: string) => Promise<User>;
   googleLogin: (idToken: string) => Promise<void>;
   logout: () => void;
   refreshProfile: () => Promise<void>;
@@ -70,16 +71,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, [fetchProfile]);
 
-  const login = async (email: string, password: string) => {
+  const login = async (email: string, password: string): Promise<User> => {
     const data = await apiFetch<{ token: string; user: User }>("/auth/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
     });
     saveToken(data.token);
     setUser(data.user);
+    return data.user;
   };
 
-  const register = async (email: string, password: string, name: string) => {
+  const register = async (email: string, password: string, name: string): Promise<User> => {
     const data = await apiFetch<{ token: string; user: User }>(
       "/auth/register",
       {
@@ -89,6 +91,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     );
     saveToken(data.token);
     setUser(data.user);
+    return data.user;
   };
 
   const googleLogin = async (idToken: string) => {

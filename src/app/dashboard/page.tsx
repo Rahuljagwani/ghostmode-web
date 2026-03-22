@@ -41,34 +41,34 @@ export default function DashboardPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-1">
+      <h1 className="text-2xl font-bold text-gray-900 mb-1">
         Welcome back, {user?.name || "there"}
       </h1>
-      <p className="text-gray-400 text-sm mb-8">{user?.email}</p>
+      <p className="text-gray-500 text-sm mb-8">{user?.email}</p>
 
       {/* Credits overview */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-        <div className="bg-white/5 border border-white/10 rounded-xl p-5 col-span-2">
+        <div className="bg-white border border-gray-200 rounded-xl p-6 col-span-2 shadow-sm">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-sm font-medium text-gray-400">
+            <h2 className="text-sm font-medium text-gray-500">
               Credits Balance
             </h2>
-            <Zap className="w-4 h-4 text-purple-400" />
+            <Zap className="w-4 h-4 text-violet-500" />
           </div>
-          <p className="text-4xl font-bold text-white">
-            {credits?.remaining_credits?.toFixed(0) ?? user?.remaining_credits?.toFixed(0) ?? "—"}
+          <p className="text-4xl font-bold text-gray-900">
+            {credits?.remaining_credits?.toFixed(0) ?? user?.remaining_credits?.toFixed(0) ?? "\u2014"}
           </p>
-          <p className="text-sm text-gray-500 mt-1">credits remaining</p>
+          <p className="text-sm text-gray-400 mt-1">credits remaining</p>
 
           {/* Usage bar */}
-          <div className="mt-4">
-            <div className="flex justify-between text-xs text-gray-500 mb-1">
+          <div className="mt-5">
+            <div className="flex justify-between text-xs text-gray-400 mb-1.5">
               <span>Used: {credits?.used_credits?.toFixed(0) ?? 0}</span>
               <span>Total: {credits?.total_credits?.toFixed(0) ?? 0}</span>
             </div>
-            <div className="h-2 bg-white/5 rounded-full overflow-hidden">
+            <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
               <div
-                className="h-full bg-purple-600 rounded-full transition-all"
+                className="h-full bg-violet-500 rounded-full transition-all"
                 style={{ width: `${usagePercent}%` }}
               />
             </div>
@@ -77,53 +77,62 @@ export default function DashboardPage() {
 
         <Link
           href="/dashboard/billing"
-          className="bg-purple-600/10 border border-purple-500/20 rounded-xl p-5 hover:border-purple-500/40 transition flex flex-col justify-between"
+          className="bg-violet-50 border border-violet-100 rounded-xl p-6 hover:border-violet-200 transition-colors flex flex-col justify-between shadow-sm"
         >
           <div>
-            <h2 className="text-sm font-medium text-purple-400">
+            <h2 className="text-sm font-medium text-violet-700">
               Need more credits?
             </h2>
-            <p className="text-gray-400 text-sm mt-1">
+            <p className="text-gray-500 text-sm mt-1">
               Top up your balance to keep using Ghost.
             </p>
           </div>
-          <div className="flex items-center gap-1 text-purple-400 text-sm mt-4">
+          <div className="flex items-center gap-1 text-violet-600 text-sm font-medium mt-4">
             Buy Credits <ArrowRight className="w-4 h-4" />
           </div>
         </Link>
       </div>
 
       {/* Usage breakdown */}
-      <h2 className="text-lg font-semibold mb-4">Usage Breakdown</h2>
+      <h2 className="text-lg font-semibold text-gray-900 mb-4">Usage Breakdown</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-white/5 border border-white/10 rounded-xl p-5">
-          <div className="flex items-center gap-2 mb-2">
-            <Camera className="w-4 h-4 text-blue-400" />
-            <span className="text-sm text-gray-400">Screenshots</span>
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+          <div className="flex items-center gap-2.5 mb-3">
+            <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center">
+              <Camera className="w-4 h-4 text-blue-500" />
+            </div>
+            <span className="text-sm text-gray-500">Screenshots</span>
           </div>
-          <p className="text-2xl font-bold">
+          <p className="text-2xl font-bold text-gray-900">
             {credits?.total_screenshots ?? 0}
           </p>
+          <p className="text-xs text-gray-400 mt-1">2 credits each</p>
         </div>
 
-        <div className="bg-white/5 border border-white/10 rounded-xl p-5">
-          <div className="flex items-center gap-2 mb-2">
-            <Mic className="w-4 h-4 text-green-400" />
-            <span className="text-sm text-gray-400">Voice Queries</span>
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+          <div className="flex items-center gap-2.5 mb-3">
+            <div className="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center">
+              <Mic className="w-4 h-4 text-green-500" />
+            </div>
+            <span className="text-sm text-gray-500">Voice Queries</span>
           </div>
-          <p className="text-2xl font-bold">
+          <p className="text-2xl font-bold text-gray-900">
             {credits?.total_voice_queries ?? 0}
           </p>
+          <p className="text-xs text-gray-400 mt-1">3 credits each</p>
         </div>
 
-        <div className="bg-white/5 border border-white/10 rounded-xl p-5">
-          <div className="flex items-center gap-2 mb-2">
-            <MessageSquare className="w-4 h-4 text-yellow-400" />
-            <span className="text-sm text-gray-400">Text Queries</span>
+        <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+          <div className="flex items-center gap-2.5 mb-3">
+            <div className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center">
+              <MessageSquare className="w-4 h-4 text-amber-500" />
+            </div>
+            <span className="text-sm text-gray-500">Text Queries</span>
           </div>
-          <p className="text-2xl font-bold">
+          <p className="text-2xl font-bold text-gray-900">
             {credits?.total_text_queries ?? 0}
           </p>
+          <p className="text-xs text-gray-400 mt-1">1 credit each</p>
         </div>
       </div>
     </div>

@@ -23,23 +23,23 @@ export default function PricingCard({
 }: PricingCardProps) {
   return (
     <div
-      className={`relative rounded-2xl p-6 flex flex-col ${
+      className={`relative rounded-2xl p-6 flex flex-col transition-all ${
         highlighted
-          ? "bg-purple-600/20 border-2 border-purple-500 shadow-lg shadow-purple-500/10"
-          : "bg-white/5 border border-white/10"
+          ? "bg-white border-2 border-violet-500 shadow-lg shadow-violet-100/50 scale-[1.02]"
+          : "bg-white border border-gray-200 hover:border-gray-300"
       }`}
     >
       {highlighted && (
-        <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-purple-600 text-white text-xs px-3 py-1 rounded-full font-medium">
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-violet-600 text-white text-xs px-3 py-1 rounded-full font-medium">
           Most Popular
         </span>
       )}
 
-      <h3 className="text-xl font-bold text-white">{name}</h3>
-      <p className="text-gray-400 text-sm mt-1">{description}</p>
+      <h3 className="text-xl font-bold text-gray-900">{name}</h3>
+      <p className="text-gray-500 text-sm mt-1">{description}</p>
 
-      <div className="mt-4">
-        <span className="text-4xl font-bold text-white">
+      <div className="mt-5">
+        <span className="text-4xl font-bold text-gray-900">
           {price === 0 ? "Free" : `$${price}`}
         </span>
         {price > 0 && (
@@ -47,14 +47,14 @@ export default function PricingCard({
         )}
       </div>
 
-      <p className="text-purple-400 text-sm font-medium mt-1">
+      <p className="text-violet-600 text-sm font-semibold mt-1">
         {credits} credits
       </p>
 
       <ul className="mt-6 space-y-3 flex-1">
         {features.map((f) => (
-          <li key={f} className="flex items-start gap-2 text-sm text-gray-300">
-            <Check className="w-4 h-4 text-purple-400 mt-0.5 shrink-0" />
+          <li key={f} className="flex items-start gap-2 text-sm text-gray-600">
+            <Check className="w-4 h-4 text-violet-500 mt-0.5 shrink-0" />
             {f}
           </li>
         ))}
@@ -62,12 +62,12 @@ export default function PricingCard({
 
       <button
         onClick={onBuy}
-        className={`mt-6 w-full py-3 rounded-lg font-medium transition text-sm ${
+        className={`mt-6 w-full py-3 rounded-xl font-medium transition-colors text-sm cursor-pointer ${
           highlighted
-            ? "bg-purple-600 hover:bg-purple-700 text-white"
+            ? "bg-violet-600 hover:bg-violet-700 text-white shadow-sm"
             : price === 0
-            ? "bg-white/10 hover:bg-white/20 text-white"
-            : "bg-white/10 hover:bg-white/20 text-white"
+            ? "bg-gray-50 hover:bg-gray-100 text-gray-700 border border-gray-200"
+            : "bg-gray-900 hover:bg-gray-800 text-white"
         }`}
       >
         {price === 0 ? "Get Started" : "Buy Credits"}

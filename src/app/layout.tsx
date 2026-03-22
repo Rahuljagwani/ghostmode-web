@@ -18,9 +18,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Renekin AI — AI Tools for the Real World",
+  title: "Renekin AI | Intelligent Copilot for Interviews & Meetings",
   description:
-    "Renekin AI builds intelligent tools that work alongside you. Renaissance knowledge meets modern AI.",
+    "Renekin AI builds intelligent, invisible copilot tools for high-pressure professional moments. Ghost, our flagship product, delivers real-time answers during interviews, meetings, and presentations, completely hidden from screen sharing.",
 };
 
 export default function RootLayout({
@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <Script
           src="https://checkout.razorpay.com/v1/checkout.js"
@@ -37,7 +37,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0a0a] text-white min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-gray-900 min-h-screen`}
       >
         <AuthProvider>
           <Navbar />

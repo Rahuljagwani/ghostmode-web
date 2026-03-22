@@ -30,13 +30,15 @@ export default function DashboardLayout({
   useEffect(() => {
     if (!loading && !user) {
       router.push("/login");
+    } else if (!loading && user && !user.is_email_verified) {
+      router.push(`/verify-email?email=${encodeURIComponent(user.email)}`);
     }
   }, [user, loading, router]);
 
   if (loading) {
     return (
       <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-purple-400" />
+        <Loader2 className="w-8 h-8 animate-spin text-violet-500" />
       </div>
     );
   }
@@ -44,7 +46,7 @@ export default function DashboardLayout({
   if (!user) return null;
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-12">
+    <div className="max-w-5xl mx-auto px-6 py-12">
       <div className="flex flex-col md:flex-row gap-8">
         {/* Sidebar */}
         <aside className="md:w-56 shrink-0">
@@ -55,10 +57,10 @@ export default function DashboardLayout({
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition ${
+                  className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm transition-colors ${
                     active
-                      ? "bg-purple-600/20 text-purple-400"
-                      : "text-gray-400 hover:text-white hover:bg-white/5"
+                      ? "bg-violet-50 text-violet-700 font-medium"
+                      : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
                   }`}
                 >
                   <item.icon className="w-4 h-4" />

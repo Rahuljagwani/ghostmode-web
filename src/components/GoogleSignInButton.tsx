@@ -4,14 +4,13 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1
 
 export default function GoogleSignInButton() {
   const handleClick = () => {
-    // Redirect to backend which handles the full Google OAuth flow
     window.location.href = `${API_URL}/auth/google/web-start`;
   };
 
   return (
     <button
       onClick={handleClick}
-      className="w-full flex items-center justify-center gap-3 bg-white/5 border border-white/10 hover:border-white/20 rounded-lg px-4 py-2.5 text-white transition"
+      className="w-full flex items-center justify-center gap-3 bg-white border border-gray-200 hover:border-gray-300 hover:bg-gray-50 rounded-lg px-4 py-2.5 text-gray-700 transition-colors shadow-sm"
     >
       <svg width="18" height="18" viewBox="0 0 24 24">
         <path

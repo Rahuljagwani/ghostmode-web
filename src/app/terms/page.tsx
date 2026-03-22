@@ -1,18 +1,18 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — Renekin AI",
+  title: "Terms of Service | Renekin AI",
 };
 
 export default function TermsPage() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-24">
-      <h1 className="text-4xl font-bold mb-2">Terms of Service</h1>
+      <h1 className="text-4xl font-bold text-gray-900 mb-2">Terms of Service</h1>
       <p className="text-gray-500 text-sm mb-10">Last updated: March 20, 2026</p>
 
-      <div className="prose prose-invert prose-gray max-w-none space-y-8 text-gray-300 text-sm leading-relaxed">
+      <div className="prose prose-gray max-w-none space-y-8 text-gray-600 text-sm leading-relaxed">
         <section>
-          <h2 className="text-xl font-semibold text-white mb-3">1. Acceptance of Terms</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-3">1. Acceptance of Terms</h2>
           <p>
             By accessing or using the Renekin AI website (renekin.com), the Ghost desktop application,
             or any other services provided by Renekin AI (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;),
@@ -21,29 +21,29 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-white mb-3">2. Description of Service</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-3">2. Description of Service</h2>
           <p>
-            Renekin AI provides AI-powered tools, including Ghost — a desktop application that offers
+            Renekin AI provides AI-powered tools, including Ghost, a desktop application that offers
             real-time AI assistance. Our services require an internet connection and a user account.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-white mb-3">3. User Accounts</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-3">3. User Accounts</h2>
           <ul className="list-disc list-inside space-y-1">
             <li>You must provide accurate and complete information when creating an account</li>
             <li>You are responsible for maintaining the security of your account credentials</li>
             <li>You must be at least 18 years old to use our services</li>
-            <li>One account per person — do not share accounts</li>
+            <li>One account per person. Do not share accounts.</li>
             <li>We reserve the right to suspend or terminate accounts that violate these terms</li>
           </ul>
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-white mb-3">4. Credits and Payments</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-3">4. Credits and Payments</h2>
           <ul className="list-disc list-inside space-y-1">
             <li>Our services operate on a credit-based system</li>
-            <li>New accounts receive free credits as specified at the time of registration</li>
+            <li>New accounts receive 20 free credits upon registration</li>
             <li>Credits are non-transferable and non-refundable unless required by law</li>
             <li>Credits do not expire</li>
             <li>We reserve the right to change pricing at any time, but existing purchased credits will be honored</li>
@@ -52,7 +52,7 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-white mb-3">5. Acceptable Use</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-3">5. Acceptable Use</h2>
           <p>You agree not to:</p>
           <ul className="list-disc list-inside space-y-1">
             <li>Use the service for any unlawful purpose</li>
@@ -65,10 +65,10 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-white mb-3">6. User Responsibility</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-3">6. User Responsibility</h2>
           <p>
             You are solely responsible for how you use our services. Ghost is a tool that provides
-            AI-generated suggestions — you are responsible for evaluating and using those suggestions
+            AI-generated suggestions. You are responsible for evaluating and using those suggestions
             appropriately. We are not liable for any decisions you make based on AI-generated content.
           </p>
           <p className="mt-2">
@@ -79,7 +79,7 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-white mb-3">7. Intellectual Property</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-3">7. Intellectual Property</h2>
           <p>
             The Renekin AI name, Ghost name, logos, and all software are the intellectual property
             of Renekin AI. You may not use our branding without written permission.
@@ -91,7 +91,7 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-white mb-3">8. AI-Generated Content</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-3">8. AI-Generated Content</h2>
           <p>
             AI responses are generated by third-party AI models and may not always be accurate,
             complete, or appropriate. We do not guarantee the quality, accuracy, or suitability
@@ -100,7 +100,7 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-white mb-3">9. Service Availability</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-3">9. Service Availability</h2>
           <p>
             We strive to maintain high availability but do not guarantee uninterrupted service.
             We may perform maintenance, updates, or experience outages. We are not liable for
@@ -109,7 +109,7 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-white mb-3">10. Limitation of Liability</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-3">10. Limitation of Liability</h2>
           <p>
             To the maximum extent permitted by law, Renekin AI shall not be liable for any indirect,
             incidental, special, consequential, or punitive damages, including but not limited to
@@ -118,7 +118,7 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-white mb-3">11. Disclaimer of Warranties</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-3">11. Disclaimer of Warranties</h2>
           <p>
             Our services are provided &quot;as is&quot; and &quot;as available&quot; without warranties
             of any kind, either express or implied, including but not limited to implied warranties of
@@ -127,7 +127,7 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-white mb-3">12. Termination</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-3">12. Termination</h2>
           <p>
             We may terminate or suspend your access to our services at any time, with or without cause,
             with or without notice. You may delete your account at any time by contacting us.
@@ -136,7 +136,7 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-white mb-3">13. Changes to Terms</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-3">13. Changes to Terms</h2>
           <p>
             We reserve the right to modify these terms at any time. We will notify users of significant
             changes by posting the updated terms on this page. Continued use of the service after
@@ -145,7 +145,7 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-white mb-3">14. Governing Law</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-3">14. Governing Law</h2>
           <p>
             These terms shall be governed by and construed in accordance with applicable laws.
             Any disputes arising from these terms shall be resolved through good-faith negotiation
@@ -154,10 +154,10 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-white mb-3">15. Contact</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-3">15. Contact</h2>
           <p>
             If you have any questions about these Terms of Service, contact us at:{" "}
-            <a href="mailto:support@renekin.com" className="text-purple-400 hover:text-purple-300 transition">
+            <a href="mailto:support@renekin.com" className="text-violet-600 hover:text-violet-700 transition">
               support@renekin.com
             </a>
           </p>

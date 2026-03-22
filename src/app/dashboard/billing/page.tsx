@@ -31,9 +31,9 @@ interface PaymentItem {
 }
 
 const plans = [
-  { name: "Starter", price: 10, credits: 100 },
-  { name: "Popular", price: 19, credits: 220 },
-  { name: "Best Value", price: 28, credits: 400 },
+  { name: "Starter", price: 10, credits: 100, label: "For a single interview" },
+  { name: "Popular", price: 19, credits: 220, label: "Best for most users", highlighted: true },
+  { name: "Best Value", price: 28, credits: 400, label: "Lowest per credit" },
 ];
 
 export default function BillingPage() {
@@ -52,9 +52,8 @@ export default function BillingPage() {
     apiFetch<PaymentItem[]>("/credits/history")
       .then(setHistory)
       .catch(() => {});
-  }, [message]); // Re-fetch after payment
+  }, [message]);
 
-  // Handle Stripe redirect back
   useEffect(() => {
     const payment = searchParams.get("payment");
     if (payment === "success") {
@@ -79,7 +78,6 @@ export default function BillingPage() {
         });
         await refreshProfile();
       } else {
-        // Stripe redirects away, so no need to handle response here
         await payWithStripe(plan.name);
       }
     } catch (err) {
@@ -94,18 +92,18 @@ export default function BillingPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-1">Billing</h1>
-      <p className="text-gray-400 text-sm mb-6">
+      <h1 className="text-2xl font-bold text-gray-900 mb-1">Billing</h1>
+      <p className="text-gray-500 text-sm mb-6">
         Buy credits and view your payment history.
       </p>
 
       {/* Status message */}
       {message && (
         <div
-          className={`flex items-center gap-2 px-4 py-3 rounded-lg mb-6 text-sm ${
+          className={`flex items-center gap-2.5 px-4 py-3 rounded-xl mb-6 text-sm ${
             message.type === "success"
-              ? "bg-green-500/10 border border-green-500/20 text-green-400"
-              : "bg-red-500/10 border border-red-500/20 text-red-400"
+              ? "bg-green-50 border border-green-200 text-green-700"
+              : "bg-red-50 border border-red-200 text-red-700"
           }`}
         >
           {message.type === "success" ? (
@@ -119,14 +117,14 @@ export default function BillingPage() {
 
       {/* Payment provider toggle */}
       <div className="flex items-center gap-3 mb-6">
-        <span className="text-sm text-gray-400">Pay with:</span>
-        <div className="flex bg-white/5 rounded-lg p-0.5 border border-white/10">
+        <span className="text-sm text-gray-500">Pay with:</span>
+        <div className="flex bg-gray-100 rounded-xl p-0.5">
           <button
             onClick={() => setProvider("stripe")}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm transition ${
+            className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm transition-colors ${
               provider === "stripe"
-                ? "bg-purple-600 text-white"
-                : "text-gray-400 hover:text-white"
+                ? "bg-white text-gray-900 shadow-sm font-medium"
+                : "text-gray-500 hover:text-gray-700"
             }`}
           >
             <DollarSign className="w-3.5 h-3.5" />
@@ -134,10 +132,10 @@ export default function BillingPage() {
           </button>
           <button
             onClick={() => setProvider("razorpay")}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm transition ${
+            className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm transition-colors ${
               provider === "razorpay"
-                ? "bg-purple-600 text-white"
-                : "text-gray-400 hover:text-white"
+                ? "bg-white text-gray-900 shadow-sm font-medium"
+                : "text-gray-500 hover:text-gray-700"
             }`}
           >
             <IndianRupee className="w-3.5 h-3.5" />
@@ -147,29 +145,39 @@ export default function BillingPage() {
       </div>
 
       {/* Buy credits */}
-      <h2 className="text-lg font-semibold mb-4">Buy Credits</h2>
+      <h2 className="text-lg font-semibold text-gray-900 mb-4">Buy Credits</h2>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
         {plans.map((plan) => (
           <button
             key={plan.name}
             onClick={() => handleBuy(plan)}
             disabled={buying !== null}
-            className="bg-white/5 border border-white/10 rounded-xl p-5 text-left hover:border-purple-500/30 transition disabled:opacity-50"
+            className={`relative rounded-xl p-6 text-left transition-all disabled:opacity-50 cursor-pointer ${
+              plan.highlighted
+                ? "bg-white border-2 border-violet-400 hover:border-violet-500 shadow-sm"
+                : "bg-white border border-gray-200 hover:border-violet-300 hover:shadow-sm"
+            }`}
           >
-            <p className="text-white font-semibold">{plan.name}</p>
-            <p className="text-2xl font-bold text-purple-400 mt-1">
+            {plan.highlighted && (
+              <span className="absolute -top-2.5 left-4 bg-violet-600 text-white text-[10px] px-2.5 py-0.5 rounded-full font-medium">
+                Popular
+              </span>
+            )}
+            <p className="text-gray-900 font-semibold">{plan.name}</p>
+            <p className="text-3xl font-bold text-violet-600 mt-2">
               ${plan.price}
             </p>
             <p className="text-gray-500 text-sm mt-1">
               {plan.credits} credits
             </p>
+            <p className="text-xs text-gray-400 mt-0.5">{plan.label}</p>
             {buying === plan.name ? (
-              <div className="flex items-center gap-2 mt-3 text-xs text-purple-400">
+              <div className="flex items-center gap-2 mt-4 text-xs text-violet-600">
                 <Loader2 className="w-3 h-3 animate-spin" />
                 Processing...
               </div>
             ) : (
-              <p className="text-xs text-gray-600 mt-3">
+              <p className="text-xs text-gray-400 mt-4">
                 {provider === "razorpay" ? "UPI / Cards / Netbanking" : "Card (Visa, Mastercard, etc.)"}
               </p>
             )}
@@ -178,54 +186,54 @@ export default function BillingPage() {
       </div>
 
       {/* Payment history */}
-      <h2 className="text-lg font-semibold mb-4">Payment History</h2>
+      <h2 className="text-lg font-semibold text-gray-900 mb-4">Payment History</h2>
       {history.length === 0 ? (
-        <div className="bg-white/5 border border-white/10 rounded-xl p-8 text-center">
-          <CreditCard className="w-8 h-8 text-gray-600 mx-auto mb-3" />
-          <p className="text-gray-400">No payments yet.</p>
-          <p className="text-gray-500 text-sm mt-1">
+        <div className="bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
+          <CreditCard className="w-8 h-8 text-gray-300 mx-auto mb-3" />
+          <p className="text-gray-500">No payments yet.</p>
+          <p className="text-gray-400 text-sm mt-1">
             Purchase credits above to get started.
           </p>
         </div>
       ) : (
-        <div className="bg-white/5 border border-white/10 rounded-xl overflow-hidden">
+        <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-white/5">
-                <th className="text-left text-gray-400 font-medium px-5 py-3">Date</th>
-                <th className="text-left text-gray-400 font-medium px-5 py-3">Credits</th>
-                <th className="text-left text-gray-400 font-medium px-5 py-3">Amount</th>
-                <th className="text-left text-gray-400 font-medium px-5 py-3">Provider</th>
-                <th className="text-left text-gray-400 font-medium px-5 py-3">Status</th>
+              <tr className="border-b border-gray-100 bg-gray-50">
+                <th className="text-left text-gray-500 font-medium px-5 py-3">Date</th>
+                <th className="text-left text-gray-500 font-medium px-5 py-3">Credits</th>
+                <th className="text-left text-gray-500 font-medium px-5 py-3">Amount</th>
+                <th className="text-left text-gray-500 font-medium px-5 py-3">Provider</th>
+                <th className="text-left text-gray-500 font-medium px-5 py-3">Status</th>
               </tr>
             </thead>
             <tbody>
               {history.map((item) => (
                 <tr
                   key={item.id}
-                  className="border-b border-white/5 last:border-0"
+                  className="border-b border-gray-50 last:border-0"
                 >
-                  <td className="px-5 py-3 text-gray-300">
+                  <td className="px-5 py-3 text-gray-600">
                     <div className="flex items-center gap-2">
-                      <Clock className="w-3 h-3 text-gray-500" />
+                      <Clock className="w-3 h-3 text-gray-400" />
                       {new Date(item.created_at).toLocaleDateString()}
                     </div>
                   </td>
-                  <td className="px-5 py-3 text-purple-400">
+                  <td className="px-5 py-3 text-violet-600 font-medium">
                     +{item.no_of_credits_bought}
                   </td>
-                  <td className="px-5 py-3 text-gray-300">
+                  <td className="px-5 py-3 text-gray-600">
                     ${item.money_paid_in_dollars}
                   </td>
-                  <td className="px-5 py-3 text-gray-400 capitalize">
+                  <td className="px-5 py-3 text-gray-500 capitalize">
                     {item.payment_vendor}
                   </td>
                   <td className="px-5 py-3">
                     <span
-                      className={`text-xs px-2 py-0.5 rounded-full ${
+                      className={`text-xs px-2 py-0.5 rounded-full font-medium ${
                         item.status === "completed"
-                          ? "bg-green-500/20 text-green-400"
-                          : "bg-yellow-500/20 text-yellow-400"
+                          ? "bg-green-50 text-green-600"
+                          : "bg-amber-50 text-amber-600"
                       }`}
                     >
                       {item.status}
