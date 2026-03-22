@@ -5,16 +5,16 @@ import { useSearchParams } from "next/navigation";
 import { apiFetch, fetchPlans, PlanData } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 import {
-  detectPaymentProvider,
   payWithRazorpay,
-  payWithStripe,
-  PaymentProvider,
+  // payWithStripe,
+  // detectPaymentProvider,
+  // PaymentProvider,
 } from "@/lib/payments";
 import {
   CreditCard,
   Clock,
-  IndianRupee,
-  DollarSign,
+  // IndianRupee,
+  // DollarSign,
   Loader2,
   CheckCircle,
   XCircle,
@@ -44,12 +44,15 @@ function BillingContent() {
   const [plans, setPlans] = useState<PlanData[]>([]);
   const [plansLoading, setPlansLoading] = useState(true);
   const [history, setHistory] = useState<PaymentItem[]>([]);
-  const [provider, setProvider] = useState<PaymentProvider>("stripe");
+  // Stripe disabled for now — Razorpay only
+  // const [provider, setProvider] = useState<PaymentProvider>("stripe");
+  // const provider = "razorpay" as const;
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [buying, setBuying] = useState<string | null>(null);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
   useEffect(() => {
-    setProvider(detectPaymentProvider());
+    // setProvider(detectPaymentProvider());
     fetchPlans()
       .then(setPlans)
       .catch(() => {})
@@ -78,16 +81,16 @@ function BillingContent() {
     setBuying(plan.name);
 
     try {
-      if (provider === "razorpay") {
-        const result = await payWithRazorpay(plan.name);
-        setMessage({
-          type: "success",
-          text: `Payment successful! ${result.credits_added} credits added to your account.`,
-        });
-        await refreshProfile();
-      } else {
-        await payWithStripe(plan.name);
-      }
+      const result = await payWithRazorpay(plan.name);
+      setMessage({
+        type: "success",
+        text: `Payment successful! ${result.credits_added} credits added to your account.`,
+      });
+      await refreshProfile();
+      // Stripe disabled for now
+      // if (provider === "stripe") {
+      //   await payWithStripe(plan.name);
+      // }
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Payment failed";
       if (msg !== "Payment cancelled") {
@@ -123,34 +126,7 @@ function BillingContent() {
         </div>
       )}
 
-      {/* Payment provider toggle */}
-      <div className="flex items-center gap-3 mb-6">
-        <span className="text-sm text-gray-500">Pay with:</span>
-        <div className="flex bg-gray-100 rounded-xl p-0.5">
-          <button
-            onClick={() => setProvider("stripe")}
-            className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm transition-colors ${
-              provider === "stripe"
-                ? "bg-white text-gray-900 shadow-sm font-medium"
-                : "text-gray-500 hover:text-gray-700"
-            }`}
-          >
-            <DollarSign className="w-3.5 h-3.5" />
-            Stripe (International)
-          </button>
-          <button
-            onClick={() => setProvider("razorpay")}
-            className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm transition-colors ${
-              provider === "razorpay"
-                ? "bg-white text-gray-900 shadow-sm font-medium"
-                : "text-gray-500 hover:text-gray-700"
-            }`}
-          >
-            <IndianRupee className="w-3.5 h-3.5" />
-            Razorpay (India)
-          </button>
-        </div>
-      </div>
+      {/* Payment provider toggle — Stripe disabled for now, Razorpay only */}
 
       {/* Buy credits */}
       <h2 className="text-lg font-semibold text-gray-900 mb-4">Buy Credits</h2>
@@ -159,47 +135,60 @@ function BillingContent() {
           <Loader2 className="w-6 h-6 text-violet-500 animate-spin" />
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
-          {plans.map((plan) => {
-            const isPopular = plan.name === "Popular";
-            return (
-              <button
-                key={plan.id}
-                onClick={() => handleBuy(plan)}
-                disabled={buying !== null}
-                className={`relative rounded-xl p-6 text-left transition-all disabled:opacity-50 cursor-pointer ${
-                  isPopular
-                    ? "bg-white border-2 border-violet-400 hover:border-violet-500 shadow-sm"
-                    : "bg-white border border-gray-200 hover:border-violet-300 hover:shadow-sm"
-                }`}
-              >
-                {isPopular && (
-                  <span className="absolute -top-2.5 left-4 bg-violet-600 text-white text-[10px] px-2.5 py-0.5 rounded-full font-medium">
-                    Popular
-                  </span>
-                )}
-                <p className="text-gray-900 font-semibold">{plan.name}</p>
-                <p className="text-3xl font-bold text-violet-600 mt-2">
-                  ${plan.price}
-                </p>
-                <p className="text-gray-500 text-sm mt-1">
-                  {plan.credits} credits
-                </p>
-                <p className="text-xs text-gray-400 mt-0.5">{plan.description}</p>
-                {buying === plan.name ? (
-                  <div className="flex items-center gap-2 mt-4 text-xs text-violet-600">
-                    <Loader2 className="w-3 h-3 animate-spin" />
-                    Processing...
-                  </div>
-                ) : (
-                  <p className="text-xs text-gray-400 mt-4">
-                    {provider === "razorpay" ? "UPI / Cards / Netbanking" : "Card (Visa, Mastercard, etc.)"}
+        <>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+            {plans.map((plan) => {
+              const isSelected = selectedPlan === plan.name;
+              return (
+                <button
+                  key={plan.id}
+                  onClick={() => setSelectedPlan(plan.name)}
+                  disabled={buying !== null}
+                  className={`relative rounded-xl p-6 text-left transition-all disabled:opacity-50 cursor-pointer ${
+                    isSelected
+                      ? "bg-violet-50 border-2 border-violet-500 shadow-sm"
+                      : "bg-white border border-gray-200 hover:border-violet-300 hover:shadow-sm"
+                  }`}
+                >
+                  {isSelected && (
+                    <span className="absolute -top-2.5 left-4 bg-violet-600 text-white text-[10px] px-2.5 py-0.5 rounded-full font-medium">
+                      Selected
+                    </span>
+                  )}
+                  <p className="text-gray-900 font-semibold">{plan.name}</p>
+                  <p className="text-3xl font-bold text-violet-600 mt-2">
+                    ${plan.price}
                   </p>
-                )}
-              </button>
-            );
-          })}
-        </div>
+                  <p className="text-gray-500 text-sm mt-1">
+                    {plan.credits} credits
+                  </p>
+                  <p className="text-xs text-gray-400 mt-0.5">{plan.description}</p>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Buy button */}
+          <button
+            onClick={() => {
+              const plan = plans.find((p) => p.name === selectedPlan);
+              if (plan) handleBuy(plan);
+            }}
+            disabled={!selectedPlan || buying !== null}
+            className="w-full sm:w-auto px-8 py-3 bg-violet-600 text-white font-medium rounded-xl hover:bg-violet-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed mb-10 flex items-center justify-center gap-2"
+          >
+            {buying ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin" />
+                Processing...
+              </>
+            ) : selectedPlan ? (
+              `Buy ${selectedPlan} Plan`
+            ) : (
+              "Select a plan"
+            )}
+          </button>
+        </>
       )}
 
       {/* Payment history */}
