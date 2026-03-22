@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   title: "Renekin AI | Intelligent Copilot for Interviews & Meetings",
   description:
     "Renekin AI builds intelligent, invisible copilot tools for high-pressure professional moments. Ghost, our flagship product, delivers real-time answers during interviews, meetings, and presentations, completely hidden from screen sharing.",
+  icons: {
+    icon: "/renekin-logo.svg",
+    apple: "/renekin-logo.svg",
+  },
 };
 
 export default function RootLayout({
