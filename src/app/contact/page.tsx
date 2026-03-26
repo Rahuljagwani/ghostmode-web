@@ -38,12 +38,12 @@ export default function ContactPage() {
     return (
       <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6">
         <div className="w-full max-w-md text-center">
-          <div className="bg-white border border-gray-200 rounded-2xl p-10 shadow-sm">
-            <CheckCircle2 className="w-12 h-12 text-green-500 mx-auto mb-4" />
+          <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-10 shadow-xl">
+            <CheckCircle2 className="w-12 h-12 text-emerald-500 mx-auto mb-4" />
             <h1 className="text-2xl font-bold text-gray-900 mb-2">
               Message sent!
             </h1>
-            <p className="text-gray-500 text-sm leading-relaxed">
+            <p className="text-gray-600 text-sm leading-relaxed">
               Thanks for reaching out. We&apos;ll get back to you within 24
               hours. A confirmation has been sent to your email.
             </p>
@@ -61,7 +61,7 @@ export default function ContactPage() {
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
             Get in touch
           </h1>
-          <p className="text-gray-500 text-base max-w-lg mx-auto">
+          <p className="text-gray-600 text-base max-w-lg mx-auto">
             Have a question, feedback, or need help? We&apos;d love to hear from
             you.
           </p>
@@ -70,21 +70,21 @@ export default function ContactPage() {
         <div className="grid md:grid-cols-3 gap-10">
           {/* Contact info */}
           <div className="md:col-span-1 space-y-6">
-            <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+            <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-6 shadow-xl">
               <div className="flex items-start gap-3 mb-4">
-                <Mail className="w-5 h-5 text-violet-600 mt-0.5 shrink-0" />
+                <Mail className="w-5 h-5 text-gray-700 mt-0.5 shrink-0" />
                 <div>
                   <h3 className="text-sm font-semibold text-gray-900">Email</h3>
                   <a
                     href="mailto:support@renekin.com"
-                    className="text-sm text-violet-600 hover:text-violet-700 transition-colors"
+                    className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
                   >
                     support@renekin.com
                   </a>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-violet-600 mt-0.5 shrink-0" />
+                <MapPin className="w-5 h-5 text-gray-700 mt-0.5 shrink-0" />
                 <div>
                   <h3 className="text-sm font-semibold text-gray-900">
                     Location
@@ -94,13 +94,13 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="bg-violet-50 border border-violet-100 rounded-2xl p-6">
-              <p className="text-sm text-violet-800 leading-relaxed">
+            <div className="bg-white/25 backdrop-blur-md border border-white/40 rounded-2xl p-6">
+              <p className="text-sm text-gray-600 leading-relaxed">
                 We typically respond within 24 hours. For urgent issues, email
                 us directly at{" "}
                 <a
                   href="mailto:support@renekin.com"
-                  className="font-medium underline"
+                  className="font-medium underline text-gray-900"
                 >
                   support@renekin.com
                 </a>
@@ -110,11 +110,11 @@ export default function ContactPage() {
 
           {/* Contact form */}
           <div className="md:col-span-2">
-            <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+            <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-8 shadow-xl">
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-sm text-gray-600 mb-1.5 font-medium">
+                    <label className="block text-sm text-gray-700 mb-1.5 font-medium">
                       Name
                     </label>
                     <input
@@ -122,12 +122,12 @@ export default function ContactPage() {
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full bg-white border border-gray-200 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 transition"
+                      className="w-full bg-white/90 border border-white/40 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/50 transition"
                       placeholder="Your name"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm text-gray-600 mb-1.5 font-medium">
+                    <label className="block text-sm text-gray-700 mb-1.5 font-medium">
                       Email
                     </label>
                     <input
@@ -135,14 +135,14 @@ export default function ContactPage() {
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-white border border-gray-200 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 transition"
+                      className="w-full bg-white/90 border border-white/40 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/50 transition"
                       placeholder="you@example.com"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm text-gray-600 mb-1.5 font-medium">
+                  <label className="block text-sm text-gray-700 mb-1.5 font-medium">
                     Subject
                   </label>
                   <input
@@ -150,13 +150,13 @@ export default function ContactPage() {
                     required
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
-                    className="w-full bg-white border border-gray-200 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 transition"
+                    className="w-full bg-white/90 border border-white/40 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/50 transition"
                     placeholder="How can we help?"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm text-gray-600 mb-1.5 font-medium">
+                  <label className="block text-sm text-gray-700 mb-1.5 font-medium">
                     Message
                   </label>
                   <textarea
@@ -164,13 +164,13 @@ export default function ContactPage() {
                     rows={5}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full bg-white border border-gray-200 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 transition resize-none"
+                    className="w-full bg-white/90 border border-white/40 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/50 transition resize-none"
                     placeholder="Tell us more..."
                   />
                 </div>
 
                 {error && (
-                  <p className="text-red-600 text-sm bg-red-50 border border-red-100 rounded-lg px-3 py-2">
+                  <p className="text-red-100 text-sm bg-red-500/20 border border-red-400/30 rounded-lg px-3 py-2">
                     {error}
                   </p>
                 )}
@@ -178,7 +178,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="bg-violet-600 hover:bg-violet-700 disabled:opacity-50 text-white px-6 py-2.5 rounded-lg font-medium transition-colors flex items-center gap-2"
+                  className="bg-white hover:bg-white/90 disabled:opacity-50 text-gray-800 px-6 py-2.5 rounded-lg font-medium transition-colors flex items-center gap-2 shadow-sm"
                 >
                   {loading ? (
                     <Loader2 className="w-4 h-4 animate-spin" />

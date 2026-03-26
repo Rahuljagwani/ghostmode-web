@@ -64,11 +64,11 @@ function LoginForm() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6 bg-gray-50/50">
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6">
       <div className="w-full max-w-sm">
-        <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+        <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-8 shadow-xl">
           <div className="text-center mb-8">
-            <Ghost className="w-10 h-10 text-violet-600 mx-auto mb-4" />
+            <Ghost className="w-10 h-10 text-gray-700 mx-auto mb-4" />
             <h1 className="text-2xl font-bold text-gray-900">Welcome back</h1>
             <p className="text-gray-500 text-sm mt-1">
               Sign in to your Ghost account
@@ -77,19 +77,19 @@ function LoginForm() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm text-gray-600 mb-1.5 font-medium">Email</label>
+              <label className="block text-sm text-gray-700 mb-1.5 font-medium">Email</label>
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-white border border-gray-200 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 transition"
+                className="w-full bg-white/90 border border-white/40 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/50 transition"
                 placeholder="you@example.com"
               />
             </div>
 
             <div>
-              <label className="block text-sm text-gray-600 mb-1.5 font-medium">
+              <label className="block text-sm text-gray-700 mb-1.5 font-medium">
                 Password
               </label>
               <input
@@ -97,7 +97,7 @@ function LoginForm() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-white border border-gray-200 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 transition"
+                className="w-full bg-white/90 border border-white/40 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/50 transition"
                 placeholder="Your password"
               />
             </div>
@@ -105,14 +105,14 @@ function LoginForm() {
             <div className="flex justify-end">
               <Link
                 href="/forgot-password"
-                className="text-xs text-violet-600 hover:text-violet-700 font-medium transition-colors"
+                className="text-xs text-gray-600 hover:text-gray-900 font-medium transition-colors"
               >
                 Forgot password?
               </Link>
             </div>
 
             {error && (
-              <p className="text-red-600 text-sm bg-red-50 border border-red-100 rounded-lg px-3 py-2">
+              <p className="text-red-100 text-sm bg-red-500/20 border border-red-400/30 rounded-lg px-3 py-2">
                 {error}
               </p>
             )}
@@ -120,34 +120,19 @@ function LoginForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-violet-600 hover:bg-violet-700 disabled:opacity-50 text-white py-2.5 rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-white text-gray-800 hover:bg-white/90 disabled:opacity-50 py-2.5 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 shadow-sm"
             >
               {loading && <Loader2 className="w-4 h-4 animate-spin" />}
               Sign In
             </button>
           </form>
-
-          {/* TODO: Uncomment after Google OAuth verification
-          <div className="relative my-6">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-200" />
-            </div>
-            <div className="relative flex justify-center text-xs">
-              <span className="bg-white px-3 text-gray-400">
-                or continue with
-              </span>
-            </div>
-          </div>
-
-          <GoogleSignInButton />
-          */}
         </div>
 
-        <p className="mt-6 text-center text-sm text-gray-500">
+        <p className="mt-6 text-center text-sm text-gray-600">
           Don&apos;t have an account?{" "}
           <Link
             href="/register"
-            className="text-violet-600 hover:text-violet-700 font-medium transition-colors"
+            className="text-gray-700 font-medium hover:text-gray-900 transition-colors"
           >
             Sign up
           </Link>

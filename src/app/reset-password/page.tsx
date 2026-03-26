@@ -28,7 +28,6 @@ function ResetPasswordForm() {
   const [resendCooldown, setResendCooldown] = useState(0);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
-  // Countdown timer for resend
   useEffect(() => {
     if (resendCooldown <= 0) return;
     const timer = setTimeout(() => setResendCooldown(resendCooldown - 1), 1000);
@@ -40,7 +39,6 @@ function ResetPasswordForm() {
     const newCode = [...code];
     newCode[index] = value.slice(-1);
     setCode(newCode);
-
     if (value && index < 5) {
       inputRefs.current[index + 1]?.focus();
     }
@@ -116,10 +114,10 @@ function ResetPasswordForm() {
 
   if (success) {
     return (
-      <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6 bg-gray-50/50">
+      <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6">
         <div className="w-full max-w-sm text-center">
-          <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
-            <CheckCircle2 className="w-12 h-12 text-green-500 mx-auto mb-4" />
+          <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-8 shadow-xl">
+            <CheckCircle2 className="w-12 h-12 text-emerald-500 mx-auto mb-4" />
             <h1 className="text-2xl font-bold text-gray-900 mb-2">Password reset!</h1>
             <p className="text-gray-500 text-sm">Redirecting to sign in...</p>
           </div>
@@ -129,11 +127,11 @@ function ResetPasswordForm() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6 bg-gray-50/50">
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6">
       <div className="w-full max-w-sm">
-        <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+        <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-8 shadow-xl">
           <div className="text-center mb-8">
-            <KeyRound className="w-10 h-10 text-violet-600 mx-auto mb-4" />
+            <KeyRound className="w-10 h-10 text-gray-700 mx-auto mb-4" />
             <h1 className="text-2xl font-bold text-gray-900">Reset password</h1>
             <p className="text-gray-500 text-sm mt-1">
               Enter the code sent to
@@ -143,7 +141,7 @@ function ResetPasswordForm() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm text-gray-600 mb-2 font-medium">Verification code</label>
+              <label className="block text-sm text-gray-700 mb-2 font-medium">Verification code</label>
               <div className="flex justify-center gap-2" onPaste={handlePaste}>
                 {code.map((digit, i) => (
                   <input
@@ -155,14 +153,14 @@ function ResetPasswordForm() {
                     value={digit}
                     onChange={(e) => handleChange(i, e.target.value)}
                     onKeyDown={(e) => handleKeyDown(i, e)}
-                    className="w-11 h-13 text-center text-xl font-bold bg-white border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 transition"
+                    className="w-11 h-13 text-center text-xl font-bold bg-white/90 border border-white/40 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/50 transition"
                   />
                 ))}
               </div>
             </div>
 
             <div>
-              <label className="block text-sm text-gray-600 mb-1.5 font-medium">
+              <label className="block text-sm text-gray-700 mb-1.5 font-medium">
                 New password
               </label>
               <input
@@ -170,13 +168,13 @@ function ResetPasswordForm() {
                 required
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                className="w-full bg-white border border-gray-200 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 transition"
+                className="w-full bg-white/90 border border-white/40 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/50 transition"
                 placeholder="Min. 6 characters"
               />
             </div>
 
             <div>
-              <label className="block text-sm text-gray-600 mb-1.5 font-medium">
+              <label className="block text-sm text-gray-700 mb-1.5 font-medium">
                 Confirm password
               </label>
               <input
@@ -184,13 +182,13 @@ function ResetPasswordForm() {
                 required
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full bg-white border border-gray-200 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500/20 focus:border-violet-500 transition"
+                className="w-full bg-white/90 border border-white/40 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/50 transition"
                 placeholder="Confirm your password"
               />
             </div>
 
             {error && (
-              <p className="text-red-600 text-sm bg-red-50 border border-red-100 rounded-lg px-3 py-2">
+              <p className="text-red-100 text-sm bg-red-500/20 border border-red-400/30 rounded-lg px-3 py-2">
                 {error}
               </p>
             )}
@@ -198,7 +196,7 @@ function ResetPasswordForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-violet-600 hover:bg-violet-700 disabled:opacity-50 text-white py-2.5 rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-white text-gray-800 hover:bg-white/90 disabled:opacity-50 py-2.5 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 shadow-sm"
             >
               {loading && <Loader2 className="w-4 h-4 animate-spin" />}
               Reset Password
@@ -206,12 +204,12 @@ function ResetPasswordForm() {
           </form>
 
           <div className="mt-6 text-center">
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-500 text-sm">
               Didn&apos;t receive the code?{" "}
               <button
                 onClick={handleResend}
                 disabled={resendCooldown > 0}
-                className="text-violet-600 hover:text-violet-700 font-medium transition-colors disabled:text-gray-400 disabled:cursor-not-allowed"
+                className="text-gray-900 font-medium transition-colors disabled:text-gray-300 disabled:cursor-not-allowed"
               >
                 {resendCooldown > 0 ? `Resend in ${resendCooldown}s` : "Resend"}
               </button>
@@ -219,10 +217,10 @@ function ResetPasswordForm() {
           </div>
         </div>
 
-        <p className="mt-6 text-center text-sm text-gray-500">
+        <p className="mt-6 text-center text-sm">
           <Link
             href="/login"
-            className="text-violet-600 hover:text-violet-700 font-medium transition-colors"
+            className="text-gray-700 font-medium hover:text-gray-900 transition-colors"
           >
             Back to sign in
           </Link>

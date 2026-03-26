@@ -1,16 +1,19 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Renekin AI",
+  title: "Privacy Policy",
+  description: "Renekin AI privacy policy — how we handle your data, what we collect, and your rights.",
+  alternates: { canonical: "https://renekin.com/privacy" },
 };
 
 export default function PrivacyPage() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-24">
+      <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-8 md:p-12 shadow-xl">
       <h1 className="text-4xl font-bold text-gray-900 mb-2">Privacy Policy</h1>
       <p className="text-gray-500 text-sm mb-10">Last updated: March 20, 2026</p>
 
-      <div className="prose prose-gray max-w-none space-y-8 text-gray-600 text-sm leading-relaxed">
+      <div className="prose prose-gray max-w-none space-y-8 text-gray-600 text-sm leading-relaxed [&_h2]:text-gray-900 [&_strong]:text-gray-900 [&_a]:text-gray-900 [&_a]:underline">
         <section>
           <h2 className="text-xl font-semibold text-gray-900 mb-3">1. Introduction</h2>
           <p>
@@ -118,6 +121,7 @@ export default function PrivacyPage() {
             </a>
           </p>
         </section>
+      </div>
       </div>
     </div>
   );

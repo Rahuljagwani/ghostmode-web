@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://renekin.com/sitemap.xml
+
+# Disallow auth/dashboard pages from indexing
+Disallow: /dashboard
+Disallow: /verify-email
+Disallow: /reset-password
+Disallow: /auth/

@@ -74,14 +74,14 @@ export default function PricingPage() {
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
           Simple, credit-based pricing
         </h1>
-        <p className="text-gray-500 text-lg max-w-xl mx-auto">
+        <p className="text-gray-600 text-lg max-w-xl mx-auto">
           Buy credits when you need them. No subscriptions, no hidden fees.
         </p>
       </div>
 
       {loading ? (
         <div className="flex justify-center py-20">
-          <Loader2 className="w-8 h-8 text-violet-500 animate-spin" />
+          <Loader2 className="w-8 h-8 text-gray-700 animate-spin" />
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -116,45 +116,35 @@ export default function PricingPage() {
 
       {/* Credit costs breakdown */}
       <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
-        <div className="flex items-center gap-3 bg-white border border-gray-100 rounded-xl px-5 py-4">
-          <div className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center">
-            <Zap className="w-4 h-4 text-amber-500" />
+        <div className="flex items-center gap-3 bg-white/35 backdrop-blur-md border border-white/50 rounded-xl px-5 py-4 shadow-lg">
+          <div className="w-8 h-8 rounded-lg bg-white/30 flex items-center justify-center">
+            <Zap className="w-4 h-4 text-amber-600" />
           </div>
           <div>
             <p className="text-sm font-medium text-gray-900">Text query</p>
-            <p className="text-xs text-gray-400">1 credit</p>
+            <p className="text-xs text-gray-500">1 credit</p>
           </div>
         </div>
-        <div className="flex items-center gap-3 bg-white border border-gray-100 rounded-xl px-5 py-4">
-          <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center">
-            <Eye className="w-4 h-4 text-blue-500" />
+        <div className="flex items-center gap-3 bg-white/35 backdrop-blur-md border border-white/50 rounded-xl px-5 py-4 shadow-lg">
+          <div className="w-8 h-8 rounded-lg bg-white/30 flex items-center justify-center">
+            <Eye className="w-4 h-4 text-gray-700" />
           </div>
           <div>
             <p className="text-sm font-medium text-gray-900">Screenshot</p>
-            <p className="text-xs text-gray-400">2 credits</p>
+            <p className="text-xs text-gray-500">2 credits</p>
           </div>
         </div>
-        <div className="flex items-center gap-3 bg-white border border-gray-100 rounded-xl px-5 py-4">
-          <div className="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center">
-            <Mic className="w-4 h-4 text-green-500" />
+        <div className="flex items-center gap-3 bg-white/35 backdrop-blur-md border border-white/50 rounded-xl px-5 py-4 shadow-lg">
+          <div className="w-8 h-8 rounded-lg bg-white/30 flex items-center justify-center">
+            <Mic className="w-4 h-4 text-emerald-600" />
           </div>
           <div>
             <p className="text-sm font-medium text-gray-900">Voice query</p>
-            <p className="text-xs text-gray-400">3 credits</p>
+            <p className="text-xs text-gray-500">3 credits</p>
           </div>
         </div>
       </div>
 
-      {/* BYOK */}
-      <div className="mt-12 text-center bg-gray-50 border border-gray-100 rounded-2xl p-8">
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">
-          Bring Your Own Key (BYOK)
-        </h3>
-        <p className="text-gray-500 max-w-lg mx-auto text-sm leading-relaxed">
-          Already have a Claude API key? Toggle BYOK mode in the desktop app settings to
-          use your own key, no credits needed. You pay Anthropic directly.
-        </p>
-      </div>
     </div>
   );
 }
