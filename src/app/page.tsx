@@ -17,6 +17,9 @@ import {
   Video,
   Laptop,
   EyeClosed,
+  Lock,
+  FileText,
+  UserCheck,
 } from "lucide-react";
 
 const features = [
@@ -301,6 +304,65 @@ export default function Home() {
                 <p className="text-sm text-gray-600 leading-relaxed">{t.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Data & Privacy — required for Google OAuth verification */}
+      <section>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Your data &amp; privacy
+            </h2>
+            <p className="text-gray-600 max-w-xl mx-auto">
+              We believe in full transparency about how your data is used.
+              Ghost is built with privacy at its core.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8">
+            <div className="bg-white/35 backdrop-blur-md border border-white/50 rounded-xl p-6 shadow-lg">
+              <UserCheck className="w-6 h-6 text-gray-700 mb-4" />
+              <h4 className="font-semibold text-gray-900 mb-2">What we collect</h4>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                When you sign in, we collect your name and email address to create and manage your account.
+                We use this to authenticate you and deliver the service.
+              </p>
+            </div>
+            <div className="bg-white/35 backdrop-blur-md border border-white/50 rounded-xl p-6 shadow-lg">
+              <Lock className="w-6 h-6 text-gray-700 mb-4" />
+              <h4 className="font-semibold text-gray-900 mb-2">How we protect it</h4>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Your data is encrypted in transit and at rest. We never sell your personal information
+                to third parties. AI queries are not stored beyond your active session.
+              </p>
+            </div>
+            <div className="bg-white/35 backdrop-blur-md border border-white/50 rounded-xl p-6 shadow-lg">
+              <FileText className="w-6 h-6 text-gray-700 mb-4" />
+              <h4 className="font-semibold text-gray-900 mb-2">Your rights</h4>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                You can request deletion of your account and all associated data at any time
+                by contacting us. You remain in full control of your information.
+              </p>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <Link
+              href="/privacy"
+              className="inline-flex items-center gap-2 text-gray-700 hover:text-gray-900 font-medium text-sm transition-colors underline underline-offset-4"
+            >
+              <FileText className="w-4 h-4" />
+              Read our full Privacy Policy
+            </Link>
+            <span className="mx-3 text-gray-400">|</span>
+            <Link
+              href="/terms"
+              className="inline-flex items-center gap-2 text-gray-700 hover:text-gray-900 font-medium text-sm transition-colors underline underline-offset-4"
+            >
+              Terms of Service
+            </Link>
           </div>
         </div>
       </section>
