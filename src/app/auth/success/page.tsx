@@ -46,11 +46,11 @@ function AuthSuccessContent() {
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6 bg-gray-50">
       <div className="w-full max-w-sm text-center">
         <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
-          <Ghost className="w-10 h-10 text-violet-600 mx-auto mb-6" />
+          <Ghost className="w-10 h-10 text-sky-600 mx-auto mb-6" />
 
           {status === "loading" && (
             <div className="flex flex-col items-center gap-3">
-              <div className="w-6 h-6 rounded-full border-2 border-violet-500 border-t-transparent animate-spin" />
+              <div className="w-6 h-6 rounded-full border-2 border-sky-500 border-t-transparent animate-spin" />
               <p className="text-gray-500 text-sm">Processing...</p>
             </div>
           )}
@@ -70,7 +70,7 @@ function AuthSuccessContent() {
               <p className="text-gray-500 text-sm">{message}</p>
               <button
                 onClick={() => router.push("/login")}
-                className="mt-4 px-6 py-2 bg-violet-600 hover:bg-violet-700 text-white rounded-lg text-sm font-medium transition-colors"
+                className="mt-4 px-6 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-lg text-sm font-medium transition-colors"
               >
                 Try Again
               </button>

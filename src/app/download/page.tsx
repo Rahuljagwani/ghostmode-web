@@ -59,7 +59,7 @@ export default function DownloadPage() {
   const secondary = primary === "macos" ? "windows" : "macos";
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-24">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
           Download Ghost
@@ -70,7 +70,7 @@ export default function DownloadPage() {
       </div>
 
       {/* Primary download */}
-      <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-10 text-center mb-6 shadow-xl">
+      <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-6 sm:p-10 text-center mb-6 shadow-xl">
         <div className="flex items-center justify-center gap-3 mb-6">
           {(() => {
             const Icon = platforms[primary].icon;
@@ -124,7 +124,7 @@ export default function DownloadPage() {
       <div className="text-center mb-16" />
 
       {/* Installation instructions */}
-      <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-8 shadow-xl mb-8">
+      <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-5 sm:p-8 shadow-xl mb-8">
         <h3 className="text-xl font-semibold text-gray-900 mb-6">
           Installation ({platforms[primary].label})
         </h3>
@@ -142,7 +142,7 @@ export default function DownloadPage() {
 
       {/* Platform-specific security bypass guide */}
       {primary === "windows" && (
-        <div className="bg-amber-900/60 backdrop-blur-md border border-amber-500/40 rounded-2xl p-8 shadow-lg mb-8">
+        <div className="bg-amber-900/60 backdrop-blur-md border border-amber-500/40 rounded-2xl p-5 sm:p-8 shadow-lg mb-8">
           <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
             <Shield className="w-5 h-5 text-amber-400" />
             Windows SmartScreen Warning

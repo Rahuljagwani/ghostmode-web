@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <div className="max-w-3xl mx-auto px-6 py-24">
-      <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-8 md:p-12 shadow-xl">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+      <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-5 sm:p-8 md:p-12 shadow-xl">
       <h1 className="text-4xl font-bold text-gray-900 mb-2">Privacy Policy</h1>
       <p className="text-gray-500 text-sm mb-10">Last updated: March 20, 2026</p>
 
@@ -116,7 +116,7 @@ export default function PrivacyPage() {
           <h2 className="text-xl font-semibold text-gray-900 mb-3">10. Contact</h2>
           <p>
             If you have any questions about this Privacy Policy, contact us at:{" "}
-            <a href="mailto:support@renekin.com" className="text-violet-600 hover:text-violet-700 transition">
+            <a href="mailto:support@renekin.com" className="text-sky-600 hover:text-sky-700 transition">
               support@renekin.com
             </a>
           </p>

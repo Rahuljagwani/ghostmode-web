@@ -67,7 +67,7 @@ export default function ContactPage() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
           {/* Contact info */}
           <div className="md:col-span-1 space-y-6">
             <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-6 shadow-xl">
@@ -110,7 +110,7 @@ export default function ContactPage() {
 
           {/* Contact form */}
           <div className="md:col-span-2">
-            <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-8 shadow-xl">
+            <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-5 sm:p-8 shadow-xl">
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>

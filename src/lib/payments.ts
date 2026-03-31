@@ -71,7 +71,7 @@ export async function payWithRazorpay(planName: string): Promise<{ credits_added
       modal: {
         ondismiss: () => reject(new Error("Payment cancelled")),
       },
-      theme: { color: "#7c3aed" },
+      theme: { color: "#0ea5e9" },
     });
 
     rzp.open();

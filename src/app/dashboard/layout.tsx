@@ -38,7 +38,7 @@ export default function DashboardLayout({
   if (loading) {
     return (
       <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-violet-500" />
+        <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
       </div>
     );
   }
@@ -59,7 +59,7 @@ export default function DashboardLayout({
                   href={item.href}
                   className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm transition-colors ${
                     active
-                      ? "bg-violet-50 text-violet-700 font-medium"
+                      ? "bg-sky-50 text-sky-700 font-medium"
                       : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
                   }`}
                 >

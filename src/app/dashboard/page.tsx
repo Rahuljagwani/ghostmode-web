@@ -53,7 +53,7 @@ export default function DashboardPage() {
             <h2 className="text-sm font-medium text-gray-500">
               Credits Balance
             </h2>
-            <Zap className="w-4 h-4 text-violet-500" />
+            <Zap className="w-4 h-4 text-sky-500" />
           </div>
           <p className="text-4xl font-bold text-gray-900">
             {credits?.remaining_credits?.toFixed(0) ?? user?.remaining_credits?.toFixed(0) ?? "\u2014"}
@@ -68,7 +68,7 @@ export default function DashboardPage() {
             </div>
             <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
               <div
-                className="h-full bg-violet-500 rounded-full transition-all"
+                className="h-full bg-sky-500 rounded-full transition-all"
                 style={{ width: `${usagePercent}%` }}
               />
             </div>
@@ -77,17 +77,17 @@ export default function DashboardPage() {
 
         <Link
           href="/dashboard/billing"
-          className="bg-violet-50 border border-violet-100 rounded-xl p-6 hover:border-violet-200 transition-colors flex flex-col justify-between shadow-sm"
+          className="bg-sky-50 border border-sky-100 rounded-xl p-6 hover:border-sky-200 transition-colors flex flex-col justify-between shadow-sm"
         >
           <div>
-            <h2 className="text-sm font-medium text-violet-700">
+            <h2 className="text-sm font-medium text-sky-700">
               Need more credits?
             </h2>
             <p className="text-gray-500 text-sm mt-1">
               Top up your balance to keep using Ghost.
             </p>
           </div>
-          <div className="flex items-center gap-1 text-violet-600 text-sm font-medium mt-4">
+          <div className="flex items-center gap-1 text-sky-600 text-sm font-medium mt-4">
             Buy Credits <ArrowRight className="w-4 h-4" />
           </div>
         </Link>

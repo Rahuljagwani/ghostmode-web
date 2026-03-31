@@ -132,7 +132,7 @@ function BillingContent() {
       <h2 className="text-lg font-semibold text-gray-900 mb-4">Buy Credits</h2>
       {plansLoading ? (
         <div className="flex justify-center py-10">
-          <Loader2 className="w-6 h-6 text-violet-500 animate-spin" />
+          <Loader2 className="w-6 h-6 text-sky-500 animate-spin" />
         </div>
       ) : (
         <>
@@ -146,17 +146,17 @@ function BillingContent() {
                   disabled={buying !== null}
                   className={`relative rounded-xl p-6 text-left transition-all disabled:opacity-50 cursor-pointer ${
                     isSelected
-                      ? "bg-violet-50 border-2 border-violet-500 shadow-sm"
-                      : "bg-white border border-gray-200 hover:border-violet-300 hover:shadow-sm"
+                      ? "bg-sky-50 border-2 border-sky-500 shadow-sm"
+                      : "bg-white border border-gray-200 hover:border-sky-300 hover:shadow-sm"
                   }`}
                 >
                   {isSelected && (
-                    <span className="absolute -top-2.5 left-4 bg-violet-600 text-white text-[10px] px-2.5 py-0.5 rounded-full font-medium">
+                    <span className="absolute -top-2.5 left-4 bg-sky-600 text-white text-[10px] px-2.5 py-0.5 rounded-full font-medium">
                       Selected
                     </span>
                   )}
                   <p className="text-gray-900 font-semibold">{plan.name}</p>
-                  <p className="text-3xl font-bold text-violet-600 mt-2">
+                  <p className="text-3xl font-bold text-sky-600 mt-2">
                     ${plan.price}
                   </p>
                   <p className="text-gray-500 text-sm mt-1">
@@ -175,7 +175,7 @@ function BillingContent() {
               if (plan) handleBuy(plan);
             }}
             disabled={!selectedPlan || buying !== null}
-            className="w-full sm:w-auto px-8 py-3 bg-violet-600 text-white font-medium rounded-xl hover:bg-violet-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed mb-10 flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-8 py-3 bg-sky-600 text-white font-medium rounded-xl hover:bg-sky-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed mb-10 flex items-center justify-center gap-2"
           >
             {buying ? (
               <>
@@ -225,7 +225,7 @@ function BillingContent() {
                       {new Date(item.created_at).toLocaleDateString()}
                     </div>
                   </td>
-                  <td className="px-5 py-3 text-violet-600 font-medium">
+                  <td className="px-5 py-3 text-sky-600 font-medium">
                     +{item.no_of_credits_bought}
                   </td>
                   <td className="px-5 py-3 text-gray-600">

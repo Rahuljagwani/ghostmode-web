@@ -84,7 +84,7 @@ export default function PricingPage() {
           <Loader2 className="w-8 h-8 text-gray-700 animate-spin" />
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           {/* Free tier */}
           <PricingCard
             {...FREE_PLAN}
@@ -115,7 +115,7 @@ export default function PricingPage() {
       )}
 
       {/* Credit costs breakdown */}
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+      <div className="mt-12 sm:mt-16 grid grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto">
         <div className="flex items-center gap-3 bg-white/35 backdrop-blur-md border border-white/50 rounded-xl px-5 py-4 shadow-lg">
           <div className="w-8 h-8 rounded-lg bg-white/30 flex items-center justify-center">
             <Zap className="w-4 h-4 text-amber-600" />

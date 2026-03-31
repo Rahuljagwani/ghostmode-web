@@ -66,7 +66,7 @@ function LoginForm() {
   return (
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6">
       <div className="w-full max-w-sm">
-        <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-8 shadow-xl">
+        <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-5 sm:p-8 shadow-xl">
           <div className="text-center mb-8">
             <Ghost className="w-10 h-10 text-gray-700 mx-auto mb-4" />
             <h1 className="text-2xl font-bold text-gray-900">Welcome back</h1>

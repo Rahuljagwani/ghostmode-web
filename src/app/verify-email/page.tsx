@@ -115,7 +115,7 @@ function VerifyEmailForm() {
     return (
       <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6">
         <div className="w-full max-w-sm text-center">
-          <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-8 shadow-xl">
+          <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-5 sm:p-8 shadow-xl">
             <CheckCircle2 className="w-12 h-12 text-emerald-500 mx-auto mb-4" />
             <h1 className="text-2xl font-bold text-gray-900 mb-2">Email verified!</h1>
             <p className="text-gray-500 text-sm">Redirecting to dashboard...</p>
@@ -128,7 +128,7 @@ function VerifyEmailForm() {
   return (
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6">
       <div className="w-full max-w-sm">
-        <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-8 shadow-xl">
+        <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-5 sm:p-8 shadow-xl">
           <div className="text-center mb-8">
             <Mail className="w-10 h-10 text-gray-700 mx-auto mb-4" />
             <h1 className="text-2xl font-bold text-gray-900">Check your email</h1>

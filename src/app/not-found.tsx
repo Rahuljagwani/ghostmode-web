@@ -4,7 +4,7 @@ export default function NotFound() {
   return (
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6">
       <div className="w-full max-w-md text-center">
-        <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-10 shadow-xl">
+        <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-5 sm:p-10 shadow-xl">
           <p className="text-sm font-medium text-gray-500 mb-3">404</p>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">
             Page not found
