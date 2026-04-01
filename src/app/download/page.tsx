@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { HugeiconsIcon } from "@hugeicons/react";
 import type { IconSvgElement } from "@hugeicons/react";
 import { AppleIcon, MonitorDotIcon, Download01Icon, CheckmarkCircle02Icon, Shield01Icon, Alert01Icon, Archive01Icon } from "@hugeicons/core-free-icons";
@@ -52,10 +52,24 @@ const platforms: Record<"macos" | "windows", { label: string; icon: IconSvgEleme
 
 export default function DownloadPage() {
   const [platform, setPlatform] = useState<Platform>("unknown");
+  const [windowsSmartScreenOpen, setWindowsSmartScreenOpen] = useState(false);
 
   useEffect(() => {
     setPlatform(detectPlatform());
   }, []);
+
+  const closeSmartScreenModal = useCallback(() => {
+    setWindowsSmartScreenOpen(false);
+  }, []);
+
+  useEffect(() => {
+    if (!windowsSmartScreenOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeSmartScreenModal();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [windowsSmartScreenOpen, closeSmartScreenModal]);
 
   const primary = platform !== "unknown" ? platform : "macos";
   const secondary = primary === "macos" ? "windows" : "macos";
@@ -84,6 +98,11 @@ export default function DownloadPage() {
           <a
             href={platforms[primary].downloadUrl}
             className="bg-sky-500 hover:bg-sky-600 text-white px-10 py-3.5 rounded-xl font-medium text-lg transition-colors inline-flex items-center gap-2 mb-4 shadow-md"
+            {...(primary === "windows"
+              ? {
+                  onClick: () => setWindowsSmartScreenOpen(true),
+                }
+              : {})}
           >
             <HugeiconsIcon icon={Download01Icon} size={20} />
             Download {platforms[primary].filename}
@@ -249,6 +268,64 @@ export default function DownloadPage() {
           </div>
         </div>
       </div>
+
+      {/* Windows: show SmartScreen / Run anyway right after starting the .exe download */}
+      {windowsSmartScreenOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-[2px]"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="windows-smartscreen-title"
+        >
+          <button
+            type="button"
+            className="absolute inset-0 z-0 cursor-default"
+            aria-label="Close dialog"
+            onClick={closeSmartScreenModal}
+          />
+          <div className="relative z-10 w-full max-w-md rounded-2xl border border-amber-200 bg-white p-6 shadow-xl">
+            <h2
+              id="windows-smartscreen-title"
+              className="text-lg font-semibold text-gray-900 flex items-center gap-2 mb-3"
+            >
+              <HugeiconsIcon icon={Shield01Icon} size={22} className="text-amber-600 shrink-0" />
+              Windows may block the installer
+            </h2>
+            <p className="text-sm text-gray-600 mb-4">
+              After the download starts, when you run <code className="bg-gray-100 px-1.5 py-0.5 rounded text-xs">Ghost-Setup.exe</code>, Windows SmartScreen can show a blue screen saying it protected your PC. Ghost is safe — you just need to allow it once.
+            </p>
+            <ol className="space-y-3 text-sm text-gray-700 mb-6">
+              <li className="flex gap-3">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-100 text-xs font-semibold text-amber-800">
+                  1
+                </span>
+                <span>
+                  Click <strong className="text-amber-800">More info</strong> on that screen.
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-100 text-xs font-semibold text-amber-800">
+                  2
+                </span>
+                <span>
+                  Then click <strong className="text-amber-800">Run anyway</strong> to start the installer.
+                </span>
+              </li>
+            </ol>
+            <p className="text-xs text-gray-500 flex items-start gap-1.5 mb-5">
+              <HugeiconsIcon icon={Alert01Icon} size={14} className="shrink-0 mt-0.5 text-amber-500" />
+              This is normal for new apps until more people install them. It goes away over time.
+            </p>
+            <button
+              type="button"
+              onClick={closeSmartScreenModal}
+              className="w-full rounded-xl bg-sky-500 py-3 text-sm font-medium text-white transition-colors hover:bg-sky-600"
+            >
+              Got it
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
