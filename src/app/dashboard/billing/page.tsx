@@ -10,15 +10,8 @@ import {
   // detectPaymentProvider,
   // PaymentProvider,
 } from "@/lib/payments";
-import {
-  CreditCard,
-  Clock,
-  // IndianRupee,
-  // DollarSign,
-  Loader2,
-  CheckCircle,
-  XCircle,
-} from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { CreditCardIcon, Clock01Icon, Loading03Icon, CheckmarkCircle02Icon, CancelCircleIcon } from "@hugeicons/core-free-icons";
 
 interface PaymentItem {
   id: string;
@@ -118,9 +111,9 @@ function BillingContent() {
           }`}
         >
           {message.type === "success" ? (
-            <CheckCircle className="w-4 h-4 shrink-0" />
+            <HugeiconsIcon icon={CheckmarkCircle02Icon} size={16} className="shrink-0" />
           ) : (
-            <XCircle className="w-4 h-4 shrink-0" />
+            <HugeiconsIcon icon={CancelCircleIcon} size={16} className="shrink-0" />
           )}
           {message.text}
         </div>
@@ -132,7 +125,7 @@ function BillingContent() {
       <h2 className="text-lg font-semibold text-gray-900 mb-4">Buy Credits</h2>
       {plansLoading ? (
         <div className="flex justify-center py-10">
-          <Loader2 className="w-6 h-6 text-sky-500 animate-spin" />
+          <HugeiconsIcon icon={Loading03Icon} size={24} className="text-sky-500 animate-spin" />
         </div>
       ) : (
         <>
@@ -179,7 +172,7 @@ function BillingContent() {
           >
             {buying ? (
               <>
-                <Loader2 className="w-4 h-4 animate-spin" />
+                <HugeiconsIcon icon={Loading03Icon} size={16} className="animate-spin" />
                 Processing...
               </>
             ) : selectedPlan ? (
@@ -195,7 +188,7 @@ function BillingContent() {
       <h2 className="text-lg font-semibold text-gray-900 mb-4">Payment History</h2>
       {history.length === 0 ? (
         <div className="bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
-          <CreditCard className="w-8 h-8 text-gray-300 mx-auto mb-3" />
+          <HugeiconsIcon icon={CreditCardIcon} size={32} className="text-gray-300 mx-auto mb-3" />
           <p className="text-gray-500">No payments yet.</p>
           <p className="text-gray-400 text-sm mt-1">
             Purchase credits above to get started.
@@ -221,7 +214,7 @@ function BillingContent() {
                 >
                   <td className="px-5 py-3 text-gray-600">
                     <div className="flex items-center gap-2">
-                      <Clock className="w-3 h-3 text-gray-400" />
+                      <HugeiconsIcon icon={Clock01Icon} size={12} className="text-gray-400" />
                       {new Date(item.created_at).toLocaleDateString()}
                     </div>
                   </td>

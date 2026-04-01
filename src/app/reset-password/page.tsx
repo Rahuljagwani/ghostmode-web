@@ -4,7 +4,8 @@ import { Suspense, useState, useEffect, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { apiFetch, ApiError } from "@/lib/api";
-import { KeyRound, Loader2, CheckCircle2 } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Key01Icon, Loading03Icon, CheckmarkCircle02Icon } from "@hugeicons/core-free-icons";
 
 export default function ResetPasswordPage() {
   return (
@@ -116,8 +117,8 @@ function ResetPasswordForm() {
     return (
       <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6">
         <div className="w-full max-w-sm text-center">
-          <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-5 sm:p-8 shadow-xl">
-            <CheckCircle2 className="w-12 h-12 text-emerald-500 mx-auto mb-4" />
+          <div className="bg-white border border-gray-200 rounded-2xl p-5 sm:p-8 shadow-xl">
+            <HugeiconsIcon icon={CheckmarkCircle02Icon} size={48} className="text-emerald-500 mx-auto mb-4" />
             <h1 className="text-2xl font-bold text-gray-900 mb-2">Password reset!</h1>
             <p className="text-gray-500 text-sm">Redirecting to sign in...</p>
           </div>
@@ -129,9 +130,9 @@ function ResetPasswordForm() {
   return (
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6">
       <div className="w-full max-w-sm">
-        <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-5 sm:p-8 shadow-xl">
+        <div className="bg-white border border-gray-200 rounded-2xl p-5 sm:p-8 shadow-xl">
           <div className="text-center mb-8">
-            <KeyRound className="w-10 h-10 text-gray-700 mx-auto mb-4" />
+            <HugeiconsIcon icon={Key01Icon} size={40} className="text-sky-500 mx-auto mb-4" />
             <h1 className="text-2xl font-bold text-gray-900">Reset password</h1>
             <p className="text-gray-500 text-sm mt-1">
               Enter the code sent to
@@ -153,7 +154,7 @@ function ResetPasswordForm() {
                     value={digit}
                     onChange={(e) => handleChange(i, e.target.value)}
                     onKeyDown={(e) => handleKeyDown(i, e)}
-                    className="w-11 h-13 text-center text-xl font-bold bg-white/90 border border-white/40 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/50 transition"
+                    className="w-11 h-13 text-center text-xl font-bold bg-gray-50 border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-400 transition"
                   />
                 ))}
               </div>
@@ -168,7 +169,7 @@ function ResetPasswordForm() {
                 required
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                className="w-full bg-white/90 border border-white/40 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/50 transition"
+                className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-400 transition"
                 placeholder="Min. 6 characters"
               />
             </div>
@@ -182,13 +183,13 @@ function ResetPasswordForm() {
                 required
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full bg-white/90 border border-white/40 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/50 transition"
+                className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-400 transition"
                 placeholder="Confirm your password"
               />
             </div>
 
             {error && (
-              <p className="text-red-100 text-sm bg-red-500/20 border border-red-400/30 rounded-lg px-3 py-2">
+              <p className="text-red-600 text-sm bg-red-50 border border-red-200 rounded-lg px-3 py-2">
                 {error}
               </p>
             )}
@@ -196,9 +197,9 @@ function ResetPasswordForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-white text-gray-800 hover:bg-white/90 disabled:opacity-50 py-2.5 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 shadow-sm"
+              className="w-full bg-sky-500 text-white hover:bg-sky-600 disabled:opacity-50 py-2.5 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 shadow-sm"
             >
-              {loading && <Loader2 className="w-4 h-4 animate-spin" />}
+              {loading && <HugeiconsIcon icon={Loading03Icon} size={16} className="animate-spin" />}
               Reset Password
             </button>
           </form>
@@ -220,7 +221,7 @@ function ResetPasswordForm() {
         <p className="mt-6 text-center text-sm">
           <Link
             href="/login"
-            className="text-gray-700 font-medium hover:text-gray-900 transition-colors"
+            className="text-sky-600 font-medium hover:text-sky-700 transition-colors"
           >
             Back to sign in
           </Link>

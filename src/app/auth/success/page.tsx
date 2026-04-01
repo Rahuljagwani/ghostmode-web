@@ -2,7 +2,9 @@
 
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { Ghost, CheckCircle, XCircle } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { CheckmarkCircle02Icon, CancelCircleIcon } from "@hugeicons/core-free-icons";
+import { Ghost } from "lucide-react";
 
 export default function AuthSuccessPage() {
   return (
@@ -57,7 +59,7 @@ function AuthSuccessContent() {
 
           {status === "ok" && (
             <div className="flex flex-col items-center gap-3">
-              <CheckCircle className="w-12 h-12 text-green-500" />
+              <HugeiconsIcon icon={CheckmarkCircle02Icon} size={48} className="text-green-500" />
               <h1 className="text-xl font-bold text-gray-900">Login Successful!</h1>
               <p className="text-gray-500 text-sm">{message}</p>
             </div>
@@ -65,7 +67,7 @@ function AuthSuccessContent() {
 
           {status === "error" && (
             <div className="flex flex-col items-center gap-3">
-              <XCircle className="w-12 h-12 text-red-500" />
+              <HugeiconsIcon icon={CancelCircleIcon} size={48} className="text-red-500" />
               <h1 className="text-xl font-bold text-gray-900">Login Failed</h1>
               <p className="text-gray-500 text-sm">{message}</p>
               <button

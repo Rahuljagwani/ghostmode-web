@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { Copy, Mic } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Copy01Icon, Mic01Icon } from "@hugeicons/core-free-icons";
 
 interface Scenario {
   question: string;
@@ -177,7 +178,7 @@ export default function MockupChat() {
         <div className="bg-white/5 rounded-lg overflow-hidden border border-white/10 animate-[fadeInUp_0.3s_ease-out_both]">
           <div className="flex items-center justify-between px-3 py-1.5 border-b border-white/10 bg-white/5">
             <span className="text-white/50 text-[10px]">{scenario.code.lang}</span>
-            <Copy className="w-3 h-3 text-white/30" />
+            <HugeiconsIcon icon={Copy01Icon} size={12} className="text-white/30" />
           </div>
           <div className="p-2.5 text-[11px] font-mono leading-snug">
             {scenario.code.lines.slice(0, visibleCodeLines).map((line, i) => (
@@ -195,7 +196,7 @@ export default function MockupChat() {
       <div className="pt-1">
         <div className="flex items-center gap-2 bg-white/8 rounded-lg px-3 py-2 border border-white/15">
           <div className="w-6 h-6 rounded-full bg-[#4fc3f7]/20 flex items-center justify-center flex-shrink-0">
-            <Mic className="w-3 h-3 text-[#4fc3f7]" />
+            <HugeiconsIcon icon={Mic01Icon} size={12} className="text-[#4fc3f7]" />
           </div>
           <span className="text-white/30 text-xs">Ask anything about the screen</span>
         </div>

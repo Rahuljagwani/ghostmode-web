@@ -5,17 +5,14 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  LayoutDashboard,
-  CreditCard,
-  Settings,
-  Loader2,
-} from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import type { IconSvgElement } from "@hugeicons/react";
+import { DashboardSquare01Icon, CreditCardIcon, Settings01Icon, Loading03Icon } from "@hugeicons/core-free-icons";
 
-const navItems = [
-  { href: "/dashboard", label: "Overview", icon: LayoutDashboard },
-  { href: "/dashboard/billing", label: "Billing", icon: CreditCard },
-  { href: "/dashboard/settings", label: "Settings", icon: Settings },
+const navItems: { href: string; label: string; icon: IconSvgElement }[] = [
+  { href: "/dashboard", label: "Overview", icon: DashboardSquare01Icon },
+  { href: "/dashboard/billing", label: "Billing", icon: CreditCardIcon },
+  { href: "/dashboard/settings", label: "Settings", icon: Settings01Icon },
 ];
 
 export default function DashboardLayout({
@@ -38,7 +35,7 @@ export default function DashboardLayout({
   if (loading) {
     return (
       <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-sky-500" />
+        <HugeiconsIcon icon={Loading03Icon} size={32} className="animate-spin text-sky-500" />
       </div>
     );
   }
@@ -63,7 +60,7 @@ export default function DashboardLayout({
                       : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
                   }`}
                 >
-                  <item.icon className="w-4 h-4" />
+                  <HugeiconsIcon icon={item.icon} size={16} />
                   {item.label}
                 </Link>
               );

@@ -5,9 +5,9 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth";
 import { fetchPlans, PlanData } from "@/lib/api";
 import PricingCard from "@/components/PricingCard";
-import { Zap, Eye, Mic, Loader2 } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { FlashIcon, EyeIcon, Mic01Icon, Loading03Icon } from "@hugeicons/core-free-icons";
 
-// Free tier is always shown (not in DB)
 const FREE_PLAN = {
   name: "Free",
   price: 0,
@@ -21,7 +21,6 @@ const FREE_PLAN = {
   ],
 };
 
-// Feature lists per plan name (enriches API data)
 const PLAN_FEATURES: Record<string, (credits: number) => string[]> = {
   Starter: (cr) => [
     `${cr} credits`,
@@ -69,82 +68,75 @@ export default function PricingPage() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-24">
-      <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-          Simple, credit-based pricing
-        </h1>
-        <p className="text-gray-600 text-lg max-w-xl mx-auto">
-          Buy credits when you need them. No subscriptions, no hidden fees.
-        </p>
-      </div>
-
-      {loading ? (
-        <div className="flex justify-center py-20">
-          <Loader2 className="w-8 h-8 text-gray-700 animate-spin" />
+    <div className="min-h-screen">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Simple, credit-based pricing
+          </h1>
+          <p className="text-gray-500 text-lg max-w-xl mx-auto">
+            Buy credits when you need them. No subscriptions, no hidden fees.
+          </p>
         </div>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-          {/* Free tier */}
-          <PricingCard
-            {...FREE_PLAN}
-            onBuy={() => handleBuy(0)}
-          />
 
-          {/* Dynamic plans from API */}
-          {plans.map((plan) => {
-            const featureFn = PLAN_FEATURES[plan.name];
-            const features = featureFn
-              ? featureFn(plan.credits)
-              : [`${plan.credits} credits`, "All features included"];
+        {loading ? (
+          <div className="flex justify-center py-20">
+            <HugeiconsIcon icon={Loading03Icon} size={32} className="text-sky-500 animate-spin" />
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+            <PricingCard {...FREE_PLAN} onBuy={() => handleBuy(0)} />
+            {plans.map((plan) => {
+              const featureFn = PLAN_FEATURES[plan.name];
+              const features = featureFn
+                ? featureFn(plan.credits)
+                : [`${plan.credits} credits`, "All features included"];
+              return (
+                <PricingCard
+                  key={plan.id}
+                  name={plan.name}
+                  price={plan.price}
+                  credits={plan.credits}
+                  description={plan.description || ""}
+                  features={features}
+                  highlighted={plan.name === "Popular"}
+                  onBuy={() => handleBuy(plan.price)}
+                />
+              );
+            })}
+          </div>
+        )}
 
-            return (
-              <PricingCard
-                key={plan.id}
-                name={plan.name}
-                price={plan.price}
-                credits={plan.credits}
-                description={plan.description || ""}
-                features={features}
-                highlighted={plan.name === "Popular"}
-                onBuy={() => handleBuy(plan.price)}
-              />
-            );
-          })}
-        </div>
-      )}
-
-      {/* Credit costs breakdown */}
-      <div className="mt-12 sm:mt-16 grid grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto">
-        <div className="flex items-center gap-3 bg-white/35 backdrop-blur-md border border-white/50 rounded-xl px-5 py-4 shadow-lg">
-          <div className="w-8 h-8 rounded-lg bg-white/30 flex items-center justify-center">
-            <Zap className="w-4 h-4 text-amber-600" />
+        <div className="mt-12 sm:mt-16 grid grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto">
+          <div className="flex items-center gap-3 bg-white rounded-xl px-4 sm:px-5 py-4 border border-gray-200 shadow-sm">
+            <div className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center">
+              <HugeiconsIcon icon={FlashIcon} size={16} className="text-amber-600" />
+            </div>
+            <div>
+              <p className="text-sm font-medium text-gray-900">Text query</p>
+              <p className="text-xs text-gray-500">1 credit</p>
+            </div>
           </div>
-          <div>
-            <p className="text-sm font-medium text-gray-900">Text query</p>
-            <p className="text-xs text-gray-500">1 credit</p>
+          <div className="flex items-center gap-3 bg-white rounded-xl px-4 sm:px-5 py-4 border border-gray-200 shadow-sm">
+            <div className="w-8 h-8 rounded-lg bg-sky-50 flex items-center justify-center">
+              <HugeiconsIcon icon={EyeIcon} size={16} className="text-sky-600" />
+            </div>
+            <div>
+              <p className="text-sm font-medium text-gray-900">Screenshot</p>
+              <p className="text-xs text-gray-500">2 credits</p>
+            </div>
           </div>
-        </div>
-        <div className="flex items-center gap-3 bg-white/35 backdrop-blur-md border border-white/50 rounded-xl px-5 py-4 shadow-lg">
-          <div className="w-8 h-8 rounded-lg bg-white/30 flex items-center justify-center">
-            <Eye className="w-4 h-4 text-gray-700" />
-          </div>
-          <div>
-            <p className="text-sm font-medium text-gray-900">Screenshot</p>
-            <p className="text-xs text-gray-500">2 credits</p>
-          </div>
-        </div>
-        <div className="flex items-center gap-3 bg-white/35 backdrop-blur-md border border-white/50 rounded-xl px-5 py-4 shadow-lg">
-          <div className="w-8 h-8 rounded-lg bg-white/30 flex items-center justify-center">
-            <Mic className="w-4 h-4 text-emerald-600" />
-          </div>
-          <div>
-            <p className="text-sm font-medium text-gray-900">Voice query</p>
-            <p className="text-xs text-gray-500">3 credits</p>
+          <div className="flex items-center gap-3 bg-white rounded-xl px-4 sm:px-5 py-4 border border-gray-200 shadow-sm">
+            <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center">
+              <HugeiconsIcon icon={Mic01Icon} size={16} className="text-emerald-600" />
+            </div>
+            <div>
+              <p className="text-sm font-medium text-gray-900">Voice query</p>
+              <p className="text-xs text-gray-500">3 credits</p>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
   );
 }

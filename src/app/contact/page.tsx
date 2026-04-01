@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { apiFetch, ApiError } from "@/lib/api";
-import { Send, Loader2, CheckCircle2, Mail, MapPin } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { SentIcon, Loading03Icon, CheckmarkCircle02Icon, Mail01Icon, Location01Icon } from "@hugeicons/core-free-icons";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
@@ -38,8 +39,8 @@ export default function ContactPage() {
     return (
       <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6">
         <div className="w-full max-w-md text-center">
-          <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-10 shadow-xl">
-            <CheckCircle2 className="w-12 h-12 text-emerald-500 mx-auto mb-4" />
+          <div className="bg-white border border-gray-200 rounded-2xl p-10 shadow-xl">
+            <HugeiconsIcon icon={CheckmarkCircle02Icon} size={48} className="text-emerald-500 mx-auto mb-4" />
             <h1 className="text-2xl font-bold text-gray-900 mb-2">
               Message sent!
             </h1>
@@ -70,9 +71,9 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
           {/* Contact info */}
           <div className="md:col-span-1 space-y-6">
-            <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-6 shadow-xl">
+            <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-xl">
               <div className="flex items-start gap-3 mb-4">
-                <Mail className="w-5 h-5 text-gray-700 mt-0.5 shrink-0" />
+                <HugeiconsIcon icon={Mail01Icon} size={20} className="text-gray-700 mt-0.5 shrink-0" />
                 <div>
                   <h3 className="text-sm font-semibold text-gray-900">Email</h3>
                   <a
@@ -84,7 +85,7 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-gray-700 mt-0.5 shrink-0" />
+                <HugeiconsIcon icon={Location01Icon} size={20} className="text-gray-700 mt-0.5 shrink-0" />
                 <div>
                   <h3 className="text-sm font-semibold text-gray-900">
                     Location
@@ -94,7 +95,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="bg-white/25 backdrop-blur-md border border-white/40 rounded-2xl p-6">
+            <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6">
               <p className="text-sm text-gray-600 leading-relaxed">
                 We typically respond within 24 hours. For urgent issues, email
                 us directly at{" "}
@@ -110,7 +111,7 @@ export default function ContactPage() {
 
           {/* Contact form */}
           <div className="md:col-span-2">
-            <div className="bg-white/35 backdrop-blur-xl border border-white/50 rounded-2xl p-5 sm:p-8 shadow-xl">
+            <div className="bg-white border border-gray-200 rounded-2xl p-5 sm:p-8 shadow-xl">
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
@@ -122,7 +123,7 @@ export default function ContactPage() {
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full bg-white/90 border border-white/40 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/50 transition"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-400 transition"
                       placeholder="Your name"
                     />
                   </div>
@@ -135,7 +136,7 @@ export default function ContactPage() {
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-white/90 border border-white/40 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/50 transition"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-400 transition"
                       placeholder="you@example.com"
                     />
                   </div>
@@ -150,7 +151,7 @@ export default function ContactPage() {
                     required
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
-                    className="w-full bg-white/90 border border-white/40 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/50 transition"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-400 transition"
                     placeholder="How can we help?"
                   />
                 </div>
@@ -164,13 +165,13 @@ export default function ContactPage() {
                     rows={5}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full bg-white/90 border border-white/40 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/50 transition resize-none"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-400 transition resize-none"
                     placeholder="Tell us more..."
                   />
                 </div>
 
                 {error && (
-                  <p className="text-red-100 text-sm bg-red-500/20 border border-red-400/30 rounded-lg px-3 py-2">
+                  <p className="text-red-600 text-sm bg-red-50 border border-red-200 rounded-lg px-3 py-2">
                     {error}
                   </p>
                 )}
@@ -178,12 +179,12 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="bg-white hover:bg-white/90 disabled:opacity-50 text-gray-800 px-6 py-2.5 rounded-lg font-medium transition-colors flex items-center gap-2 shadow-sm"
+                  className="bg-sky-500 hover:bg-sky-600 disabled:opacity-50 text-white px-6 py-2.5 rounded-lg font-medium transition-colors flex items-center gap-2 shadow-sm"
                 >
                   {loading ? (
-                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <HugeiconsIcon icon={Loading03Icon} size={16} className="animate-spin" />
                   ) : (
-                    <Send className="w-4 h-4" />
+                    <HugeiconsIcon icon={SentIcon} size={16} />
                   )}
                   Send Message
                 </button>

@@ -4,13 +4,8 @@ import { useAuth } from "@/lib/auth";
 import { useEffect, useState } from "react";
 import { apiFetch } from "@/lib/api";
 import Link from "next/link";
-import {
-  Zap,
-  Camera,
-  Mic,
-  MessageSquare,
-  ArrowRight,
-} from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { FlashIcon, Camera01Icon, Mic01Icon, Message01Icon, ArrowRight02Icon } from "@hugeicons/core-free-icons";
 
 interface CreditDetails {
   total_credits: number;
@@ -53,7 +48,7 @@ export default function DashboardPage() {
             <h2 className="text-sm font-medium text-gray-500">
               Credits Balance
             </h2>
-            <Zap className="w-4 h-4 text-sky-500" />
+            <HugeiconsIcon icon={FlashIcon} size={16} className="text-sky-500" />
           </div>
           <p className="text-4xl font-bold text-gray-900">
             {credits?.remaining_credits?.toFixed(0) ?? user?.remaining_credits?.toFixed(0) ?? "\u2014"}
@@ -88,7 +83,7 @@ export default function DashboardPage() {
             </p>
           </div>
           <div className="flex items-center gap-1 text-sky-600 text-sm font-medium mt-4">
-            Buy Credits <ArrowRight className="w-4 h-4" />
+            Buy Credits <HugeiconsIcon icon={ArrowRight02Icon} size={16} />
           </div>
         </Link>
       </div>
@@ -99,7 +94,7 @@ export default function DashboardPage() {
         <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
           <div className="flex items-center gap-2.5 mb-3">
             <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center">
-              <Camera className="w-4 h-4 text-blue-500" />
+              <HugeiconsIcon icon={Camera01Icon} size={16} className="text-blue-500" />
             </div>
             <span className="text-sm text-gray-500">Screenshots</span>
           </div>
@@ -112,7 +107,7 @@ export default function DashboardPage() {
         <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
           <div className="flex items-center gap-2.5 mb-3">
             <div className="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center">
-              <Mic className="w-4 h-4 text-green-500" />
+              <HugeiconsIcon icon={Mic01Icon} size={16} className="text-green-500" />
             </div>
             <span className="text-sm text-gray-500">Voice Queries</span>
           </div>
@@ -125,7 +120,7 @@ export default function DashboardPage() {
         <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
           <div className="flex items-center gap-2.5 mb-3">
             <div className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center">
-              <MessageSquare className="w-4 h-4 text-amber-500" />
+              <HugeiconsIcon icon={Message01Icon} size={16} className="text-amber-500" />
             </div>
             <span className="text-sm text-gray-500">Text Queries</span>
           </div>

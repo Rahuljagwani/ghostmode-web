@@ -9,8 +9,7 @@
 
 body {
   color: var(--foreground);
-  background: linear-gradient(180deg, #0288D1 0%, #039BE5 15%, #29B6F6 35%, #4FC3F7 55%, #81D4FA 75%, #B3E5FC 100%);
-  background-attachment: fixed;
+  background: #f9fafb;
   min-height: 100vh;
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
@@ -31,4 +30,3 @@ body {
     transform: translateY(0);
   }
 }
-
