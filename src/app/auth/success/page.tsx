@@ -1,10 +1,11 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { CheckmarkCircle02Icon, CancelCircleIcon } from "@hugeicons/core-free-icons";
 import { Ghost } from "lucide-react";
+import { useAuth } from "@/lib/auth";
 
 export default function AuthSuccessPage() {
   return (
@@ -17,32 +18,46 @@ export default function AuthSuccessPage() {
 function AuthSuccessContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const { applySessionToken } = useAuth();
+  const handled = useRef(false);
 
   const [status, setStatus] = useState<"loading" | "ok" | "error">("loading");
   const [message, setMessage] = useState("");
 
   useEffect(() => {
+    if (handled.current) return;
     const token = searchParams.get("token");
     const statusParam = searchParams.get("status");
     const messageParam = searchParams.get("message");
     const source = searchParams.get("source");
 
     if (token) {
-      localStorage.setItem("renekin_token", token);
-      setStatus("ok");
-      setMessage("Login successful! Redirecting...");
-      setTimeout(() => router.push("/dashboard"), 1500);
+      handled.current = true;
+      (async () => {
+        try {
+          await applySessionToken(token);
+          setStatus("ok");
+          setMessage("Login successful! Redirecting...");
+          setTimeout(() => router.push("/dashboard"), 800);
+        } catch {
+          setStatus("error");
+          setMessage("Could not load your account. Please try signing in again.");
+        }
+      })();
     } else if (statusParam === "ok" && source === "desktop") {
+      handled.current = true;
       setStatus("ok");
       setMessage("Login successful! You can close this tab and return to Ghost.");
     } else if (statusParam === "error") {
+      handled.current = true;
       setStatus("error");
       setMessage(messageParam || "Login failed. Please try again.");
     } else {
+      handled.current = true;
       setStatus("error");
       setMessage("Invalid callback. Please try again.");
     }
-  }, [searchParams, router]);
+  }, [searchParams, router, applySessionToken]);
 
   return (
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6 bg-gray-50">

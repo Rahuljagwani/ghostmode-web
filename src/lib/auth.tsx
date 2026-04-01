@@ -27,6 +27,8 @@ interface AuthContextValue {
   login: (email: string, password: string) => Promise<User>;
   register: (email: string, password: string, name: string) => Promise<User>;
   googleLogin: (idToken: string) => Promise<void>;
+  /** OAuth redirect landed with a token — sync storage + context (SPA navigation does not remount provider). */
+  applySessionToken: (t: string) => Promise<void>;
   logout: () => void;
   refreshProfile: () => Promise<void>;
 }
@@ -49,14 +51,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(null);
   };
 
-  const fetchProfile = useCallback(async (t: string) => {
+  const fetchProfile = useCallback(async (t: string): Promise<User | null> => {
     try {
-      const user = await apiFetch<User>("/auth/me", { token: t });
-      setUser(user);
+      const u = await apiFetch<User>("/auth/me", { token: t });
+      setUser(u);
+      return u;
     } catch (err) {
       if (err instanceof ApiError && err.status === 401) {
         clearToken();
       }
+      return null;
     }
   }, []);
 
@@ -118,6 +122,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (token) await fetchProfile(token);
   }, [token, fetchProfile]);
 
+  const applySessionToken = useCallback(async (t: string) => {
+    localStorage.setItem("renekin_token", t);
+    setToken(t);
+    setLoading(true);
+    try {
+      const u = await fetchProfile(t);
+      if (!u) {
+        localStorage.removeItem("renekin_token");
+        setToken(null);
+        setUser(null);
+        throw new Error("Session could not be verified");
+      }
+    } finally {
+      setLoading(false);
+    }
+  }, [fetchProfile]);
+
   return (
     <AuthContext.Provider
       value={{
@@ -127,6 +148,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         login,
         register,
         googleLogin,
+        applySessionToken,
         logout,
         refreshProfile,
       }}
