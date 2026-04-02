@@ -140,7 +140,7 @@ export default function Home() {
 
               <div className="mt-6 sm:mt-10">
                 <Link
-                  href="/register"
+                  href="/download"
                   className="inline-flex items-center gap-2 bg-white text-gray-800 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all shadow-lg hover:shadow-xl hover:scale-[1.02]"
                 >
                   Get started for free
@@ -433,7 +433,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/register"
+              href="/download"
               className="inline-flex items-center gap-2 bg-white text-gray-800 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all shadow-lg hover:shadow-xl hover:scale-[1.02]"
             >
               Start Free
