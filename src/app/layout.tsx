@@ -5,6 +5,7 @@ import "./globals.css";
 import { AuthProvider } from "@/lib/auth";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { PostHogProvider } from "@/providers/PostHogProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -99,15 +100,36 @@ export default function RootLayout({
           src="https://checkout.razorpay.com/v1/checkout.js"
           strategy="lazyOnload"
         />
+        {/* Google Analytics GA4 */}
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {
+                  page_path: window.location.pathname,
+                });
+              `}
+            </Script>
+          </>
+        )}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased text-gray-900 min-h-screen`}
       >
-        <AuthProvider>
-          <Navbar />
-          <main className="pt-16">{children}</main>
-          <Footer />
-        </AuthProvider>
+        <PostHogProvider>
+          <AuthProvider>
+            <Navbar />
+            <main className="pt-16">{children}</main>
+            <Footer />
+          </AuthProvider>
+        </PostHogProvider>
       </body>
     </html>
   );

@@ -17,6 +17,7 @@
     "@react-oauth/google": "^0.13.4",
     "lucide-react": "^1.7.0",
     "next": "14.2.35",
+    "posthog-js": "^1.367.0",
     "react": "^18",
     "react-dom": "^18"
   },
