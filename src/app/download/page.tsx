@@ -254,7 +254,7 @@ export default function DownloadPage() {
             <ul className="text-sm text-gray-600 space-y-2">
               <li className="flex items-start gap-2">
                 <HugeiconsIcon icon={CheckmarkCircle02Icon} size={14} className="text-emerald-500 mt-0.5 shrink-0" />
-                Windows 10 (1903) or later
+                Windows 10 version 2004 or later
               </li>
               <li className="flex items-start gap-2">
                 <HugeiconsIcon icon={CheckmarkCircle02Icon} size={14} className="text-emerald-500 mt-0.5 shrink-0" />

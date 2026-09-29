@@ -11,7 +11,7 @@ export default function PrivacyPage() {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
       <div className="bg-white border border-gray-200 rounded-2xl p-5 sm:p-8 md:p-12 shadow-xl">
       <h1 className="text-4xl font-bold text-gray-900 mb-2">Privacy Policy</h1>
-      <p className="text-gray-500 text-sm mb-10">Last updated: March 20, 2026</p>
+      <p className="text-gray-500 text-sm mb-10">Last updated: September 29, 2026</p>
 
       <div className="prose prose-gray max-w-none space-y-8 text-gray-600 text-sm leading-relaxed [&_h2]:text-gray-900 [&_strong]:text-gray-900 [&_a]:text-sky-600 [&_a]:underline">
         <section>
@@ -96,11 +96,22 @@ export default function PrivacyPage() {
           <p className="mt-2">To exercise any of these rights, contact us at the email below.</p>
         </section>
 
-        <section>
-          <h2 className="text-xl font-semibold text-gray-900 mb-3">8. Cookies</h2>
+        <section id="cookies" className="scroll-mt-24">
+          <h2 className="text-xl font-semibold text-gray-900 mb-3">8. Cookies &amp; Local Storage</h2>
+          <p className="mb-3">
+            <strong>Essential (always on):</strong> we use your browser&apos;s local storage to keep you
+            signed in and to remember your cookie choice. The site can&apos;t work properly without these.
+          </p>
+          <p className="mb-3">
+            <strong>Analytics (only with your consent):</strong> if you click &quot;Accept&quot; on the
+            cookie banner, we load Google Analytics and PostHog to understand how the site is used, for
+            example which pages are visited and whether the demo video is played. These set cookies or
+            local storage such as <code>_ga</code> and <code>ph_*</code>. If you click &quot;Reject&quot;,
+            neither is loaded.
+          </p>
           <p>
-            We use localStorage to store your authentication token. We do not use tracking cookies
-            or third-party analytics cookies.
+            You can change your choice at any time using &quot;Cookie settings&quot; in the website
+            footer. Payments are handled by Razorpay, which may set its own cookies when you open checkout.
           </p>
         </section>
 

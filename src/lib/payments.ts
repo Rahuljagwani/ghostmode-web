@@ -37,12 +37,35 @@ interface RazorpayPaymentResult {
  * Create Razorpay order via backend, then open Razorpay checkout popup.
  * Returns when payment is verified and credits are added.
  */
+// Loaded on demand so Razorpay's cookies are only set when someone actually pays.
+let razorpayScript: Promise<void> | null = null;
+function loadRazorpay(): Promise<void> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if ((window as any).Razorpay) return Promise.resolve();
+  if (!razorpayScript) {
+    razorpayScript = new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => resolve();
+      script.onerror = () => {
+        razorpayScript = null;
+        reject(new Error("Couldn't load Razorpay. Check your connection and try again."));
+      };
+      document.body.appendChild(script);
+    });
+  }
+  return razorpayScript;
+}
+
 export async function payWithRazorpay(planName: string): Promise<{ credits_added: number }> {
-  // 1. Create order on backend
-  const order = await apiFetch<RazorpayOrder>("/payments/create-order", {
-    method: "POST",
-    body: JSON.stringify({ plan_name: planName }),
-  });
+  // 1. Create order on backend while the checkout script loads
+  const [order] = await Promise.all([
+    apiFetch<RazorpayOrder>("/payments/create-order", {
+      method: "POST",
+      body: JSON.stringify({ plan_name: planName }),
+    }),
+    loadRazorpay(),
+  ]);
 
   // 2. Open Razorpay checkout
   const result = await new Promise<RazorpayPaymentResult>((resolve, reject) => {

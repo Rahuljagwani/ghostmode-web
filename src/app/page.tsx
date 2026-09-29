@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import MockupChat from "@/components/MockupChat";
+import DemoVideo from "@/components/DemoVideo";
 import Icon from "@/components/Icon";
 import {
   ViewOffIcon,
@@ -175,6 +176,19 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Demo video — sky-100 continues the hero gradient */}
+      <section className="bg-gradient-to-b from-sky-100 to-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-4 pb-12 sm:pb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-3">
+            See Ghost in action
+          </h2>
+          <p className="text-gray-500 text-center mb-8 sm:mb-10 max-w-lg mx-auto">
+            Invisible on screen share, listening through your earphones, answering in seconds.
+          </p>
+          <DemoVideo />
         </div>
       </section>
 

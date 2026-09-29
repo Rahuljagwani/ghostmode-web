@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Ghost } from "lucide-react";
+import CookieSettingsLink from "@/components/CookieSettingsLink";
 
 export default function Footer() {
   return (
@@ -52,6 +53,7 @@ export default function Footer() {
               <Link href="/contact" className="hover:text-sky-600 transition-colors">Contact Us</Link>
               <Link href="/privacy" className="hover:text-sky-600 transition-colors">Privacy Policy</Link>
               <Link href="/terms" className="hover:text-sky-600 transition-colors">Terms of Service</Link>
+              <CookieSettingsLink />
             </div>
           </div>
         </div>
