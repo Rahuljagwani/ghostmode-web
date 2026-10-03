@@ -41,6 +41,9 @@ export default function Navbar() {
           <Link href="/download" className="hover:text-sky-600 transition-colors">
             Download
           </Link>
+          <Link href="/blog" className="hover:text-sky-600 transition-colors">
+            Blog
+          </Link>
         </div>
 
         <div className="flex items-center gap-3">
@@ -89,7 +92,7 @@ export default function Navbar() {
       {open && (
         <div className="md:hidden mt-2 mx-auto max-w-6xl bg-white/95 backdrop-blur-xl border border-gray-200/60 rounded-2xl shadow-lg p-4 animate-[fadeInUp_0.2s_ease-out_both]">
           <div className="flex flex-col gap-1">
-            {["Ghost", "Features", "Pricing", "Download", "Contact"].map((item) => (
+            {["Ghost", "Features", "Pricing", "Download", "Blog", "Contact"].map((item) => (
               <Link
                 key={item}
                 href={item === "Ghost" ? "/#ghost" : item === "Features" ? "/#features" : `/${item.toLowerCase()}`}

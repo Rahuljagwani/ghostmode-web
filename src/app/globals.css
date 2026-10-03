@@ -30,3 +30,34 @@ body {
     transform: translateY(0);
   }
 }
+
+/* Blog article body */
+@layer components {
+  .article {
+    @apply text-gray-700 text-[17px] leading-[1.75];
+  }
+  .article > * + * {
+    @apply mt-5;
+  }
+  .article h2 {
+    @apply text-2xl sm:text-[28px] font-bold text-gray-900 tracking-tight leading-snug mt-14 scroll-mt-24;
+  }
+  .article h3 {
+    @apply text-xl font-semibold text-gray-900 mt-10;
+  }
+  .article a {
+    @apply text-sky-600 underline underline-offset-2 hover:text-sky-700;
+  }
+  .article strong {
+    @apply text-gray-900 font-semibold;
+  }
+  .article ul {
+    @apply list-disc pl-6 space-y-2;
+  }
+  .article ol {
+    @apply list-decimal pl-6 space-y-2;
+  }
+  .article blockquote {
+    @apply border-l-4 border-sky-400 bg-sky-50 rounded-r-xl px-5 py-4 text-gray-800 italic;
+  }
+}

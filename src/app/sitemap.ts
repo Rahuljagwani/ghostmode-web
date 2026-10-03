@@ -1,18 +1,10 @@
 import { MetadataRoute } from "next";
+import { posts as blogPosts } from "@/lib/blog";
 
 const SITE_URL = "https://renekin.com";
 
-/**
- * Returns blog post entries for the sitemap.
- * When you add a blog, populate this from your CMS / MDX files / DB.
- * Each entry should have a slug and a lastModified date.
- */
 async function getBlogPosts(): Promise<{ slug: string; lastModified: Date }[]> {
-  // TODO: replace with real data source when blog launches
-  // Example for MDX files:
-  //   const files = await fs.readdir(path.join(process.cwd(), "content/blog"));
-  //   return files.map((f) => ({ slug: f.replace(/\.mdx$/, ""), lastModified: new Date() }));
-  return [];
+  return blogPosts.map((p) => ({ slug: p.slug, lastModified: new Date(`${p.updated}T00:00:00Z`) }));
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
