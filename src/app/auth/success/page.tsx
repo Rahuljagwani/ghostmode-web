@@ -6,6 +6,7 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { CheckmarkCircle02Icon, CancelCircleIcon } from "@hugeicons/core-free-icons";
 import { Ghost } from "lucide-react";
 import { useAuth } from "@/lib/auth";
+import { clearReferral } from "@/lib/referral";
 
 export default function AuthSuccessPage() {
   return (
@@ -36,6 +37,7 @@ function AuthSuccessContent() {
       (async () => {
         try {
           await applySessionToken(token);
+          clearReferral();
           setStatus("ok");
           setMessage("Login successful! Redirecting...");
           setTimeout(() => router.push("/dashboard"), 800);

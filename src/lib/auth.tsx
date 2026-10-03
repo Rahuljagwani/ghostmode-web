@@ -9,6 +9,7 @@ import {
   ReactNode,
 } from "react";
 import { apiFetch, ApiError } from "./api";
+import { clearReferral, getReferral } from "@/lib/referral";
 
 interface User {
   id: string;
@@ -90,9 +91,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       "/auth/register",
       {
         method: "POST",
-        body: JSON.stringify({ email, password, name }),
+        body: JSON.stringify({ email, password, name, referral_code: getReferral() }),
       }
     );
+    clearReferral();
     saveToken(data.token);
     setUser(data.user);
     return data.user;

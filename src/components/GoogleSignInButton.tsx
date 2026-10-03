@@ -1,10 +1,13 @@
 "use client";
 
+import { getReferral } from "@/lib/referral";
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1";
 
 export default function GoogleSignInButton() {
   const handleClick = () => {
-    window.location.href = `${API_URL}/auth/google/web-start`;
+    const ref = getReferral();
+    window.location.href = `${API_URL}/auth/google/web-start${ref ? `?ref=${encodeURIComponent(ref)}` : ""}`;
   };
 
   return (

@@ -7,6 +7,8 @@ import Footer from "@/components/Footer";
 import { PostHogProvider } from "@/providers/PostHogProvider";
 import Analytics from "@/components/Analytics";
 import CookieBanner from "@/components/CookieBanner";
+import ReferralCapture from "@/components/ReferralCapture";
+import { Suspense } from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -107,6 +109,9 @@ export default function RootLayout({
           </AuthProvider>
           <Analytics />
           <CookieBanner />
+          <Suspense fallback={null}>
+            <ReferralCapture />
+          </Suspense>
         </PostHogProvider>
       </body>
     </html>

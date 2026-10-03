@@ -4,6 +4,7 @@ import { useAuth } from "@/lib/auth";
 import { useEffect, useState } from "react";
 import { apiFetch } from "@/lib/api";
 import Link from "next/link";
+import ReferralCard from "@/components/ReferralCard";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { FlashIcon, Camera01Icon, Mic01Icon, Message01Icon, ArrowRight02Icon } from "@hugeicons/core-free-icons";
 
@@ -87,6 +88,8 @@ export default function DashboardPage() {
           </div>
         </Link>
       </div>
+
+      <ReferralCard />
 
       {/* Usage breakdown */}
       <h2 className="text-lg font-semibold text-gray-900 mb-4">Usage Breakdown</h2>

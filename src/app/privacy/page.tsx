@@ -100,7 +100,9 @@ export default function PrivacyPage() {
           <h2 className="text-xl font-semibold text-gray-900 mb-3">8. Cookies &amp; Local Storage</h2>
           <p className="mb-3">
             <strong>Essential (always on):</strong> we use your browser&apos;s local storage to keep you
-            signed in and to remember your cookie choice. The site can&apos;t work properly without these.
+            signed in, to remember your cookie choice, and, if you arrive through a referral link, to
+            remember that referral code for up to 30 days so the right bonus is applied when you sign up.
+            The site can&apos;t work properly without these.
           </p>
           <p className="mb-3">
             <strong>Analytics (only with your consent):</strong> if you click &quot;Accept&quot; on the

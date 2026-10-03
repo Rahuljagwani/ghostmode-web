@@ -1,10 +1,11 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth";
-import { ApiError } from "@/lib/api";
+import { ApiError, apiFetch } from "@/lib/api";
+import { getReferral } from "@/lib/referral";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Loading03Icon, CheckmarkCircle02Icon } from "@hugeicons/core-free-icons";
 import { Ghost } from "lucide-react";
@@ -30,6 +31,17 @@ function RegisterForm() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [registered, setRegistered] = useState(false);
+  const [bonus, setBonus] = useState<{ code: string; credits: number } | null>(null);
+
+  useEffect(() => {
+    const code = getReferral();
+    if (!code) return;
+    apiFetch<{ valid: boolean; signup_bonus_credits: number }>(`/referrals/check?code=${encodeURIComponent(code)}`)
+      .then((r) => {
+        if (r.valid && r.signup_bonus_credits > 0) setBonus({ code, credits: r.signup_bonus_credits });
+      })
+      .catch(() => {});
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -88,6 +100,13 @@ function RegisterForm() {
             <h1 className="text-2xl font-bold text-gray-900">Create your account</h1>
             <p className="text-gray-500 text-sm mt-1">Start with 20 free credits. No card required.</p>
           </div>
+
+          {bonus && (
+            <div className="mb-6 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
+              <span className="font-semibold">+{bonus.credits} bonus credits</span> with code{" "}
+              <span className="font-mono">{bonus.code}</span>. You&apos;ll get them once your email is verified, or right away with Google.
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
