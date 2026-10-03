@@ -140,7 +140,6 @@ export default function Post() {
                 className={r.ghost ? "bg-sky-50 font-medium text-gray-900" : "border-t border-gray-100 text-gray-600"}
               >
                 <td className="py-3 pl-4 pr-3 font-semibold text-gray-900">
-                  {r.ghost ? "👻 " : ""}
                   {r.tool}
                 </td>
                 <td className="py-3 px-3">{r.price}</td>
@@ -201,11 +200,6 @@ export default function Post() {
       <p>
         So the cheapest way to get through <em>one</em> live interview with Final Round AI is to commit
         to a year of interviews. We hope you&apos;re not that unlucky.
-      </p>
-      <p>
-        To be fair, Final Round AI is a big suite: mock interviews, resume tools, job-search helpers. If
-        you want all of that, it&apos;s a real option. If you just need help in the interview itself,
-        you&apos;re paying for a buffet when you ordered a sandwich.
       </p>
 
       <h2 id="lockedin-ai">LockedIn AI: $9.99 for one interview</h2>
@@ -299,17 +293,10 @@ export default function Post() {
         </li>
       </ul>
 
-      <h2 id="what-we-skip">What Ghost doesn&apos;t do (on purpose)</h2>
-      <p>
-        No AI headshots. No resume builder. No calendar bot that joins your calls. No lifetime plan that
-        costs more than a used scooter. Other tools bundle those in to justify a subscription. Ghost does
-        one job, helping you in the moment, and charges you only when you use it.
-      </p>
-
       <h2 id="verdict">The verdict</h2>
       <p>
-        If you want a full career suite and don&apos;t mind a subscription, the big players will happily
-        take your money every month. If you want an <strong>invisible AI interview copilot</strong> that
+        If you don&apos;t mind a subscription, the big players will happily take your money every
+        month. If you want an <strong>invisible AI interview copilot</strong> that
         works on the free plan, costs about $2 an interview and never auto-renews, there&apos;s one
         obvious answer.
       </p>
