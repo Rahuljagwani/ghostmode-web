@@ -114,9 +114,50 @@ const trustPoints: { icon: IconSvgElement; title: string; desc: string; color: s
   },
 ];
 
+const SITE_URL = "https://renekin.com";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    name: "Renekin AI",
+    url: SITE_URL,
+    logo: `${SITE_URL}/renekin-logo-blue.svg`,
+    email: "socials@renekin.com",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Renekin AI",
+    url: SITE_URL,
+    publisher: { "@id": `${SITE_URL}/#organization` },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Ghost by Renekin AI",
+    description:
+      "Real-time AI interview copilot for coding, technical and HR interviews and meetings. Live transcription, screenshot analysis and context-aware answers, hidden from screen share.",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "macOS 12+, Windows 10+",
+    url: SITE_URL,
+    downloadUrl: `${SITE_URL}/download`,
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "USD",
+      lowPrice: "0",
+      highPrice: "28",
+      offerCount: 4,
+    },
+  },
+];
+
 export default function Home() {
   return (
     <div className="-mt-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* Hero — blue gradient */}
       <section className="relative overflow-hidden min-h-screen flex items-center bg-gradient-to-b from-sky-400 via-sky-300 to-sky-100">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(255,255,255,0.3)_0%,_transparent_50%)]" />
@@ -127,16 +168,22 @@ export default function Home() {
             {/* Left — Text content */}
             <div>
               <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08] drop-shadow-sm">
+                <span className="block w-fit mb-4 sm:mb-6 rounded-full bg-white/20 border border-white/30 px-4 py-1.5 text-xs sm:text-sm font-semibold tracking-wide uppercase leading-normal drop-shadow-none">
+                  AI Interview Copilot
+                </span>
                 Think better.
                 <br />
                 Answer faster.
               </h1>
 
               <p className="mt-4 sm:mt-6 text-base sm:text-lg text-white/90 max-w-lg leading-relaxed">
-                Meet <span className="text-white font-semibold">Ghost</span> by Renekin AI,
-                an intelligent, invisible copilot that sits alongside your interviews,
-                meetings, and presentations. It understands the context and delivers
-                smart answers in real time, completely hidden from screen sharing.
+                <span className="text-white font-semibold">Ghost</span> by Renekin AI is a real-time
+                AI interview assistant for coding, technical and HR interviews, and your meetings
+                too. It listens, reads your screen and suggests smart answers in seconds, completely
+                hidden from screen sharing on Zoom, Google Meet and Teams.
+              </p>
+              <p className="mt-4 text-sm font-medium text-white/85">
+                20 free credits · macOS &amp; Windows · No subscription
               </p>
 
               <div className="mt-6 sm:mt-10">

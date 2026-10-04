@@ -23,18 +23,22 @@ const geistMono = localFont({
 
 const siteUrl = "https://renekin.com";
 const siteName = "Renekin AI";
+const siteTitle = "AI Interview Copilot & Assistant | Ghost by Renekin AI";
 const siteDescription =
-  "Renekin AI builds intelligent, invisible copilot tools for high-pressure professional moments. Ghost, our flagship product, delivers real-time answers during interviews, meetings, and presentations — completely hidden from screen sharing.";
+  "Ghost is a real-time AI interview copilot for coding, technical and HR interviews. Live answers on Mac and Windows, hidden from screen share. 20 free credits.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Renekin AI | Intelligent Copilot for Interviews & Meetings",
+    default: siteTitle,
     template: "%s | Renekin AI",
   },
   description: siteDescription,
   keywords: [
+    "AI interview copilot",
     "AI interview assistant",
+    "real-time interview assistant",
+    "AI coding interview assistant",
     "interview copilot",
     "real-time interview help",
     "invisible AI assistant",
@@ -58,22 +62,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName,
-    title: "Renekin AI | Intelligent Copilot for Interviews & Meetings",
+    title: siteTitle,
     description: siteDescription,
-    images: [
-      {
-        url: `${siteUrl}/og-image.png`,
-        width: 1200,
-        height: 630,
-        alt: "Renekin AI — Ghost Interview Copilot",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Renekin AI | Intelligent Copilot for Interviews & Meetings",
+    title: siteTitle,
     description: siteDescription,
-    images: [`${siteUrl}/og-image.png`],
   },
   robots: {
     index: true,

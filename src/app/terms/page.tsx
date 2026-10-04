@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Renekin AI",
+  title: "Terms of Service",
+  description: "Terms of Service for Renekin AI and Ghost, the AI interview and meeting copilot.",
+  alternates: { canonical: "https://renekin.com/terms" },
 };
 
 export default function TermsPage() {

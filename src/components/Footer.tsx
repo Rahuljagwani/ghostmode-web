@@ -33,6 +33,7 @@ export default function Footer() {
             <div className="flex flex-col gap-2 text-sm text-gray-500">
               <Link href="/#ghost" className="hover:text-sky-600 transition-colors">Ghost</Link>
               <Link href="/#features" className="hover:text-sky-600 transition-colors">Features</Link>
+              <Link href="/ai-interview-assistant" className="hover:text-sky-600 transition-colors">AI Interview Assistant</Link>
               <Link href="/pricing" className="hover:text-sky-600 transition-colors">Pricing</Link>
               <Link href="/download" className="hover:text-sky-600 transition-colors">Download</Link>
               <Link href="/blog" className="hover:text-sky-600 transition-colors">Blog</Link>
