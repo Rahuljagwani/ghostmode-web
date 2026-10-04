@@ -60,7 +60,7 @@ export default function PrivacyPage() {
             <li><strong className="text-gray-900">Anthropic (Claude):</strong> AI processing for queries</li>
             <li><strong className="text-gray-900">Groq:</strong> Speech-to-text transcription</li>
             <li><strong className="text-gray-900">Stripe:</strong> International payment processing</li>
-            <li><strong className="text-gray-900">Razorpay:</strong> Indian payment processing</li>
+            <li><strong className="text-gray-900">Razorpay:</strong> Payment processing</li>
             <li><strong className="text-gray-900">Google OAuth:</strong> Authentication</li>
           </ul>
           <p className="mt-2">Each provider has their own privacy policy governing how they handle data.</p>

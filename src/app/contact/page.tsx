@@ -10,7 +10,6 @@ import {
   Loading03Icon,
   CheckmarkCircle02Icon,
   Mail01Icon,
-  Location01Icon,
   UserIcon,
   ShieldCheck,
 } from "@hugeicons/core-free-icons";
@@ -149,7 +148,7 @@ export default function ContactPage() {
           {/* Contact info */}
           <div className="md:col-span-1 space-y-6">
             <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-xl">
-              <div className="flex items-start gap-3 mb-4">
+              <div className="flex items-start gap-3">
                 <HugeiconsIcon icon={Mail01Icon} size={20} className="text-gray-700 mt-0.5 shrink-0" />
                 <div>
                   <h3 className="text-sm font-semibold text-gray-900">Email</h3>
@@ -159,13 +158,6 @@ export default function ContactPage() {
                   >
                     support@renekin.com
                   </a>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <HugeiconsIcon icon={Location01Icon} size={20} className="text-gray-700 mt-0.5 shrink-0" />
-                <div>
-                  <h3 className="text-sm font-semibold text-gray-900">Location</h3>
-                  <p className="text-sm text-gray-500">India</p>
                 </div>
               </div>
             </div>
