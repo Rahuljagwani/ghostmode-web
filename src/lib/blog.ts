@@ -18,6 +18,29 @@ export interface BlogPost {
 // Newest first.
 export const posts: BlogPost[] = [
   {
+    slug: "how-to-prepare-for-ai-interview",
+    title: "AI interviewers are here: how to prepare when an AI interviews you",
+    seoTitle: "How to Prepare for an AI Interview (2026 Guide + 10 Tips)",
+    description:
+      "More first-round interviews are now run by AI, by voice, chat or recorded video. Here's how AI interviews work, what they score, and 10 practical tips to prepare.",
+    excerpt:
+      "Your next interviewer might be an AI. The 3 types of AI interviews, what they actually score, and 10 practical ways to prepare.",
+    tag: "Interview prep",
+    keywords: [
+      "how to prepare for an AI interview",
+      "AI interview",
+      "AI interviewer",
+      "AI interview tips",
+      "AI video interview",
+      "HireVue interview tips",
+      "one-way video interview",
+      "AI interview questions",
+    ],
+    published: "2026-10-06",
+    updated: "2026-10-06",
+    readingMinutes: 7,
+  },
+  {
     slug: "best-ai-interview-copilot",
     title: "Cluely charges $149.99 a month to hide from screen share. Ghost does it on the free plan.",
     seoTitle: "Best AI Interview Copilot 2026: Ghost vs Cluely, Final Round AI, LockedIn AI & More",
