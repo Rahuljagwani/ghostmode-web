@@ -34,6 +34,7 @@ export default function Footer() {
               <Link href="/#ghost" className="hover:text-sky-600 transition-colors">Ghost</Link>
               <Link href="/#features" className="hover:text-sky-600 transition-colors">Features</Link>
               <Link href="/ai-interview-assistant" className="hover:text-sky-600 transition-colors">AI Interview Assistant</Link>
+              <Link href="/ai-coding-interview-assistant" className="hover:text-sky-600 transition-colors">AI Coding Interview Assistant</Link>
               <Link href="/pricing" className="hover:text-sky-600 transition-colors">Pricing</Link>
               <Link href="/download" className="hover:text-sky-600 transition-colors">Download</Link>
               <Link href="/blog" className="hover:text-sky-600 transition-colors">Blog</Link>

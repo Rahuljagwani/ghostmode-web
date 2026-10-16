@@ -275,6 +275,13 @@ export default function AiInterviewAssistantPage() {
               </div>
             ))}
           </div>
+          <p className="mt-10 text-gray-600 leading-relaxed">
+            Preparing for a technical round? See the{" "}
+            <Link href="/ai-coding-interview-assistant" className="text-sky-600 underline underline-offset-2 hover:text-sky-700">
+              AI coding interview assistant
+            </Link>{" "}
+            for DSA, live coding and system design.
+          </p>
         </div>
       </section>
 
