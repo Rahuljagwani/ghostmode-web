@@ -424,7 +424,7 @@ export default function Home() {
               <h4 className="font-semibold text-gray-900 mb-2">How we protect it</h4>
               <p className="text-sm text-gray-500 leading-relaxed">
                 Your data is encrypted in transit and at rest. We never sell your personal information
-                to third parties. AI queries are not stored beyond your active session.
+                to third parties. Screenshots and audio recordings are never stored.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm">

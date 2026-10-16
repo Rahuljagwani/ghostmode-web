@@ -11,7 +11,7 @@ export default function PrivacyPage() {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
       <div className="bg-white border border-gray-200 rounded-2xl p-5 sm:p-8 md:p-12 shadow-xl">
       <h1 className="text-4xl font-bold text-gray-900 mb-2">Privacy Policy</h1>
-      <p className="text-gray-500 text-sm mb-10">Last updated: September 29, 2026</p>
+      <p className="text-gray-500 text-sm mb-10">Last updated: October 17, 2026</p>
 
       <div className="prose prose-gray max-w-none space-y-8 text-gray-600 text-sm leading-relaxed [&_h2]:text-gray-900 [&_strong]:text-gray-900 [&_a]:text-sky-600 [&_a]:underline">
         <section>
@@ -30,6 +30,14 @@ export default function PrivacyPage() {
 
           <h3 className="text-base font-medium text-gray-900 mb-2 mt-4">Usage Data</h3>
           <p>We collect aggregated usage statistics such as the number of screenshots taken, voice queries, and text queries to display in your dashboard and manage credit balances.</p>
+
+          <h3 className="text-base font-medium text-gray-900 mb-2 mt-4">Query Logs</h3>
+          <p>
+            For each request we keep a log entry with the time, the type of request, the credits used, and the
+            text of your typed question or the transcript of your voice question. We use these logs to operate the
+            service, troubleshoot problems, prevent abuse and improve Ghost. Query logs are linked to your account
+            and are deleted when you delete your account or ask us to remove them.
+          </p>
 
           <h3 className="text-base font-medium text-gray-900 mb-2 mt-4">Payment Information</h3>
           <p>Payments are processed by Stripe and Razorpay. We do not store your credit card details. We only store transaction records (amount, plan, status).</p>
@@ -69,7 +77,7 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-xl font-semibold text-gray-900 mb-3">5. Data Retention</h2>
           <p>
-            Account data is retained as long as your account is active. Screenshots and voice
+            Account data and query logs are retained as long as your account is active. Screenshots and voice
             recordings are processed in real-time and not persisted. Payment records are retained
             for accounting and legal purposes.
           </p>

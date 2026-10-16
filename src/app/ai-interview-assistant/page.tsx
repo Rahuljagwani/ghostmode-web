@@ -132,7 +132,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Does Ghost store my interviews?",
-    a: "No. AI queries are not stored beyond your active session, and we never sell your personal information.",
+    a: "Ghost never stores your screenshots or audio recordings. We keep the text of your questions and voice transcripts with your account to run and improve the service, and you can ask us to delete them at any time. We never sell your personal information.",
   },
 ];
 
