@@ -18,6 +18,28 @@ export interface BlogPost {
 // Newest first.
 export const posts: BlogPost[] = [
   {
+    slug: "how-to-beat-ats-resume",
+    title: "How to get your resume past ATS in 2026: a checklist that actually works",
+    seoTitle: "How to Beat ATS in 2026: ATS-Friendly Resume Checklist (+ the 75% Myth)",
+    description:
+      "What an ATS really does, why the '75% of resumes rejected' stat is a myth, and a simple checklist to make your resume ATS-friendly: format, keywords, knockout questions and a 5-minute self-test.",
+    excerpt:
+      "The ATS isn't secretly rejecting 75% of resumes. Here's what actually filters you out, and a 20-minute checklist to fix it.",
+    tag: "Resume",
+    keywords: [
+      "how to beat ATS",
+      "ATS friendly resume",
+      "ATS resume checklist",
+      "applicant tracking system",
+      "ATS resume format",
+      "resume keywords",
+      "ATS resume for freshers",
+    ],
+    published: "2026-10-17",
+    updated: "2026-10-17",
+    readingMinutes: 8,
+  },
+  {
     slug: "how-to-prepare-for-ai-interview",
     title: "AI interviewers are here: how to prepare when an AI interviews you",
     seoTitle: "How to Prepare for an AI Interview (2026 Guide + 10 Tips)",
