@@ -14,6 +14,7 @@ Key facts:
 
 - [AI Interview Assistant](https://renekin.com/ai-interview-assistant): what Ghost is, how it works in an interview, features, pricing and FAQ.
 - [AI Coding Interview Assistant](https://renekin.com/ai-coding-interview-assistant): screenshot a coding problem, get the approach, code, complexity and edge cases.
+- [Cluely alternative](https://renekin.com/cluely-alternative): Ghost vs Cluely on screen-share stealth, pricing and features.
 - [Pricing](https://renekin.com/pricing): free and paid credit packs.
 - [Download](https://renekin.com/download): macOS and Windows installers.
 
@@ -22,6 +23,13 @@ Key facts:
 - [Best AI Interview Copilot 2026](https://renekin.com/blog/best-ai-interview-copilot): price and feature comparison of Ghost, Cluely, Final Round AI, LockedIn AI, Parakeet AI and Interview Coder.
 - [How to Prepare for an AI Interview](https://renekin.com/blog/how-to-prepare-for-ai-interview): the 3 types of AI interviews, what they score, and 10 tips.
 - [How to Beat ATS](https://renekin.com/blog/how-to-beat-ats-resume): how applicant tracking systems work, the 75% myth, and an ATS-friendly resume checklist.
+
+## Company
+
+- [About Renekin AI](https://renekin.com/about)
+- Instagram: https://www.instagram.com/renekin_ai/
+- YouTube: https://www.youtube.com/@RenekinAI
+- LinkedIn: https://www.linkedin.com/company/renekin-ai/
 
 ## Policies
 

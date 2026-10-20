@@ -2,6 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { Ghost } from "lucide-react";
 import CookieSettingsLink from "@/components/CookieSettingsLink";
+import Icon from "@/components/Icon";
+import { InstagramIcon, YoutubeIcon, Linkedin01Icon } from "@hugeicons/core-free-icons";
+import { SOCIAL_LINKS } from "@/lib/social";
+
+const SOCIAL_ICONS = { Instagram: InstagramIcon, YouTube: YoutubeIcon, LinkedIn: Linkedin01Icon };
 
 export default function Footer() {
   return (
@@ -26,6 +31,20 @@ export default function Footer() {
               <Ghost className="w-3.5 h-3.5" />
               Ghost, AI Interview Copilot
             </Link>
+            <div className="flex items-center gap-3 mt-4">
+              {SOCIAL_LINKS.map((l) => (
+                <a
+                  key={l.name}
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Renekin AI on ${l.name}`}
+                  className="text-gray-400 hover:text-sky-600 transition-colors"
+                >
+                  <Icon icon={SOCIAL_ICONS[l.name]} size={18} />
+                </a>
+              ))}
+            </div>
           </div>
 
           <div>
@@ -35,6 +54,7 @@ export default function Footer() {
               <Link href="/#features" className="hover:text-sky-600 transition-colors">Features</Link>
               <Link href="/ai-interview-assistant" className="hover:text-sky-600 transition-colors">AI Interview Assistant</Link>
               <Link href="/ai-coding-interview-assistant" className="hover:text-sky-600 transition-colors">AI Coding Interview Assistant</Link>
+              <Link href="/cluely-alternative" className="hover:text-sky-600 transition-colors">Cluely Alternative</Link>
               <Link href="/pricing" className="hover:text-sky-600 transition-colors">Pricing</Link>
               <Link href="/download" className="hover:text-sky-600 transition-colors">Download</Link>
               <Link href="/blog" className="hover:text-sky-600 transition-colors">Blog</Link>
@@ -53,6 +73,7 @@ export default function Footer() {
           <div>
             <h4 className="text-gray-900 font-semibold mb-3 text-sm">Company</h4>
             <div className="flex flex-col gap-2 text-sm text-gray-500">
+              <Link href="/about" className="hover:text-sky-600 transition-colors">About</Link>
               <Link href="/contact" className="hover:text-sky-600 transition-colors">Contact Us</Link>
               <Link href="/privacy" className="hover:text-sky-600 transition-colors">Privacy Policy</Link>
               <Link href="/terms" className="hover:text-sky-600 transition-colors">Terms of Service</Link>

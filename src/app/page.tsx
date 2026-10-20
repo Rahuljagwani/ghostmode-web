@@ -3,6 +3,7 @@ import Image from "next/image";
 import MockupChat from "@/components/MockupChat";
 import DemoVideo from "@/components/DemoVideo";
 import Icon from "@/components/Icon";
+import { SOCIAL_LINKS } from "@/lib/social";
 import {
   ViewOffIcon,
   Mic01Icon,
@@ -125,6 +126,7 @@ const jsonLd = [
     url: SITE_URL,
     logo: `${SITE_URL}/renekin-logo-blue.svg`,
     email: "socials@renekin.com",
+    sameAs: SOCIAL_LINKS.map((l) => l.href),
   },
   {
     "@context": "https://schema.org",
