@@ -16,9 +16,9 @@ import type { IconSvgElement } from "@hugeicons/react";
 const URL = "https://renekin.com/ai-interview-assistant";
 
 export const metadata: Metadata = {
-  title: { absolute: "AI Interview Assistant for Real-Time Answers | Ghost by Renekin AI" },
+  title: { absolute: "AI Interview Assistant for Real-Time Answers | Ghost" },
   description:
-    "Ghost is an AI interview assistant that listens to the question, reads your screen and suggests answers in seconds. Works with Zoom, Meet and Teams on Mac and Windows.",
+    "Ghost is an AI interview assistant that hears the question, reads your screen and suggests answers in seconds. Works with Zoom, Meet and Teams.",
   keywords: [
     "AI interview assistant",
     "real-time interview assistant",

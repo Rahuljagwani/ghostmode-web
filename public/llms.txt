@@ -1,0 +1,29 @@
+# Ghost by Renekin AI
+
+> Ghost is a real-time AI copilot for job interviews and meetings, made by Renekin AI. It listens to the interviewer, reads what's on your screen (coding problems, slides, diagrams), and suggests clear, structured answers in seconds. Its window is hidden from screen share in Zoom, Google Meet and Microsoft Teams. Desktop app for macOS 12+ and Windows 10+.
+
+Key facts:
+- Pricing: credit-based, no subscription. 20 free credits on sign-up. Packs: $10 for 200 credits, $19 for 450, $28 for 750.
+- Credit costs: text question 1 credit, screenshot 2 credits, voice question 3 credits. A typical interview uses about 50-60 credits (about $2 on the largest pack).
+- Modes: behavioral (STAR answers), technical, coding (approach, code, complexity), system design, and general chat.
+- Context: users can add their resume and the job description so answers match their experience.
+- Website: https://renekin.com
+- Contact: socials@renekin.com
+
+## Product
+
+- [AI Interview Assistant](https://renekin.com/ai-interview-assistant): what Ghost is, how it works in an interview, features, pricing and FAQ.
+- [AI Coding Interview Assistant](https://renekin.com/ai-coding-interview-assistant): screenshot a coding problem, get the approach, code, complexity and edge cases.
+- [Pricing](https://renekin.com/pricing): free and paid credit packs.
+- [Download](https://renekin.com/download): macOS and Windows installers.
+
+## Guides
+
+- [Best AI Interview Copilot 2026](https://renekin.com/blog/best-ai-interview-copilot): price and feature comparison of Ghost, Cluely, Final Round AI, LockedIn AI, Parakeet AI and Interview Coder.
+- [How to Prepare for an AI Interview](https://renekin.com/blog/how-to-prepare-for-ai-interview): the 3 types of AI interviews, what they score, and 10 tips.
+- [How to Beat ATS](https://renekin.com/blog/how-to-beat-ats-resume): how applicant tracking systems work, the 75% myth, and an ATS-friendly resume checklist.
+
+## Policies
+
+- [Privacy Policy](https://renekin.com/privacy)
+- [Terms of Service](https://renekin.com/terms)

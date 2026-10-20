@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth";
 import { fetchPlans, PlanData } from "@/lib/api";
 import PricingCard from "@/components/PricingCard";
+import FaqSection, { type Faq } from "@/components/FaqSection";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { FlashIcon, EyeIcon, Mic01Icon, Loading03Icon } from "@hugeicons/core-free-icons";
 
@@ -41,6 +42,33 @@ const PLAN_FEATURES: Record<string, (credits: number) => string[]> = {
     "Priority support",
   ],
 };
+
+const PRICING_FAQS: Faq[] = [
+  {
+    q: "How do credits work?",
+    a: "You spend credits only when you ask Ghost something: a text question costs 1 credit, a screenshot 2 credits and a voice question 3 credits. A typical interview uses about 50 to 60 credits.",
+  },
+  {
+    q: "Is there a subscription?",
+    a: "No. Ghost uses one-time credit packs, so you pay once and use the credits when you need them. Nothing renews automatically.",
+  },
+  {
+    q: "Is there a free plan?",
+    a: "Yes. Every new account gets 20 free credits with every feature unlocked, including voice, screenshots and screen-share stealth.",
+  },
+  {
+    q: "Which pack should I choose?",
+    a: "Starter ($10, 200 credits) covers about 3 to 4 interviews. Popular ($19, 450 credits) suits an active job search. Best Value ($28, 750 credits) covers about 12 to 15 interviews and has the lowest cost per credit.",
+  },
+  {
+    q: "How can I pay?",
+    a: "Prices are listed in US dollars. Customers in India pay in rupees through Razorpay (UPI, cards and net banking), and international customers pay by card through Stripe.",
+  },
+  {
+    q: "Can I get a refund?",
+    a: "Credits are non-refundable and non-transferable unless required by law. Start with the 20 free credits to make sure Ghost works for you before buying.",
+  },
+];
 
 export default function PricingPage() {
   const { user } = useAuth();
@@ -136,6 +164,8 @@ export default function PricingPage() {
             </div>
           </div>
         </div>
+
+        <FaqSection faqs={PRICING_FAQS} />
       </div>
     </div>
   );

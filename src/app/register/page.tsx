@@ -13,7 +13,13 @@ import GoogleSignInButton from "@/components/GoogleSignInButton";
 
 export default function RegisterPage() {
   return (
-    <Suspense>
+    <Suspense
+      fallback={
+        <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
+          <h1 className="text-2xl font-bold text-gray-900">Create your account</h1>
+        </div>
+      }
+    >
       <RegisterForm />
     </Suspense>
   );

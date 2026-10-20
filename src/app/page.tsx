@@ -145,11 +145,10 @@ const jsonLd = [
     downloadUrl: `${SITE_URL}/download`,
     publisher: { "@id": `${SITE_URL}/#organization` },
     offers: {
-      "@type": "AggregateOffer",
+      "@type": "Offer",
+      price: "0",
       priceCurrency: "USD",
-      lowPrice: "0",
-      highPrice: "28",
-      offerCount: 4,
+      description: "Free to start with 20 credits. Credit packs from $10, no subscription.",
     },
   },
 ];

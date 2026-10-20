@@ -20,9 +20,9 @@ export const posts: BlogPost[] = [
   {
     slug: "how-to-beat-ats-resume",
     title: "How to get your resume past ATS in 2026: a checklist that actually works",
-    seoTitle: "How to Beat ATS in 2026: ATS-Friendly Resume Checklist (+ the 75% Myth)",
+    seoTitle: "How to Beat ATS in 2026: ATS-Friendly Resume Checklist",
     description:
-      "What an ATS really does, why the '75% of resumes rejected' stat is a myth, and a simple checklist to make your resume ATS-friendly: format, keywords, knockout questions and a 5-minute self-test.",
+      "What an ATS really does, why the '75% rejected' stat is a myth, and a checklist to make your resume ATS-friendly: format, keywords and a 5-minute self-test.",
     excerpt:
       "The ATS isn't secretly rejecting 75% of resumes. Here's what actually filters you out, and a 20-minute checklist to fix it.",
     tag: "Resume",
@@ -44,7 +44,7 @@ export const posts: BlogPost[] = [
     title: "AI interviewers are here: how to prepare when an AI interviews you",
     seoTitle: "How to Prepare for an AI Interview (2026 Guide + 10 Tips)",
     description:
-      "More first-round interviews are now run by AI, by voice, chat or recorded video. Here's how AI interviews work, what they score, and 10 practical tips to prepare.",
+      "More first-round interviews are now run by AI, by voice, chat or video. How AI interviews work, what they score, and 10 practical tips to prepare.",
     excerpt:
       "Your next interviewer might be an AI. The 3 types of AI interviews, what they actually score, and 10 practical ways to prepare.",
     tag: "Interview prep",
@@ -65,9 +65,9 @@ export const posts: BlogPost[] = [
   {
     slug: "best-ai-interview-copilot",
     title: "Cluely charges $149.99 a month to hide from screen share. Ghost does it on the free plan.",
-    seoTitle: "Best AI Interview Copilot 2026: Ghost vs Cluely, Final Round AI, LockedIn AI & More",
+    seoTitle: "Best AI Interview Copilot 2026: Ghost vs Cluely & More",
     description:
-      "We compared 6 AI interview copilots on real prices, screen-share stealth and lock-in. Most cost $25 to $299 a month. Ghost costs about $2 per interview, with no subscription.",
+      "We compared 6 AI interview copilots on price, screen-share stealth and lock-in. Most cost $25 to $299 a month. Ghost costs about $2 an interview.",
     excerpt:
       "Six AI interview copilots, their real prices and the fine print they hope you skip. One of them costs about $2 an interview. The rest want a subscription.",
     tag: "Comparison",

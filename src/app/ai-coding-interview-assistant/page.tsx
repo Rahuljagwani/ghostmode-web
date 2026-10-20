@@ -16,9 +16,9 @@ import type { IconSvgElement } from "@hugeicons/react";
 const URL = "https://renekin.com/ai-coding-interview-assistant";
 
 export const metadata: Metadata = {
-  title: { absolute: "AI Coding Interview Assistant: Approach, Code & Complexity | Ghost" },
+  title: { absolute: "AI Coding Interview Assistant: Code & Complexity | Ghost" },
   description:
-    "Screenshot a coding problem and Ghost gives you the approach, clean code, time and space complexity and edge cases in seconds. Hidden from screen share on Mac and Windows.",
+    "Screenshot a coding problem and Ghost gives you the approach, clean code, complexity and edge cases in seconds. Hidden from screen share.",
   keywords: [
     "AI coding interview assistant",
     "coding interview AI",

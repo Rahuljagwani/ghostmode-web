@@ -48,7 +48,8 @@ export default function ContactPage() {
   // ── Loading auth state ───────────────────────────────────────────────
   if (authLoading) {
     return (
-      <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
+      <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center gap-4">
+        <h1 className="text-2xl font-bold text-gray-900">Contact us</h1>
         <HugeiconsIcon icon={Loading03Icon} size={32} className="text-gray-400 animate-spin" />
       </div>
     );

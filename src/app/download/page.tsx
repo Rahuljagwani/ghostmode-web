@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { HugeiconsIcon } from "@hugeicons/react";
+import FaqSection, { type Faq } from "@/components/FaqSection";
 import type { IconSvgElement } from "@hugeicons/react";
 import { AppleIcon, MonitorDotIcon, Download01Icon, CheckmarkCircle02Icon, Shield01Icon, Alert01Icon, Archive01Icon } from "@hugeicons/core-free-icons";
 
@@ -49,6 +50,33 @@ const platforms: Record<"macos" | "windows", { label: string; icon: IconSvgEleme
     ],
   },
 };
+
+const DOWNLOAD_FAQS: Faq[] = [
+  {
+    q: "Is Ghost free to download?",
+    a: "Yes. Ghost is free to download for macOS and Windows, and every new account gets 20 free credits with every feature unlocked. After that you can buy credit packs from $10, with no subscription.",
+  },
+  {
+    q: "What are the system requirements?",
+    a: "Ghost runs on macOS 12 (Monterey) or later and Windows 10 version 2004 or later, 64-bit. Capturing the other person's audio through headphones needs macOS 13 or later on a Mac.",
+  },
+  {
+    q: "Why does Windows show a SmartScreen warning?",
+    a: "Windows shows SmartScreen for newer apps until enough people have installed them. Click \"More info\" and then \"Run anyway\" to continue. You can also use the portable .zip version, which needs no installer.",
+  },
+  {
+    q: "How do I sign in after installing?",
+    a: "Open Ghost and sign in with your email or Google account. If you don't have an account yet, you can create one in a few seconds on renekin.com.",
+  },
+  {
+    q: "Does Ghost work with Zoom, Google Meet and Microsoft Teams?",
+    a: "Yes. Ghost is a desktop app that floats on top of any window, so it works alongside Zoom, Google Meet, Microsoft Teams and browser-based interview tools, and it is hidden from screen share.",
+  },
+  {
+    q: "How do I update Ghost?",
+    a: "Ghost checks for new versions when it starts and prompts you to update, so you always get the latest features and fixes.",
+  },
+];
 
 export default function DownloadPage() {
   const [platform, setPlatform] = useState<Platform>("unknown");
@@ -267,6 +295,8 @@ export default function DownloadPage() {
             </ul>
           </div>
         </div>
+
+        <FaqSection faqs={DOWNLOAD_FAQS} />
       </div>
 
       {/* Windows: show SmartScreen / Run anyway right after starting the .exe download */}
