@@ -18,6 +18,11 @@ Key facts:
 - [Pricing](https://renekin.com/pricing): free and paid credit packs.
 - [Download](https://renekin.com/download): macOS and Windows installers.
 
+## Free tools
+
+- [ATS Resume Checker](https://renekin.com/tools/ats-resume-checker): free ATS match score, missing keywords and format checks for a resume against a job description. No sign-up.
+- [Interview Question Predictor](https://renekin.com/tools/interview-question-predictor): paste a job description, get the 10 most likely interview questions with answer tips. No sign-up.
+
 ## Guides
 
 - [Best AI Interview Copilot 2026](https://renekin.com/blog/best-ai-interview-copilot): price and feature comparison of Ghost, Cluely, Final Round AI, LockedIn AI, Parakeet AI and Interview Coder.

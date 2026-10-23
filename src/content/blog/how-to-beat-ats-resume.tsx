@@ -76,6 +76,19 @@ export default function Post() {
         make your resume <strong>ATS-friendly</strong> in about 20 minutes.
       </p>
 
+      <div className="not-article rounded-2xl border border-sky-200 bg-white p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <p className="font-semibold text-gray-900">Check your resume in 30 seconds</p>
+          <p className="text-sm text-gray-600 mt-1">Free ATS match score, missing keywords and format checks. No sign-up.</p>
+        </div>
+        <Link
+          href="/tools/ats-resume-checker"
+          className="shrink-0 inline-flex justify-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold !text-white !no-underline hover:bg-sky-600"
+        >
+          Try the free ATS checker
+        </Link>
+      </div>
+
       <h2 id="what-is-ats">What is an ATS?</h2>
       <p>
         An <strong>ATS (applicant tracking system)</strong> is software companies use to collect, organise and search
@@ -239,6 +252,10 @@ export default function Post() {
       </ul>
 
       <h2 id="self-test">The 5-minute ATS self-test</h2>
+      <p>
+        Short on time? Our <Link href="/tools/ats-resume-checker">free ATS resume checker</Link> runs most of these
+        checks for you and lists the keywords you&apos;re missing.
+      </p>
       <p>Do this before every important application:</p>
       <ol>
         <li>
