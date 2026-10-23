@@ -22,6 +22,9 @@ Key facts:
 
 - [ATS Resume Checker](https://renekin.com/tools/ats-resume-checker): free ATS match score, missing keywords and format checks for a resume against a job description. No sign-up.
 - [Interview Question Predictor](https://renekin.com/tools/interview-question-predictor): paste a job description, get the 10 most likely interview questions with answer tips. No sign-up.
+- ["Tell Me About Yourself" Generator](https://renekin.com/tools/tell-me-about-yourself-generator): turn a resume into a 60-90 second answer. No sign-up.
+- [Resume Bullet Point Generator](https://renekin.com/tools/resume-bullet-point-generator): rewrite a weak resume line into 3 strong, ATS-friendly bullets. No sign-up.
+- [STAR Method Answer Generator](https://renekin.com/tools/star-method-answer-generator): turn a rough story into a STAR answer for behavioral questions. No sign-up.
 
 ## Guides
 

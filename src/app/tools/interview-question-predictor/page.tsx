@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import QuestionPredictor from "@/components/tools/QuestionPredictor";
 import FaqSection, { type Faq } from "@/components/FaqSection";
+import MoreTools from "@/components/tools/MoreTools";
 
 const URL = "https://renekin.com/tools/interview-question-predictor";
 
@@ -100,6 +101,8 @@ export default function InterviewQuestionPredictorPage() {
             .
           </p>
         </section>
+
+        <MoreTools current="/tools/interview-question-predictor" />
 
         <FaqSection faqs={faqs} />
       </div>

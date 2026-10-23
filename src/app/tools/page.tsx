@@ -1,23 +1,27 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import FaqSection, { type Faq } from "@/components/FaqSection";
+import { FREE_TOOLS } from "@/lib/freeTools";
 
 export const metadata: Metadata = {
-  title: "Free Interview & Resume Tools",
+  title: { absolute: "Free AI Interview & Resume Tools | Ghost by Renekin AI" },
   description:
-    "Free AI tools for job seekers from Renekin AI: predict your interview questions from a job description and check your resume against ATS.",
+    "Free AI tools for job seekers: ATS resume checker, interview question predictor, self-introduction generator, resume bullet rewriter and STAR answers.",
   alternates: { canonical: "https://renekin.com/tools" },
 };
 
-const tools = [
+const faqs: Faq[] = [
   {
-    href: "/tools/interview-question-predictor",
-    name: "Interview Question Predictor",
-    desc: "Paste a job description, get the 10 questions you're most likely to be asked, with answer tips.",
+    q: "Are these tools really free?",
+    a: "Yes. Each tool can be used 3 times a day without an account, and more with a free account. No card needed.",
   },
   {
-    href: "/tools/ats-resume-checker",
-    name: "ATS Resume Checker",
-    desc: "Get an ATS match score, missing keywords and format checks for your resume against any job.",
+    q: "Do you store my resume or answers?",
+    a: "No. What you paste is only used to generate your result and isn't saved to your account.",
+  },
+  {
+    q: "Which tool should I start with?",
+    a: "Start with the ATS resume checker to get past the first filter, then use the interview question predictor and the STAR answer generator to prepare for the interview itself.",
   },
 ];
 
@@ -25,12 +29,12 @@ export default function ToolsPage() {
   return (
     <div className="min-h-screen">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Free tools</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Free interview &amp; resume tools</h1>
         <p className="text-gray-500 text-lg mb-12">
-          Free AI tools to help you land the interview and prepare for it. No sign-up needed.
+          Free AI tools to help you get shortlisted and prepare for the interview. No sign-up needed.
         </p>
         <div className="space-y-5">
-          {tools.map((t) => (
+          {FREE_TOOLS.map((t) => (
             <Link
               key={t.href}
               href={t.href}
@@ -42,6 +46,7 @@ export default function ToolsPage() {
             </Link>
           ))}
         </div>
+        <FaqSection faqs={faqs} />
       </div>
     </div>
   );

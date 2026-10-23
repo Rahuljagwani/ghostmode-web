@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import AtsChecker from "@/components/tools/AtsChecker";
 import FaqSection, { type Faq } from "@/components/FaqSection";
+import MoreTools from "@/components/tools/MoreTools";
 
 const URL = "https://renekin.com/tools/ats-resume-checker";
 
@@ -115,6 +116,8 @@ export default function AtsResumeCheckerPage() {
             .
           </p>
         </section>
+
+        <MoreTools current="/tools/ats-resume-checker" />
 
         <FaqSection faqs={faqs} />
       </div>

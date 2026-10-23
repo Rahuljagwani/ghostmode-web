@@ -4,6 +4,7 @@ import MockupChat from "@/components/MockupChat";
 import DemoVideo from "@/components/DemoVideo";
 import Icon from "@/components/Icon";
 import { SOCIAL_LINKS } from "@/lib/social";
+import { FREE_TOOLS } from "@/lib/freeTools";
 import {
   ViewOffIcon,
   Mic01Icon,
@@ -363,6 +364,31 @@ export default function Home() {
               View all plans
               <Icon icon={ArrowRight02Icon} size={16} />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Free tools */}
+      <section className="bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Free tools for your job search</h2>
+            <p className="text-gray-500 max-w-lg mx-auto">
+              Get shortlisted and prepare for the interview with free AI tools. No sign-up needed.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+            {FREE_TOOLS.map((t) => (
+              <Link
+                key={t.href}
+                href={t.href}
+                className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-sky-200 hover:shadow-lg shadow-sm transition-all"
+              >
+                <h3 className="text-base font-semibold text-gray-900 mb-2">{t.name}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{t.desc}</p>
+                <span className="mt-3 inline-block text-sm font-semibold text-sky-600">Try free →</span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const faqs: { q: string; a: string }[] = [
   {
     q: "What is an AI interview?",
@@ -174,11 +176,30 @@ export default function Post() {
         and make sure your answers show evidence for each one, using the same words where they fit naturally.
       </p>
 
+      <div className="not-article rounded-2xl border border-sky-200 bg-white p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <p className="font-semibold text-gray-900">Know what they&apos;ll ask</p>
+          <p className="text-sm text-gray-600 mt-1">Paste the job description and get your 10 most likely questions. Free, no sign-up.</p>
+        </div>
+        <Link
+          href="/tools/interview-question-predictor"
+          className="shrink-0 inline-flex justify-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold !text-white !no-underline hover:bg-sky-600"
+        >
+          Predict my questions
+        </Link>
+      </div>
+
       <h3>3. Use the STAR method for behavioural questions</h3>
       <p>
         <strong>Situation, Task, Action, Result.</strong> A structured answer is easy for an AI (and a human) to score.
         Prepare 4 or 5 stories from projects, internships or college that you can adapt: a challenge you solved, a
         team conflict, a mistake you learned from, something you led.
+      </p>
+
+      <p>
+        Turn your rough stories into structured answers with the{" "}
+        <Link href="/tools/star-method-answer-generator">free STAR method answer generator</Link>, and nail your opener
+        with the <Link href="/tools/tell-me-about-yourself-generator">&quot;Tell me about yourself&quot; generator</Link>.
       </p>
 
       <h3>4. Keep answers short and focused</h3>

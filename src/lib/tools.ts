@@ -83,3 +83,45 @@ export async function checkResume(jobDescription: string, resume: File | string)
   });
   return handle<AtsResult>(res);
 }
+
+async function postJson<T>(path: string, body: unknown): Promise<T> {
+  const res = await fetch(`${API_URL}/tools/${path}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...authHeader() },
+    body: JSON.stringify(body),
+  });
+  return handle<T>(res);
+}
+
+export interface TmayResult {
+  answer: string;
+  word_count: number;
+  tips: string[];
+}
+
+export function tellMeAboutYourself(background: string, role: string, company?: string) {
+  return postJson<TmayResult>("tell-me-about-yourself", { background, role, company: company || null });
+}
+
+export interface BulletResult {
+  rewrites: { text: string; why: string }[];
+  tip: string;
+}
+
+export function rewriteBullet(bullet: string, role?: string) {
+  return postJson<BulletResult>("rewrite-bullet", { bullet, role: role || null });
+}
+
+export interface StarResult {
+  question: string;
+  situation: string;
+  task: string;
+  action: string;
+  result: string;
+  full_answer: string;
+  tip: string;
+}
+
+export function buildStarAnswer(story: string, question?: string) {
+  return postJson<StarResult>("star-answer", { story, question: question || null });
+}
