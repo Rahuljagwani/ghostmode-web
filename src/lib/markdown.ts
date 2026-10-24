@@ -1,5 +1,5 @@
 import { Marked } from "marked";
-import { SITE_URL } from "./blog";
+import { getLivePosts, SITE_URL } from "./blog";
 
 function slugify(html: string): string {
   return html
@@ -19,6 +19,9 @@ const marked = new Marked({
     },
     link({ href, title, tokens }) {
       const text = this.parser.parseInline(tokens);
+      // A link to a post that isn't live yet would be a 404, so show plain text until it goes live.
+      const blogSlug = href.match(/^\/blog\/([a-z0-9-]+)/)?.[1];
+      if (blogSlug && !getLivePosts().some((p) => p.slug === blogSlug)) return text;
       const titleAttr = title ? ` title="${title}"` : "";
       const external = /^https?:\/\//.test(href) && !href.startsWith(SITE_URL);
       return external
