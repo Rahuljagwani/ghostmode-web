@@ -8,6 +8,11 @@ const nextConfig = {
       },
     ];
   },
+  webpack(config) {
+    // Blog posts are Markdown files bundled as plain strings, so they work in serverless functions too.
+    config.module.rules.push({ test: /\.md$/, type: "asset/source" });
+    return config;
+  },
 };
 
 export default nextConfig;

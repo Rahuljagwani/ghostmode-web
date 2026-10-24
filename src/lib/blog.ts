@@ -1,4 +1,15 @@
+import matter from "gray-matter";
+import { markdownSources } from "@/content/posts";
+
 export const SITE_URL = "https://renekin.com";
+
+/** Every post goes live at 5pm India time on its publish date. */
+const PUBLISH_TIME_IST = "T17:00:00+05:30";
+
+export interface Faq {
+  q: string;
+  a: string;
+}
 
 export interface BlogPost {
   slug: string;
@@ -10,13 +21,20 @@ export interface BlogPost {
   excerpt: string;
   tag: string;
   keywords: string[];
+  /** Publish date (YYYY-MM-DD). The post stays hidden until 5pm IST that day. */
   published: string;
   updated: string;
   readingMinutes: number;
+  /** Markdown posts only. */
+  markdown?: string;
+  tldr?: string[];
+  /** Path of a free tool to promote near the top, e.g. "/tools/ats-resume-checker". */
+  tool?: string;
+  faqs?: Faq[];
 }
 
-// Newest first.
-export const posts: BlogPost[] = [
+// Posts written as React components in src/content/blog.
+const tsxPosts: BlogPost[] = [
   {
     slug: "how-to-beat-ats-resume",
     title: "How to get your resume past ATS in 2026: a checklist that actually works",
@@ -88,8 +106,61 @@ export const posts: BlogPost[] = [
   },
 ];
 
+
+// YAML turns unquoted dates into Date objects.
+function isoDate(value: unknown): string {
+  return value instanceof Date ? value.toISOString().slice(0, 10) : String(value);
+}
+
+// Posts written in Markdown in src/content/posts.
+const markdownPosts: BlogPost[] = markdownSources.map((source) => {
+  const { data, content } = matter(source);
+  const published = isoDate(data.date);
+  return {
+    slug: data.slug,
+    title: data.title,
+    seoTitle: data.seoTitle ?? data.title,
+    description: data.description,
+    excerpt: data.excerpt ?? data.description,
+    tag: data.tag ?? "Interview prep",
+    keywords: data.keywords ?? [],
+    published,
+    updated: data.updated ? isoDate(data.updated) : published,
+    readingMinutes: Math.max(1, Math.round(content.split(/\s+/).length / 220)),
+    markdown: content,
+    tldr: data.tldr,
+    tool: data.tool,
+    faqs: data.faqs,
+  };
+});
+
+// Every post, scheduled ones included. Newest first.
+const allPosts = [...tsxPosts, ...markdownPosts].sort((a, b) => b.published.localeCompare(a.published));
+
+const seen = new Set<string>();
+for (const p of allPosts) {
+  if (seen.has(p.slug)) throw new Error(`Duplicate blog slug: ${p.slug}`);
+  seen.add(p.slug);
+}
+
+/** In local dev, scheduled posts are shown so they can be reviewed before they go live. */
+const showScheduled = process.env.NODE_ENV === "development";
+
+export function publishTime(post: BlogPost): Date {
+  return new Date(`${post.published}${PUBLISH_TIME_IST}`);
+}
+
+export function isScheduled(post: BlogPost, now = new Date()): boolean {
+  return publishTime(post) > now;
+}
+
+/** Posts visitors can see right now, newest first. */
+export function getLivePosts(now = new Date()): BlogPost[] {
+  return allPosts.filter((p) => showScheduled || !isScheduled(p, now));
+}
+
 export function getPost(slug: string): BlogPost | undefined {
-  return posts.find((p) => p.slug === slug);
+  return getLivePosts().find((p) => p.slug === slug);
 }
 
 export function formatDate(iso: string): string {

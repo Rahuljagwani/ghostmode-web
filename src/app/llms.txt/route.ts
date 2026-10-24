@@ -1,4 +1,9 @@
-# Ghost by Renekin AI
+import { getLivePosts, SITE_URL } from "@/lib/blog";
+
+// Picks up scheduled blog posts as they go live.
+export const revalidate = 600;
+
+const INTRO = `# Ghost by Renekin AI
 
 > Ghost is a real-time AI copilot for job interviews and meetings, made by Renekin AI. It listens to the interviewer, reads what's on your screen (coding problems, slides, diagrams), and suggests clear, structured answers in seconds. Its window is hidden from screen share in Zoom, Google Meet and Microsoft Teams. Desktop app for macOS 12+ and Windows 10+.
 
@@ -26,13 +31,9 @@ Key facts:
 - [Resume Bullet Point Generator](https://renekin.com/tools/resume-bullet-point-generator): rewrite a weak resume line into 3 strong, ATS-friendly bullets. No sign-up.
 - [STAR Method Answer Generator](https://renekin.com/tools/star-method-answer-generator): turn a rough story into a STAR answer for behavioral questions. No sign-up.
 
-## Guides
+`;
 
-- [Best AI Interview Copilot 2026](https://renekin.com/blog/best-ai-interview-copilot): price and feature comparison of Ghost, Cluely, Final Round AI, LockedIn AI, Parakeet AI and Interview Coder.
-- [How to Prepare for an AI Interview](https://renekin.com/blog/how-to-prepare-for-ai-interview): the 3 types of AI interviews, what they score, and 10 tips.
-- [How to Beat ATS](https://renekin.com/blog/how-to-beat-ats-resume): how applicant tracking systems work, the 75% myth, and an ATS-friendly resume checklist.
-
-## Company
+const COMPANY = `## Company
 
 - [About Renekin AI](https://renekin.com/about)
 - Instagram: https://www.instagram.com/renekin_ai/
@@ -43,3 +44,13 @@ Key facts:
 
 - [Privacy Policy](https://renekin.com/privacy)
 - [Terms of Service](https://renekin.com/terms)
+`;
+
+export function GET() {
+  const guides = getLivePosts()
+    .map((p) => `- [${p.title}](${SITE_URL}/blog/${p.slug}): ${p.description}`)
+    .join("\n");
+  return new Response(`${INTRO}## Guides\n\n${guides}\n\n${COMPANY}`, {
+    headers: { "Content-Type": "text/plain; charset=utf-8" },
+  });
+}

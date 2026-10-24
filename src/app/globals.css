@@ -61,3 +61,34 @@ body {
     @apply border-l-4 border-sky-400 bg-sky-50 rounded-r-xl px-5 py-4 text-gray-800 italic;
   }
 }
+
+/* Markdown blog posts */
+@layer components {
+  .md-body > * + * {
+    @apply mt-5;
+  }
+  .article .table-wrap {
+    @apply -mx-4 sm:mx-0 overflow-x-auto;
+  }
+  .article table {
+    @apply w-full border-collapse text-left text-sm;
+  }
+  .article thead tr {
+    @apply border-b-2 border-gray-200 text-gray-900;
+  }
+  .article th {
+    @apply py-3 px-3 font-semibold first:pl-4;
+  }
+  .article td {
+    @apply py-3 px-3 text-gray-600 align-top border-t border-gray-100 first:pl-4;
+  }
+  .article code {
+    @apply rounded bg-gray-100 px-1.5 py-0.5 text-[0.9em] text-gray-900;
+  }
+  .article pre {
+    @apply overflow-x-auto rounded-xl bg-gray-900 p-4 text-sm leading-relaxed text-gray-100;
+  }
+  .article pre code {
+    @apply bg-transparent p-0 text-gray-100;
+  }
+}

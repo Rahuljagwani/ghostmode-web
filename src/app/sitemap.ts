@@ -1,10 +1,14 @@
 import { MetadataRoute } from "next";
-import { posts as blogPosts } from "@/lib/blog";
+import { getLivePosts, publishTime, SITE_URL } from "@/lib/blog";
 
-const SITE_URL = "https://renekin.com";
+// Picks up scheduled blog posts as they go live.
+export const revalidate = 600;
 
 async function getBlogPosts(): Promise<{ slug: string; lastModified: Date }[]> {
-  return blogPosts.map((p) => ({ slug: p.slug, lastModified: new Date(`${p.updated}T00:00:00Z`) }));
+  return getLivePosts().map((p) => ({
+    slug: p.slug,
+    lastModified: p.updated > p.published ? new Date(`${p.updated}T00:00:00Z`) : publishTime(p),
+  }));
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -127,7 +131,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogIndex: MetadataRoute.Sitemap = posts.length > 0
     ? [{
         url: `${SITE_URL}/blog`,
-        lastModified: now,
+        lastModified: posts[0].lastModified,
         changeFrequency: "weekly",
         priority: 0.8,
       }]

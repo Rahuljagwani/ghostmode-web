@@ -1,13 +1,19 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { posts, formatDate, SITE_URL } from "@/lib/blog";
+import { getLivePosts, formatDate, isScheduled, SITE_URL } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "Blog",
   description:
     "Honest comparisons, interview tips and product news from the team behind Ghost, the invisible AI interview copilot.",
-  alternates: { canonical: `${SITE_URL}/blog` },
+  alternates: {
+    canonical: `${SITE_URL}/blog`,
+    types: { "application/rss+xml": `${SITE_URL}/blog/rss.xml` },
+  },
 };
+
+// Picks up scheduled posts as they go live.
+export const revalidate = 600;
 
 export default function BlogIndex() {
   return (
@@ -19,7 +25,7 @@ export default function BlogIndex() {
         </p>
 
         <div className="space-y-5">
-          {posts.map((p) => (
+          {getLivePosts().map((p) => (
             <Link
               key={p.slug}
               href={`/blog/${p.slug}`}
@@ -29,6 +35,9 @@ export default function BlogIndex() {
                 <span className="bg-sky-50 text-sky-700 font-semibold px-2.5 py-1 rounded-full">{p.tag}</span>
                 <time dateTime={p.published}>{formatDate(p.published)}</time>
                 <span>· {p.readingMinutes} min read</span>
+                {isScheduled(p) && (
+                  <span className="rounded-full bg-amber-100 px-2.5 py-0.5 font-semibold text-amber-800">Scheduled</span>
+                )}
               </div>
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 leading-snug mb-2">{p.title}</h2>
               <p className="text-gray-600 leading-relaxed">{p.excerpt}</p>

@@ -1,12 +1,13 @@
 import { ImageResponse } from "next/og";
-import { posts, getPost } from "@/lib/blog";
+import { getLivePosts, getPost } from "@/lib/blog";
 
 export const alt = "Ghost by Renekin AI blog";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+export const revalidate = 600;
 
 export function generateStaticParams() {
-  return posts.map((p) => ({ slug: p.slug }));
+  return getLivePosts().map((p) => ({ slug: p.slug }));
 }
 
 export default function Image({ params }: { params: { slug: string } }) {
