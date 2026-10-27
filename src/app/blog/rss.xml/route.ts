@@ -13,7 +13,9 @@ export function GET() {
   const items = getLivePosts()
     .map((p) => {
       const url = `${SITE_URL}/blog/${p.slug}`;
-      const body = p.markdown ? `<content:encoded><![CDATA[${renderPostBody(p.markdown).join("")}]]></content:encoded>` : "";
+      // Feed readers like dev.to need absolute links.
+      const html = p.markdown ? renderPostBody(p.markdown).join("").replace(/href="\//g, `href="${SITE_URL}/`) : "";
+      const body = html ? `<content:encoded><![CDATA[${html}]]></content:encoded>` : "";
       return `<item>
   <title>${escape(p.title)}</title>
   <link>${url}</link>
