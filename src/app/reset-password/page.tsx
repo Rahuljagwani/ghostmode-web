@@ -138,6 +138,7 @@ function ResetPasswordForm() {
               Enter the code sent to
             </p>
             <p className="text-gray-900 font-medium text-sm mt-1">{email}</p>
+            <p className="text-gray-400 text-xs mt-3">Can&apos;t find it? Check your spam or promotions folder.</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
