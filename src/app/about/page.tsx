@@ -30,6 +30,7 @@ const jsonLd = {
     logo: "https://renekin.com/renekin-logo-blue.svg",
     email: "socials@renekin.com",
     slogan: "Renaissance knowledge meets modern AI.",
+    publishingPrinciples: "https://renekin.com/how-we-write",
     sameAs: SOCIAL_LINKS.map((l) => l.href),
   },
 };

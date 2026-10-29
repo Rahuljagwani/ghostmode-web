@@ -86,6 +86,7 @@ export default function Footer() {
             <h4 className="text-gray-900 font-semibold mb-3 text-sm">Company</h4>
             <div className="flex flex-col gap-2 text-sm text-gray-500">
               <Link href="/about" className="hover:text-sky-600 transition-colors">About</Link>
+              <Link href="/how-we-write" className="hover:text-sky-600 transition-colors">How We Write</Link>
               <Link href="/contact" className="hover:text-sky-600 transition-colors">Contact Us</Link>
               <Link href="/privacy" className="hover:text-sky-600 transition-colors">Privacy Policy</Link>
               <Link href="/terms" className="hover:text-sky-600 transition-colors">Terms of Service</Link>

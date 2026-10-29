@@ -36,6 +36,7 @@ Key facts:
 const COMPANY = `## Company
 
 - [About Renekin AI](https://renekin.com/about)
+- [How we write and review our guides](https://renekin.com/how-we-write): editorial policy, sourcing, use of AI, and corrections
 - Instagram: https://www.instagram.com/renekin_ai/
 - YouTube: https://www.youtube.com/@RenekinAI
 - LinkedIn: https://www.linkedin.com/company/renekin-ai/

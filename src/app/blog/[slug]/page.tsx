@@ -108,7 +108,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       dateModified: post.updated,
       mainEntityOfPage: url,
       keywords: post.keywords.join(", "),
-      author: { "@type": "Organization", name: "Renekin AI", url: SITE_URL },
+      author: { "@type": "Organization", name: "Renekin AI", url: `${SITE_URL}/how-we-write` },
       publisher: {
         "@type": "Organization",
         name: "Renekin AI",
@@ -153,7 +153,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           {post.title}
         </h1>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 mt-5 mb-10">
-          <span className="font-medium text-gray-700">Team Renekin</span>
+          <Link href="/how-we-write" className="font-medium text-gray-700 hover:text-sky-600">
+            Team Renekin
+          </Link>
           <span>·</span>
           {post.updated > post.published ? (
             <span>

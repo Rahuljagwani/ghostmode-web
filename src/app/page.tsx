@@ -131,6 +131,7 @@ const jsonLd = [
     url: SITE_URL,
     logo: `${SITE_URL}/renekin-logo-blue.svg`,
     email: "socials@renekin.com",
+    publishingPrinciples: `${SITE_URL}/how-we-write`,
     sameAs: SOCIAL_LINKS.map((l) => l.href),
   },
   {
