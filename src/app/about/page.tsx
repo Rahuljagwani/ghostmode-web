@@ -8,7 +8,7 @@ import { SOCIAL_LINKS } from "@/lib/social";
 const URL = "https://renekin.com/about";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About Us: The Team Behind Ghost",
   description:
     "Renekin AI builds Ghost, a real-time AI copilot for interviews and meetings. Learn what we build, how we price it, and how to reach us.",
   alternates: { canonical: URL },

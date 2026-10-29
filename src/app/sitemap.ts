@@ -11,115 +11,114 @@ async function getBlogPosts(): Promise<{ slug: string; lastModified: Date }[]> {
   }));
 }
 
+// When the static pages last changed. Update this when you edit them, so lastmod stays an honest signal.
+const PAGES_UPDATED = new Date("2026-10-30T00:00:00Z");
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const now = new Date();
+  const posts = await getBlogPosts();
+  const newestPost = posts.reduce((d, p) => (p.lastModified > d ? p.lastModified : d), new Date(0));
+  // The homepage lists the latest guides, so it changes when a new post goes live.
+  const homeUpdated = newestPost > PAGES_UPDATED ? newestPost : PAGES_UPDATED;
 
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: `${SITE_URL}/`,
-      lastModified: now,
+      lastModified: homeUpdated,
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
       url: `${SITE_URL}/ai-interview-assistant`,
-      lastModified: now,
+      lastModified: PAGES_UPDATED,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/ai-coding-interview-assistant`,
-      lastModified: now,
+      lastModified: PAGES_UPDATED,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/tools`,
-      lastModified: now,
+      lastModified: PAGES_UPDATED,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${SITE_URL}/tools/ats-resume-checker`,
-      lastModified: now,
+      lastModified: PAGES_UPDATED,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/tools/interview-question-predictor`,
-      lastModified: now,
+      lastModified: PAGES_UPDATED,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/tools/tell-me-about-yourself-generator`,
-      lastModified: now,
+      lastModified: PAGES_UPDATED,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/tools/resume-bullet-point-generator`,
-      lastModified: now,
+      lastModified: PAGES_UPDATED,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/tools/star-method-answer-generator`,
-      lastModified: now,
+      lastModified: PAGES_UPDATED,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/cluely-alternative`,
-      lastModified: now,
+      lastModified: PAGES_UPDATED,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/about`,
-      lastModified: now,
+      lastModified: PAGES_UPDATED,
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
       url: `${SITE_URL}/download`,
-      lastModified: now,
+      lastModified: PAGES_UPDATED,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/pricing`,
-      lastModified: now,
+      lastModified: PAGES_UPDATED,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${SITE_URL}/contact`,
-      lastModified: now,
+      lastModified: PAGES_UPDATED,
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${SITE_URL}/register`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.4,
-    },
-    {
       url: `${SITE_URL}/privacy`,
-      lastModified: now,
+      lastModified: PAGES_UPDATED,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${SITE_URL}/terms`,
-      lastModified: now,
+      lastModified: PAGES_UPDATED,
       changeFrequency: "yearly",
       priority: 0.3,
     },
   ];
 
-  const posts = await getBlogPosts();
   const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}`,
     lastModified: post.lastModified,
@@ -131,7 +130,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogIndex: MetadataRoute.Sitemap = posts.length > 0
     ? [{
         url: `${SITE_URL}/blog`,
-        lastModified: posts[0].lastModified,
+        lastModified: newestPost,
         changeFrequency: "weekly",
         priority: 0.8,
       }]

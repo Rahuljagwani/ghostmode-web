@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Download Ghost",
+  title: "Download for Mac & Windows (Free)",
   description:
     "Download Ghost for macOS and Windows: an AI copilot that helps you ace interviews, meetings and presentations, hidden from screen sharing.",
   alternates: { canonical: "https://renekin.com/download" },

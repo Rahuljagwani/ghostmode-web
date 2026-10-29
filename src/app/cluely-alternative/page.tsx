@@ -46,7 +46,7 @@ const faqs: Faq[] = [
   },
   {
     q: "Is there a cheaper alternative to Cluely?",
-    a: "Yes. Cluely only hides from screen share on its Pro + Undetectability plan at $149.99 a month. Ghost hides from screen share on every plan, and its largest credit pack works out to about $2 per interview.",
+    a: "Yes. As of October 2026, Cluely only hides from screen share on its Pro + Undetectability plan at $149.99 a month. Ghost hides from screen share on every plan, and its largest credit pack works out to about $2 per interview.",
   },
   {
     q: "Is Ghost hidden from screen share like Cluely?",

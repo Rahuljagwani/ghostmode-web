@@ -155,7 +155,16 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 mt-5 mb-10">
           <span className="font-medium text-gray-700">Team Renekin</span>
           <span>·</span>
-          <time dateTime={post.published}>{formatDate(post.published)}</time>
+          {post.updated > post.published ? (
+            <span>
+              Published <time dateTime={post.published}>{formatDate(post.published)}</time> · Updated{" "}
+              <time dateTime={post.updated}>{formatDate(post.updated)}</time>
+            </span>
+          ) : (
+            <span>
+              Last updated <time dateTime={post.updated}>{formatDate(post.updated)}</time>
+            </span>
+          )}
           <span>·</span>
           <span>{post.readingMinutes} min read</span>
           {isScheduled(post) && (

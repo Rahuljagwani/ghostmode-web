@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getLivePosts, formatDate, isScheduled, SITE_URL } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Interview Prep Blog: Guides & Tips",
   description:
     "Honest comparisons, interview tips and product news from the team behind Ghost, the invisible AI interview copilot.",
   alternates: {

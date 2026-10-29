@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: siteTitle,
-    template: "%s | Renekin AI",
+    template: "%s | Ghost by Renekin AI",
   },
   description: siteDescription,
   keywords: [

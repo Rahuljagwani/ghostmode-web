@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Pricing",
+  title: "Pricing: Pay as You Go from $10",
   description:
     "Simple, transparent pricing for Ghost by Renekin AI. Start free with 20 credits, then choose a plan that fits your needs.",
   alternates: { canonical: "https://renekin.com/pricing" },

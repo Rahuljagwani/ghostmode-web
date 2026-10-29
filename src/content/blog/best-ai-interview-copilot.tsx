@@ -7,7 +7,7 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What is the best Cluely alternative?",
-    a: "Ghost. Cluely only hides from screen share on its Pro + Undetectability plan at $149.99 a month. Ghost hides from screen share on every plan, including the free one, and you pay once for credits instead of a subscription.",
+    a: "Ghost. As of October 2026, Cluely only hides from screen share on its Pro + Undetectability plan at $149.99 a month. Ghost hides from screen share on every plan, including the free one, and you pay once for credits instead of a subscription.",
   },
   {
     q: "Is Ghost free?",
@@ -19,7 +19,7 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "How much does an AI interview copilot cost?",
-    a: "Most charge a subscription: roughly $25 to $90 a month for Final Round AI depending on billing, $49.99 a month for LockedIn AI, $149.99 a month for Cluely with undetectability, and $299 a month for Interview Coder. Ghost is credit-based and works out to about $2 per interview.",
+    a: "As of October 2026, most charge a subscription: roughly $25 to $90 a month for Final Round AI depending on billing, $49.99 a month for LockedIn AI, $149.99 a month for Cluely with undetectability, and $299 a month for Interview Coder. Ghost is credit-based and works out to about $2 per interview.",
   },
 ];
 
