@@ -7,6 +7,13 @@ import llmSystemDesignInterview from "./llm-system-design-interview.md";
 import tellMeAboutYourselfSoftwareEngineer from "./tell-me-about-yourself-software-engineer.md";
 import starMethodExamplesForEngineers from "./star-method-examples-for-engineers.md";
 import aiEngineerResume from "./ai-engineer-resume.md";
+import promptInjectionAiAgents from "./prompt-injection-ai-agents.md";
+import howToScaleADatabase from "./how-to-scale-a-database.md";
+import idempotencyKeysExplained from "./idempotency-keys-explained.md";
+import debugRagSystem from "./debug-rag-system.md";
+import llmEvalsCatchRegressions from "./llm-evals-catch-regressions.md";
+import zeroDowntimeDatabaseMigrations from "./zero-downtime-database-migrations.md";
+import rateLimiterSystemDesign from "./rate-limiter-system-design.md";
 
 export const markdownSources: string[] = [
   aiEngineerInterviewQuestions,
@@ -16,4 +23,11 @@ export const markdownSources: string[] = [
   tellMeAboutYourselfSoftwareEngineer,
   starMethodExamplesForEngineers,
   aiEngineerResume,
+  promptInjectionAiAgents,
+  howToScaleADatabase,
+  idempotencyKeysExplained,
+  debugRagSystem,
+  llmEvalsCatchRegressions,
+  zeroDowntimeDatabaseMigrations,
+  rateLimiterSystemDesign,
 ];
