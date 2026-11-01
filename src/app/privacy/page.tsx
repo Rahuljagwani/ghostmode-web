@@ -11,7 +11,7 @@ export default function PrivacyPage() {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
       <div className="bg-white border border-gray-200 rounded-2xl p-5 sm:p-8 md:p-12 shadow-xl">
       <h1 className="text-4xl font-bold text-gray-900 mb-2">Privacy Policy</h1>
-      <p className="text-gray-500 text-sm mb-10">Last updated: October 17, 2026</p>
+      <p className="text-gray-500 text-sm mb-10">Last updated: November 2, 2026</p>
 
       <div className="prose prose-gray max-w-none space-y-8 text-gray-600 text-sm leading-relaxed [&_h2]:text-gray-900 [&_strong]:text-gray-900 [&_a]:text-sky-600 [&_a]:underline">
         <section>
@@ -27,6 +27,14 @@ export default function PrivacyPage() {
           <h2 className="text-xl font-semibold text-gray-900 mb-3">2. Information We Collect</h2>
           <h3 className="text-base font-medium text-gray-900 mb-2">Account Information</h3>
           <p>When you create an account, we collect your name, email address, and password (hashed). If you sign in with Google, we receive your name and email from Google.</p>
+
+          <h3 className="text-base font-medium text-gray-900 mb-2 mt-4">How You Found Us</h3>
+          <p>
+            When you sign up on our website, we record how you first arrived: the campaign tags on the link you
+            followed (if any), the name of the site that sent you (for example google.com, not the page or search),
+            and the first page you visited. This is kept in your browser until you sign up and is not sent anywhere
+            before then. We use it only to learn which channels bring people to Ghost.
+          </p>
 
           <h3 className="text-base font-medium text-gray-900 mb-2 mt-4">Usage Data</h3>
           <p>We collect aggregated usage statistics such as the number of screenshots taken, voice queries, and text queries to display in your dashboard and manage credit balances.</p>
@@ -109,7 +117,8 @@ export default function PrivacyPage() {
           <p className="mb-3">
             <strong>Essential (always on):</strong> we use your browser&apos;s local storage to keep you
             signed in, to remember your cookie choice, and, if you arrive through a referral link, to
-            remember that referral code for up to 30 days so the right bonus is applied when you sign up.
+            remember that referral code for up to 30 days so the right bonus is applied when you sign up, and to
+            remember how you first found us for up to 90 days (see &quot;How You Found Us&quot; above).
             The site can&apos;t work properly without these.
           </p>
           <p className="mb-3">
