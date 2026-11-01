@@ -19,6 +19,8 @@ const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
+  // Not used by any Tailwind font class, so don't preload it on every page (it was delaying mobile LCP).
+  preload: false,
 });
 
 const siteUrl = "https://renekin.com";

@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-gray-900 font-semibold mb-3 text-sm">Product</h4>
+            <h3 className="text-gray-900 font-semibold mb-3 text-sm">Product</h3>
             <div className="flex flex-col gap-2 text-sm text-gray-500">
               <Link href="/#ghost" className="hover:text-sky-600 transition-colors">Ghost</Link>
               <Link href="/#features" className="hover:text-sky-600 transition-colors">Features</Link>
@@ -63,7 +63,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-gray-900 font-semibold mb-3 text-sm">Free tools</h4>
+            <h3 className="text-gray-900 font-semibold mb-3 text-sm">Free tools</h3>
             <div className="flex flex-col gap-2 text-sm text-gray-500">
               {FREE_TOOLS.map((t) => (
                 <Link key={t.href} href={t.href} className="hover:text-sky-600 transition-colors">
@@ -74,7 +74,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-gray-900 font-semibold mb-3 text-sm">Account</h4>
+            <h3 className="text-gray-900 font-semibold mb-3 text-sm">Account</h3>
             <div className="flex flex-col gap-2 text-sm text-gray-500">
               <Link href="/login" className="hover:text-sky-600 transition-colors">Sign In</Link>
               <Link href="/register" className="hover:text-sky-600 transition-colors">Register</Link>
@@ -83,7 +83,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-gray-900 font-semibold mb-3 text-sm">Company</h4>
+            <h3 className="text-gray-900 font-semibold mb-3 text-sm">Company</h3>
             <div className="flex flex-col gap-2 text-sm text-gray-500">
               <Link href="/about" className="hover:text-sky-600 transition-colors">About</Link>
               <Link href="/how-we-write" className="hover:text-sky-600 transition-colors">How We Write</Link>
@@ -95,7 +95,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-gray-400">
+        <div className="mt-10 pt-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-gray-500">
           <span>&copy; {new Date().getFullYear()} Renekin AI. All rights reserved.</span>
           <span>Renaissance knowledge meets modern AI.</span>
         </div>

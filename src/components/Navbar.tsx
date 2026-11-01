@@ -67,6 +67,7 @@ export default function Navbar() {
               </Link>
               <button
                 onClick={logout}
+                aria-label="Log out"
                 className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-900 transition-colors"
               >
                 <HugeiconsIcon icon={Logout01Icon} size={16} />
@@ -75,7 +76,7 @@ export default function Navbar() {
           ) : (
             <Link
               href="/login"
-              className="text-sm text-white bg-sky-500 hover:bg-sky-600 px-4 sm:px-5 py-2 rounded-full font-medium transition-colors shadow-sm"
+              className="text-sm text-white bg-sky-700 hover:bg-sky-800 px-4 sm:px-5 py-2 rounded-full font-semibold transition-colors shadow-sm"
             >
               Sign in
             </Link>
@@ -84,6 +85,8 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setOpen(!open)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
             className="md:hidden flex items-center text-gray-700 hover:text-sky-600 transition-colors"
           >
             <HugeiconsIcon icon={open ? Cancel01Icon : Menu01Icon} size={20} />

@@ -135,9 +135,9 @@ export default function PricingPage() {
           </div>
         )}
 
-        <div className="mt-12 sm:mt-16 grid grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto">
+        <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto">
           <div className="flex items-center gap-3 bg-white rounded-xl px-4 sm:px-5 py-4 border border-gray-200 shadow-sm">
-            <div className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center">
+            <div className="w-8 h-8 shrink-0 rounded-lg bg-amber-50 flex items-center justify-center">
               <HugeiconsIcon icon={FlashIcon} size={16} className="text-amber-600" />
             </div>
             <div>
@@ -146,7 +146,7 @@ export default function PricingPage() {
             </div>
           </div>
           <div className="flex items-center gap-3 bg-white rounded-xl px-4 sm:px-5 py-4 border border-gray-200 shadow-sm">
-            <div className="w-8 h-8 rounded-lg bg-sky-50 flex items-center justify-center">
+            <div className="w-8 h-8 shrink-0 rounded-lg bg-sky-50 flex items-center justify-center">
               <HugeiconsIcon icon={EyeIcon} size={16} className="text-sky-600" />
             </div>
             <div>
@@ -155,7 +155,7 @@ export default function PricingPage() {
             </div>
           </div>
           <div className="flex items-center gap-3 bg-white rounded-xl px-4 sm:px-5 py-4 border border-gray-200 shadow-sm">
-            <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center">
+            <div className="w-8 h-8 shrink-0 rounded-lg bg-emerald-50 flex items-center justify-center">
               <HugeiconsIcon icon={Mic01Icon} size={16} className="text-emerald-600" />
             </div>
             <div>

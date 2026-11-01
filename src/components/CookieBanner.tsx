@@ -44,8 +44,8 @@ export default function CookieBanner() {
             <p className="mt-1 text-sm leading-relaxed text-gray-600">
               We&apos;d like to use analytics cookies (Google Analytics and PostHog) to understand how the site is used.
               Essential storage, like keeping you signed in, is always on.{" "}
-              <Link href="/privacy#cookies" className="font-medium text-sky-600 hover:underline">
-                Learn more
+              <Link href="/privacy#cookies" className="font-medium text-sky-700 hover:underline">
+                Learn more about cookies
               </Link>
             </p>
             {current && (
@@ -66,7 +66,7 @@ export default function CookieBanner() {
           <button
             type="button"
             onClick={() => choose("granted")}
-            className="rounded-lg bg-sky-500 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-sky-600"
+            className="rounded-lg bg-sky-700 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-sky-800"
           >
             Accept
           </button>

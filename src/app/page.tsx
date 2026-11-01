@@ -77,19 +77,19 @@ const steps: { step: string; title: string; desc: string; color: string }[] = [
     step: "01",
     title: "Set up your profile",
     desc: "Download Ghost, sign in, and add your background documents and relevant context for personalized answers.",
-    color: "bg-sky-500",
+    color: "bg-sky-600",
   },
   {
     step: "02",
     title: "Join your call",
     desc: "Start your video call as normal. Ghost floats invisibly on top, completely hidden from screen share.",
-    color: "bg-indigo-500",
+    color: "bg-indigo-600",
   },
   {
     step: "03",
     title: "Get intelligent answers",
     desc: "Ask via voice, text, or screenshot. AI generates tailored, context-aware responses in seconds.",
-    color: "bg-emerald-500",
+    color: "bg-emerald-600",
   },
 ];
 
@@ -288,12 +288,12 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
             {steps.map((s) => (
               <div key={s.step} className="text-center">
-                <div className={`w-12 h-12 rounded-full ${s.color} text-white font-bold text-lg flex items-center justify-center mx-auto mb-5 shadow-md`}>
+                <div className={`w-12 h-12 rounded-full ${s.color} text-white font-bold text-xl flex items-center justify-center mx-auto mb-5 shadow-md`}>
                   {s.step}
                 </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   {s.title}
-                </h4>
+                </h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
               </div>
             ))}
@@ -359,12 +359,12 @@ export default function Home() {
             ].map((item) => (
               <div
                 key={item.name}
-                className="bg-white rounded-xl p-4 sm:p-6 text-center border border-gray-100 hover:border-sky-200 hover:shadow-md shadow-sm transition-all"
+                className="bg-white rounded-xl px-2 py-4 sm:p-6 text-center border border-gray-100 hover:border-sky-200 hover:shadow-md shadow-sm transition-all"
               >
                 <div className={`w-10 h-10 rounded-lg ${item.bg} flex items-center justify-center mx-auto mb-3`}>
                   <Icon icon={item.icon} size={20} className={item.color} />
                 </div>
-                <p className="font-semibold text-gray-900">{item.name}</p>
+                <p className="text-sm sm:text-base font-semibold text-gray-900">{item.name}</p>
                 <p className="text-sm text-gray-500 mt-1">{item.cost}</p>
               </div>
             ))}
@@ -373,7 +373,7 @@ export default function Home() {
           <div className="text-center mt-8">
             <Link
               href="/pricing"
-              className="inline-flex items-center gap-1 text-sky-600 hover:text-sky-700 font-medium text-sm transition-colors"
+              className="inline-flex items-center gap-1 text-sky-700 hover:text-sky-800 font-semibold text-sm transition-colors"
             >
               View all plans
               <Icon icon={ArrowRight02Icon} size={16} />
@@ -400,7 +400,7 @@ export default function Home() {
               >
                 <h3 className="text-base font-semibold text-gray-900 mb-2">{t.name}</h3>
                 <p className="text-sm text-gray-500 leading-relaxed">{t.desc}</p>
-                <span className="mt-3 inline-block text-sm font-semibold text-sky-600">Try free →</span>
+                <span className="mt-3 inline-block text-sm font-semibold text-sky-700">Try free →</span>
               </Link>
             ))}
           </div>
@@ -415,7 +415,7 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Latest interview guides</h2>
               <p className="text-gray-500">In-depth answers to the questions interviewers are asking now.</p>
             </div>
-            <Link href="/blog" className="text-sm font-semibold text-sky-600 hover:text-sky-700">
+            <Link href="/blog" className="text-sm font-semibold text-sky-700 hover:text-sky-800">
               All guides →
             </Link>
           </div>
@@ -456,7 +456,7 @@ export default function Home() {
                 <div className={`w-10 h-10 rounded-xl ${t.bg} flex items-center justify-center mb-4`}>
                   <Icon icon={t.icon} size={20} className={t.color} />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">{t.title}</h4>
+                <h3 className="font-semibold text-gray-900 mb-2">{t.title}</h3>
                 <p className="text-sm text-gray-500 leading-relaxed">{t.desc}</p>
               </div>
             ))}
@@ -482,7 +482,7 @@ export default function Home() {
               <div className="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center mb-4">
                 <Icon icon={UserCheck01Icon} size={20} className="text-sky-600" />
               </div>
-              <h4 className="font-semibold text-gray-900 mb-2">What we collect</h4>
+              <h3 className="font-semibold text-gray-900 mb-2">What we collect</h3>
               <p className="text-sm text-gray-500 leading-relaxed">
                 When you sign in, we collect your name and email address to create and manage your account.
                 We use this to authenticate you and deliver the service.
@@ -492,7 +492,7 @@ export default function Home() {
               <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center mb-4">
                 <Icon icon={LockIcon} size={20} className="text-emerald-600" />
               </div>
-              <h4 className="font-semibold text-gray-900 mb-2">How we protect it</h4>
+              <h3 className="font-semibold text-gray-900 mb-2">How we protect it</h3>
               <p className="text-sm text-gray-500 leading-relaxed">
                 Your data is encrypted in transit and at rest. We never sell your personal information
                 to third parties. Screenshots and audio recordings are never stored.
@@ -502,7 +502,7 @@ export default function Home() {
               <div className="w-10 h-10 rounded-xl bg-violet-50 flex items-center justify-center mb-4">
                 <Icon icon={File01Icon} size={20} className="text-violet-600" />
               </div>
-              <h4 className="font-semibold text-gray-900 mb-2">Your rights</h4>
+              <h3 className="font-semibold text-gray-900 mb-2">Your rights</h3>
               <p className="text-sm text-gray-500 leading-relaxed">
                 You can request deletion of your account and all associated data at any time
                 by contacting us. You remain in full control of your information.
@@ -513,7 +513,7 @@ export default function Home() {
           <div className="text-center">
             <Link
               href="/privacy"
-              className="inline-flex items-center gap-2 text-sky-600 hover:text-sky-700 font-medium text-sm transition-colors"
+              className="inline-flex items-center gap-2 text-sky-700 hover:text-sky-800 font-medium text-sm transition-colors"
             >
               <Icon icon={File01Icon} size={16} />
               Read our full Privacy Policy
@@ -521,7 +521,7 @@ export default function Home() {
             <span className="mx-3 text-gray-300">|</span>
             <Link
               href="/terms"
-              className="inline-flex items-center gap-2 text-sky-600 hover:text-sky-700 font-medium text-sm transition-colors"
+              className="inline-flex items-center gap-2 text-sky-700 hover:text-sky-800 font-medium text-sm transition-colors"
             >
               Terms of Service
             </Link>

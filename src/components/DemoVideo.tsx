@@ -22,7 +22,7 @@ export default function DemoVideo() {
         ref={ref}
         className="h-full w-full object-cover"
         src="/videos/ghost-demo.mp4"
-        poster="/videos/ghost-demo-poster.jpg"
+        poster="/videos/ghost-demo-poster.webp"
         preload="none"
         playsInline
         controls={started}
@@ -31,7 +31,7 @@ export default function DemoVideo() {
         <button
           type="button"
           onClick={start}
-          aria-label="Play the Ghost demo video"
+          aria-label="Watch the 45s demo of Ghost"
           className="group absolute inset-0 flex items-center justify-center bg-sky-900/10 transition-colors hover:bg-sky-900/20"
         >
           <span className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-white/95 shadow-xl transition-transform group-hover:scale-105">
