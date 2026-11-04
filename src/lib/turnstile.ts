@@ -39,7 +39,9 @@ function loadScript(): Promise<Turnstile> {
 
 const LOAD_FAILED =
   "The security check couldn't load. If you use an ad or script blocker, allow renekin.com and try again.";
-const CHECK_FAILED = "We couldn't confirm you're human. Please try again.";
+// Cloudflare's error code is shown so a screenshot is enough to diagnose a problem.
+const checkFailed = (code?: string) =>
+  new Error(`We couldn't confirm you're human. Please try again.${code ? ` (error ${code})` : ""}`);
 
 /** A fresh single-use token, or null when Turnstile isn't configured. */
 export async function getTurnstileToken(action: string): Promise<string | null> {
@@ -52,20 +54,25 @@ export async function getTurnstileToken(action: string): Promise<string | null> 
     throw new Error(LOAD_FAILED);
   }
 
-  // Bottom-centre card, kept invisible unless Cloudflare asks for a click.
+  // Bottom-centre holder for the widget. Never hide the widget with CSS (opacity, visibility):
+  // Cloudflare treats a hidden widget as a bot and the check fails. "interaction-only" keeps it
+  // out of sight by itself; the card styling and label are added only when a click is needed.
   const card = document.createElement("div");
   card.setAttribute("role", "dialog");
   card.setAttribute("aria-label", "Security check");
   card.style.cssText =
-    "position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:60;background:#fff;" +
-    "border:1px solid #e5e7eb;border-radius:16px;padding:12px;box-shadow:0 10px 30px rgba(0,0,0,.12);" +
-    "opacity:0;pointer-events:none;transition:opacity .15s;max-width:calc(100vw - 32px)";
+    "position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:60;max-width:calc(100vw - 32px)";
   const label = document.createElement("p");
   label.textContent = "Quick check that you're human";
-  label.style.cssText = "margin:0 0 8px;font-size:14px;color:#374151;font-family:inherit";
+  label.style.cssText = "display:none;margin:0 0 8px;font-size:14px;color:#374151;font-family:inherit";
   const slot = document.createElement("div");
   card.append(label, slot);
   document.body.appendChild(card);
+  const showCard = () => {
+    card.style.cssText +=
+      ";background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:12px;box-shadow:0 10px 30px rgba(0,0,0,.12)";
+    label.style.display = "block";
+  };
 
   return new Promise<string>((resolve, reject) => {
     let widgetId: string | undefined;
@@ -77,7 +84,7 @@ export async function getTurnstileToken(action: string): Promise<string | null> 
       card.remove();
       fn();
     };
-    const timer = setTimeout(() => done(() => reject(new Error(CHECK_FAILED))), TIMEOUT_MS);
+    const timer = setTimeout(() => done(() => reject(checkFailed("timeout"))), TIMEOUT_MS);
     try {
       widgetId = turnstile.render(slot, {
         sitekey: SITE_KEY,
@@ -85,12 +92,13 @@ export async function getTurnstileToken(action: string): Promise<string | null> 
         appearance: "interaction-only",
         theme: "light", // the site has no dark mode
         callback: (token: string) => done(() => resolve(token)),
-        "error-callback": () => done(() => reject(new Error(CHECK_FAILED))),
-        "expired-callback": () => done(() => reject(new Error(CHECK_FAILED))),
-        "before-interactive-callback": () => {
-          card.style.opacity = "1";
-          card.style.pointerEvents = "auto";
+        "error-callback": (code: string) => {
+          console.warn("Turnstile error", code);
+          done(() => reject(checkFailed(String(code))));
+          return true; // handled: stops Cloudflare's own retry loop and console error
         },
+        "expired-callback": () => done(() => reject(checkFailed("expired"))),
+        "before-interactive-callback": showCard,
       });
     } catch {
       done(() => reject(new Error(LOAD_FAILED)));
