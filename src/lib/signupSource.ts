@@ -1,6 +1,8 @@
 // How a visitor first found us (UTM tags, referring site, landing page), kept in this
 // browser for 90 days and sent only with the sign-up request. The first visit wins, so
 // the channel that found them gets the credit. No network call is made here.
+// It is deliberately not cleared after sign-up: clearing made the next page (/verify-email)
+// count as a fresh "first visit" for any later account from the same browser.
 
 const KEY = "renekin_src";
 const MAX_AGE_MS = 90 * 24 * 60 * 60 * 1000;
@@ -64,10 +66,4 @@ export function getSignupSource(): SignupSource {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { ts, ...source } = stored;
   return source;
-}
-
-export function clearSignupSource() {
-  try {
-    localStorage.removeItem(KEY);
-  } catch {}
 }

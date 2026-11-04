@@ -10,7 +10,7 @@ import {
 } from "react";
 import { apiFetch, ApiError } from "./api";
 import { clearReferral, getReferral } from "@/lib/referral";
-import { clearSignupSource, getSignupSource } from "@/lib/signupSource";
+import { getSignupSource } from "@/lib/signupSource";
 import { turnstileHeader } from "@/lib/turnstile";
 
 interface User {
@@ -104,7 +104,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
     );
     clearReferral();
-    clearSignupSource();
     saveToken(data.token);
     setUser(data.user);
     return data.user;
