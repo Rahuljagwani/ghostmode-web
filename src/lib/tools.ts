@@ -1,4 +1,5 @@
 import posthog from "posthog-js";
+import { turnstileHeader } from "@/lib/turnstile";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1";
 
@@ -65,7 +66,7 @@ export function track(event: string, props?: Record<string, unknown>) {
 export async function predictQuestions(jobDescription: string, company?: string): Promise<QuestionsResult> {
   const res = await fetch(`${API_URL}/tools/interview-questions`, {
     method: "POST",
-    headers: { "Content-Type": "application/json", ...authHeader() },
+    headers: { "Content-Type": "application/json", ...authHeader(), ...(await turnstileHeader("tool")) },
     body: JSON.stringify({ job_description: jobDescription, company: company || null }),
   });
   return handle<QuestionsResult>(res);
@@ -78,7 +79,7 @@ export async function checkResume(jobDescription: string, resume: File | string)
   else form.append("resume_file", resume);
   const res = await fetch(`${API_URL}/tools/ats-check`, {
     method: "POST",
-    headers: authHeader(),
+    headers: { ...authHeader(), ...(await turnstileHeader("tool")) },
     body: form,
   });
   return handle<AtsResult>(res);
@@ -87,7 +88,7 @@ export async function checkResume(jobDescription: string, resume: File | string)
 async function postJson<T>(path: string, body: unknown): Promise<T> {
   const res = await fetch(`${API_URL}/tools/${path}`, {
     method: "POST",
-    headers: { "Content-Type": "application/json", ...authHeader() },
+    headers: { "Content-Type": "application/json", ...authHeader(), ...(await turnstileHeader("tool")) },
     body: JSON.stringify(body),
   });
   return handle<T>(res);

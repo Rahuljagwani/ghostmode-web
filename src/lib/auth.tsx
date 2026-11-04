@@ -11,6 +11,7 @@ import {
 import { apiFetch, ApiError } from "./api";
 import { clearReferral, getReferral } from "@/lib/referral";
 import { clearSignupSource, getSignupSource } from "@/lib/signupSource";
+import { turnstileHeader } from "@/lib/turnstile";
 
 interface User {
   id: string;
@@ -92,6 +93,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       "/auth/register",
       {
         method: "POST",
+        headers: await turnstileHeader("signup"),
         body: JSON.stringify({
           email,
           password,

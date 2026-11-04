@@ -11,7 +11,7 @@ export default function PrivacyPage() {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
       <div className="bg-white border border-gray-200 rounded-2xl p-5 sm:p-8 md:p-12 shadow-xl">
       <h1 className="text-4xl font-bold text-gray-900 mb-2">Privacy Policy</h1>
-      <p className="text-gray-500 text-sm mb-10">Last updated: November 2, 2026</p>
+      <p className="text-gray-500 text-sm mb-10">Last updated: November 4, 2026</p>
 
       <div className="prose prose-gray max-w-none space-y-8 text-gray-600 text-sm leading-relaxed [&_h2]:text-gray-900 [&_strong]:text-gray-900 [&_a]:text-sky-600 [&_a]:underline">
         <section>
@@ -78,6 +78,11 @@ export default function PrivacyPage() {
             <li><strong className="text-gray-900">Stripe:</strong> International payment processing</li>
             <li><strong className="text-gray-900">Razorpay:</strong> Payment processing</li>
             <li><strong className="text-gray-900">Google OAuth:</strong> Authentication</li>
+            <li>
+              <strong className="text-gray-900">Cloudflare Turnstile:</strong> Checks that sign-ups and free-tool
+              requests come from a person, not a bot. It reads technical signals from your browser and does not
+              use cookies for advertising.
+            </li>
           </ul>
           <p className="mt-2">Each provider has their own privacy policy governing how they handle data.</p>
         </section>
