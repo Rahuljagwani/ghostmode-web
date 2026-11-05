@@ -35,7 +35,7 @@ const rows: [string, string, string][] = [
   ["Pricing model", "One-time credit packs that never auto-renew", "Subscription (monthly or every 3 months), or a one-time Lifetime plan"],
   ["Cheapest paid option", "$10 once (200 credits, about 3–4 interviews)", "₹6,213 (about $66) for one month of Credits, with a 50% promo; regular price ₹12,426 (about $132)"],
   ["Free plan", "20 credits with every feature unlocked", "10 minutes of live interview help"],
-  ["Refunds", "No subscription to cancel", "Monthly and 3-month plans non-refundable once started; Lifetime within 7 days if unused"],
+  ["Refunds", "Credits are non-refundable, but every feature can be tried free first", "Monthly and 3-month plans non-refundable once started; Lifetime within 7 days if unused"],
   ["Hidden from screen share", "Yes, on every plan including free", "Yes, stealth mode on supported desktop apps"],
   ["Reads your screen", "Yes, screenshot coding problems, slides and diagrams", "Yes, coding and online assessment help"],
   ["Uses your resume and job description", "Yes", "Yes"],
@@ -170,10 +170,11 @@ export default function LockedInAiAlternativePage() {
               </p>
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Refunds that end at the first session</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Try it properly before paying</h3>
               <p className="text-gray-600 leading-relaxed">
-                LockedIn AI&apos;s monthly and 3-month plans can&apos;t be refunded once started. With Ghost you try
-                every feature on 20 free credits first, then spend $10 or more only if it works for you.
+                LockedIn AI&apos;s monthly and 3-month plans can&apos;t be refunded once started, and its free plan
+                gives 10 minutes of live help. Ghost&apos;s credits aren&apos;t refundable either, but 20 free credits
+                unlock every feature, so you can test it in a real interview before spending $10 or more.
               </p>
             </div>
             <div>

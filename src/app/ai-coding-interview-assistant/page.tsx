@@ -346,6 +346,10 @@ export default function AiCodingInterviewAssistantPage() {
               compares in our{" "}
               <Link href="/blog/best-ai-interview-copilot" className="text-sky-600 underline underline-offset-2 hover:text-sky-700">
                 AI interview copilot price comparison
+              </Link>{" "}
+              or{" "}
+              <Link href="/interview-coder-alternative" className="text-sky-600 underline underline-offset-2 hover:text-sky-700">
+                Ghost vs Interview Coder
               </Link>
               .
             </p>

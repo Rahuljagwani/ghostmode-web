@@ -34,7 +34,7 @@ const rows: [string, string, string][] = [
   ["Live answers on the free plan", "Yes, 20 free credits with every feature", "No. The free plan has no live copilot, and there's no free trial"],
   ["Cheapest way to use it in a real interview", "$10 once (200 credits, about 3–4 interviews)", "$150 for one month, or $250 a quarter, or $300 a year upfront"],
   ["Pricing model", "One-time credit packs that never auto-renew", "Subscription: monthly, quarterly or yearly"],
-  ["Refunds", "No subscription to cancel", "Monthly plan non-refundable; 72-hour guarantee on first quarterly or yearly purchase"],
+  ["Refunds", "Credits are non-refundable, but every feature can be tried free first", "Monthly plan non-refundable; 72-hour guarantee on first quarterly or yearly purchase"],
   ["Hidden from screen share", "Yes, on every plan including free", "Stealth mode on paid plans"],
   ["Reads your screen", "Yes, screenshot coding problems, slides and diagrams", "Yes (Screen Help)"],
   ["Uses your resume and job description", "Yes", "Yes"],
