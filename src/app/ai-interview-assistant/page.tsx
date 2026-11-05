@@ -16,12 +16,18 @@ import type { IconSvgElement } from "@hugeicons/react";
 const URL = "https://renekin.com/ai-interview-assistant";
 
 export const metadata: Metadata = {
-  title: { absolute: "AI Interview Assistant for Real-Time Answers | Ghost" },
+  // Search Console: this page gets most "ghost assistant" / "ghost ai interview" searches and
+  // "real-time AI interview assistant", so both lead the title.
+  title: { absolute: "Ghost AI: Real-Time AI Interview Assistant | Renekin" },
   description:
-    "Ghost is an AI interview assistant that hears the question, reads your screen and suggests answers in seconds. Works with Zoom, Meet and Teams.",
+    "Ghost AI is a real-time AI interview assistant: it hears the question, reads your screen and suggests answers in seconds. Works with Zoom, Meet and Teams.",
   keywords: [
     "AI interview assistant",
+    "real-time AI interview assistant",
     "real-time interview assistant",
+    "Ghost AI",
+    "Ghost assistant",
+    "Ghost AI interview assistant",
     "AI interview helper",
     "AI assistant for interviews",
     "AI interview copilot",
@@ -30,7 +36,7 @@ export const metadata: Metadata = {
   alternates: { canonical: URL },
   openGraph: {
     url: URL,
-    title: "AI Interview Assistant for Real-Time Answers | Ghost",
+    title: "Ghost AI: Real-Time AI Interview Assistant | Renekin",
     description:
       "Listens to the question, reads your screen and suggests answers in seconds. Hidden from screen share. Mac and Windows.",
     images: ["/opengraph-image"],
@@ -107,6 +113,10 @@ const useCases: { title: string; desc: string }[] = [
 
 const faqs: { q: string; a: string }[] = [
   {
+    q: "What is Ghost AI?",
+    a: "Ghost, often called Ghost AI, is a real-time AI interview assistant made by Renekin AI. It's a desktop app for Mac and Windows that listens to the interviewer, reads your screen when you ask, and suggests answers in a few seconds, while staying hidden from screen share.",
+  },
+  {
     q: "What is an AI interview assistant?",
     a: "An AI interview assistant is an app that helps you during a live or practice interview. It transcribes the interviewer's question and suggests a relevant, structured answer in real time, so you can respond clearly and confidently.",
   },
@@ -165,7 +175,7 @@ export default function AiInterviewAssistantPage() {
       <section className="bg-gradient-to-b from-sky-400 via-sky-300 to-sky-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-32 sm:pt-40 pb-12 sm:pb-16 text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.1] drop-shadow-sm text-balance">
-            AI Interview Assistant
+            Ghost: the real-time AI interview assistant
           </h1>
           <p className="mt-5 sm:mt-6 text-base sm:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
             Ghost listens to the interviewer, reads your screen and suggests clear answers in seconds,

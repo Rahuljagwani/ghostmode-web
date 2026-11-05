@@ -463,7 +463,7 @@ export default function Home() {
                 ))}
               <li>
                 <Link href="/ai-interview-assistant" className="inline-block rounded-full border border-gray-200 bg-white px-4 py-2 text-sm text-gray-700 hover:border-sky-300 hover:text-sky-700">
-                  AI interview assistant
+                  Real-time AI interview assistant
                 </Link>
               </li>
               <li>
