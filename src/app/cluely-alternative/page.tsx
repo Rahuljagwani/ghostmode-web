@@ -198,8 +198,12 @@ export default function CluelyAlternativePage() {
             Want the full picture? See our{" "}
             <Link href="/blog/best-ai-interview-copilot" className="text-sky-600 underline underline-offset-2 hover:text-sky-700">
               comparison of 6 AI interview copilots
+            </Link>
+            , the{" "}
+            <Link href="/final-round-ai-alternative" className="text-sky-600 underline underline-offset-2 hover:text-sky-700">
+              Final Round AI alternative
             </Link>{" "}
-            or how Ghost works as an{" "}
+            page, or how Ghost works as an{" "}
             <Link href="/ai-interview-assistant" className="text-sky-600 underline underline-offset-2 hover:text-sky-700">
               AI interview assistant
             </Link>

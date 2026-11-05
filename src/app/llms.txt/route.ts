@@ -20,6 +20,7 @@ Key facts:
 - [AI Interview Assistant](https://renekin.com/ai-interview-assistant): what Ghost is, how it works in an interview, features, pricing and FAQ.
 - [AI Coding Interview Assistant](https://renekin.com/ai-coding-interview-assistant): screenshot a coding problem, get the approach, code, complexity and edge cases.
 - [Cluely alternative](https://renekin.com/cluely-alternative): Ghost vs Cluely on screen-share stealth, pricing and features.
+- [Final Round AI alternative](https://renekin.com/final-round-ai-alternative): Ghost vs Final Round AI on free-plan live help, pricing, refunds and features.
 - [Pricing](https://renekin.com/pricing): free and paid credit packs.
 - [Download](https://renekin.com/download): macOS and Windows installers.
 
