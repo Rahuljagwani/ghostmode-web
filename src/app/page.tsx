@@ -119,6 +119,16 @@ const trustPoints: { icon: IconSvgElement; title: string; desc: string; color: s
 
 const SITE_URL = "https://renekin.com";
 
+// Guides already close to page 1 in Google (Search Console, Nov 2026). Linking them from the
+// homepage passes them more weight; update the list as rankings change.
+const POPULAR_GUIDES = [
+  "rag-interview-questions",
+  "prompt-injection-ai-agents",
+  "llm-system-design-interview",
+  "best-ai-interview-copilot",
+  "how-to-prepare-for-ai-interview",
+];
+
 // Refreshes the "Latest guides" block as scheduled posts go live.
 export const revalidate = 600;
 
@@ -128,6 +138,7 @@ const jsonLd = [
     "@type": "Organization",
     "@id": `${SITE_URL}/#organization`,
     name: "Renekin AI",
+    alternateName: ["Renekin"],
     url: SITE_URL,
     logo: `${SITE_URL}/renekin-logo-blue.svg`,
     email: "socials@renekin.com",
@@ -138,7 +149,7 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Ghost by Renekin AI",
-    alternateName: ["Ghost", "Renekin AI"],
+    alternateName: ["Ghost AI", "Ghost", "Renekin AI"],
     url: SITE_URL,
     publisher: { "@id": `${SITE_URL}/#organization` },
   },
@@ -146,6 +157,7 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: "Ghost by Renekin AI",
+    alternateName: ["Ghost AI", "Ghost AI interview assistant", "Ghost interview copilot"],
     description:
       "Real-time AI interview copilot for coding, technical and HR interviews and meetings. Live transcription, screenshot analysis and context-aware answers, hidden from screen share.",
     applicationCategory: "BusinessApplication",
@@ -185,7 +197,7 @@ export default function Home() {
             <div>
               <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08] drop-shadow-sm">
                 <span className="block w-fit mb-4 sm:mb-6 rounded-full bg-white/20 border border-white/30 px-4 py-1.5 text-xs sm:text-sm font-semibold tracking-wide uppercase leading-normal drop-shadow-none">
-                  AI Interview Copilot
+                  Ghost AI Interview Copilot
                 </span>
                 Think better.
                 <br />
@@ -433,6 +445,33 @@ export default function Home() {
                   <p className="mt-2 text-sm text-gray-500 leading-relaxed line-clamp-3">{p.excerpt}</p>
                 </Link>
               ))}
+          </div>
+          <div className="mt-8">
+            <h3 className="text-sm font-semibold text-gray-900 mb-3">Popular with candidates</h3>
+            <ul className="flex flex-wrap gap-2">
+              {getLivePosts()
+                .filter((p) => POPULAR_GUIDES.includes(p.slug))
+                .map((p) => (
+                  <li key={p.slug}>
+                    <Link
+                      href={`/blog/${p.slug}`}
+                      className="inline-block rounded-full border border-gray-200 bg-white px-4 py-2 text-sm text-gray-700 hover:border-sky-300 hover:text-sky-700"
+                    >
+                      {p.title}
+                    </Link>
+                  </li>
+                ))}
+              <li>
+                <Link href="/ai-interview-assistant" className="inline-block rounded-full border border-gray-200 bg-white px-4 py-2 text-sm text-gray-700 hover:border-sky-300 hover:text-sky-700">
+                  AI interview assistant
+                </Link>
+              </li>
+              <li>
+                <Link href="/ai-coding-interview-assistant" className="inline-block rounded-full border border-gray-200 bg-white px-4 py-2 text-sm text-gray-700 hover:border-sky-300 hover:text-sky-700">
+                  AI coding interview assistant
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       </section>

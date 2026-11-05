@@ -25,9 +25,10 @@ const geistMono = localFont({
 
 const siteUrl = "https://renekin.com";
 const siteName = "Renekin AI";
-const siteTitle = "AI Interview Copilot & Assistant | Ghost by Renekin AI";
+// Brand first: people who saw a reel search "ghost ai interview", "interview ghost ai" and similar.
+const siteTitle = "Ghost: AI Interview Assistant & Copilot | Renekin AI";
 const siteDescription =
-  "Ghost is a real-time AI interview copilot for coding, technical and HR interviews. Live answers on Mac and Windows, hidden from screen share. 20 free credits.";
+  "Ghost AI by Renekin is a real-time AI interview copilot for coding, technical and HR interviews. Live answers on Mac and Windows, hidden from screen share.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -46,6 +47,8 @@ export const metadata: Metadata = {
     "invisible AI assistant",
     "screen sharing safe",
     "Ghost AI",
+    "Ghost AI interview assistant",
+    "Ghost interview copilot",
     "Renekin AI",
     "meeting assistant",
     "behavioral interview prep",
