@@ -212,7 +212,11 @@ export default function FinalRoundAiAlternativePage() {
             <Link href="/cluely-alternative" className="text-sky-600 underline underline-offset-2 hover:text-sky-700">
               Cluely alternative
             </Link>{" "}
-            page, or how Ghost works as a{" "}
+            and{" "}
+            <Link href="/lockedin-ai-alternative" className="text-sky-600 underline underline-offset-2 hover:text-sky-700">
+              LockedIn AI alternative
+            </Link>{" "}
+            pages, or how Ghost works as a{" "}
             <Link href="/ai-interview-assistant" className="text-sky-600 underline underline-offset-2 hover:text-sky-700">
               real-time AI interview assistant
             </Link>
