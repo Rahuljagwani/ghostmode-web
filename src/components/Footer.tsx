@@ -59,6 +59,7 @@ export default function Footer() {
               <Link href="/final-round-ai-alternative" className="hover:text-sky-600 transition-colors">Final Round AI Alternative</Link>
               <Link href="/lockedin-ai-alternative" className="hover:text-sky-600 transition-colors">LockedIn AI Alternative</Link>
               <Link href="/interview-coder-alternative" className="hover:text-sky-600 transition-colors">Interview Coder Alternative</Link>
+              <Link href="/parakeet-ai-alternative" className="hover:text-sky-600 transition-colors">Parakeet AI Alternative</Link>
               <Link href="/pricing" className="hover:text-sky-600 transition-colors">Pricing</Link>
               <Link href="/download" className="hover:text-sky-600 transition-colors">Download</Link>
               <Link href="/blog" className="hover:text-sky-600 transition-colors">Blog</Link>

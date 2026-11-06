@@ -100,6 +100,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
+      url: `${SITE_URL}/parakeet-ai-alternative`,
+      lastModified: new Date("2026-11-06T00:00:00Z"),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${SITE_URL}/about`,
       lastModified: PAGES_UPDATED,
       changeFrequency: "monthly",
