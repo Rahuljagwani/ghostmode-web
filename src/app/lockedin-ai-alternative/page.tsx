@@ -6,9 +6,11 @@ import { ArrowRight02Icon } from "@hugeicons/core-free-icons";
 
 const URL = "https://renekin.com/lockedin-ai-alternative";
 
-// LockedIn AI prices read from lockedinai.com/pricing on Nov 6, 2026. The site showed rupees to a visitor
-// in India, with a "LOCKIN50" 50%-off code applied automatically; dollar figures are converted at the
-// ECB rate that day (₹94.48 = $1). Free plan from lockedinai.com/ai-copilot, refunds from
+// LockedIn AI prices read from lockedinai.com/pricing on Nov 6, 2026. The site only showed rupees (visitor
+// in India), with a "LOCKIN50" 50%-off code applied automatically, and exposes no USD prices; dollar figures
+// are converted at the ECB rate that day (₹94.48 = $1) and labelled approximate. Rupee source figures:
+// Credits ₹12,426/mo regular, ₹6,213/mo promo, ₹4,437.67/mo billed quarterly; Unlimited ₹24,848/mo regular;
+// Lifetime ₹89,565.50 promo. Free plan from lockedinai.com/ai-copilot, refunds from
 // lockedinai.com/refund-policy. Recheck before editing: their prices change often.
 export const metadata: Metadata = {
   title: { absolute: "Best LockedIn AI Alternative (2026): Ghost vs LockedIn AI" },
@@ -33,7 +35,7 @@ export const metadata: Metadata = {
 
 const rows: [string, string, string][] = [
   ["Pricing model", "One-time credit packs that never auto-renew", "Subscription (monthly or every 3 months), or a one-time Lifetime plan"],
-  ["Cheapest paid option", "$10 once (200 credits, about 3–4 interviews)", "₹6,213 (about $66) for one month of Credits, with a 50% promo; regular price ₹12,426 (about $132)"],
+  ["Cheapest paid option", "$10 once (200 credits, about 3–4 interviews)", "About $66 for one month of Credits with a 50% promo; about $132 regular"],
   ["Free plan", "20 credits with every feature unlocked", "10 minutes of live interview help"],
   ["Refunds", "Credits are non-refundable, but every feature can be tried free first", "Monthly and 3-month plans non-refundable once started; Lifetime within 7 days if unused"],
   ["Hidden from screen share", "Yes, on every plan including free", "Yes, stealth mode on supported desktop apps"],
@@ -50,11 +52,11 @@ const faqs: Faq[] = [
   },
   {
     q: "How much does LockedIn AI cost?",
-    a: "On November 6, 2026, LockedIn AI's pricing page showed visitors in India the Credits plan at a regular ₹12,426 a month (about $132), discounted to ₹6,213 a month with a 50% promo code, or ₹4,437.67 a month billed every 3 months. Unlimited was ₹24,848 a month regular, and Lifetime ₹89,565.50 with the promo. Prices vary by country and promotion, so check lockedinai.com for yours.",
+    a: "On November 6, 2026, LockedIn AI's pricing page listed the Credits plan at about $132 a month regular, about $66 a month with a 50% promo code, or about $47 a month billed every 3 months. Unlimited was about $263 a month regular, and Lifetime about $948 with the promo. These are converted from the prices LockedIn AI showed us in rupees; prices vary by country and promotion, so check lockedinai.com for yours.",
   },
   {
     q: "Is there a cheaper alternative to LockedIn AI?",
-    a: "Yes, if you have a few interviews coming up. Ghost's $10 pack covers about 3 to 4 interviews and its $19 pack about 7, paid once. LockedIn AI's cheapest single month of Credits was ₹6,213 (about $66) with its current promo.",
+    a: "Yes, if you have a few interviews coming up. Ghost's $10 pack covers about 3 to 4 interviews and its $19 pack about 7, paid once. LockedIn AI's cheapest single month of Credits was about $66 with its current promo.",
   },
   {
     q: "Does Ghost need a subscription?",
@@ -108,7 +110,7 @@ export default function LockedInAiAlternativePage() {
             <p className="text-gray-600 text-lg leading-relaxed">
               LockedIn AI is a broad career suite sold as a{" "}
               <strong className="text-gray-900">subscription</strong>: its Credits plan lists at{" "}
-              <strong className="text-gray-900">₹12,426 a month (about $132)</strong>, about half that with its
+              <strong className="text-gray-900">about $132 a month</strong>, about half that with its
               current promo. Ghost focuses on live interview help on your computer and costs{" "}
               <strong className="text-gray-900">$10 to $28, paid once</strong>. If you have a few interviews coming
               up, Ghost is the simpler, cheaper choice. If you want phone apps, a human helper and career tools in one
@@ -147,8 +149,9 @@ export default function LockedInAiAlternativePage() {
             <a href="https://www.lockedinai.com/pricing" target="_blank" rel="nofollow noopener noreferrer" className="underline">
               LockedIn AI&apos;s pricing page
             </a>{" "}
-            on November 6, 2026, as shown to a visitor in India in rupees; dollar amounts are converted at ₹94.48 per
-            dollar. Prices vary by country and promotion and may change. Refund terms are from LockedIn AI&apos;s{" "}
+            on November 6, 2026. The site showed us local prices, so dollar amounts are approximate conversions at that
+            day&apos;s exchange rate and US prices may differ. Prices also vary with promotions and may change. Refund
+            terms are from LockedIn AI&apos;s{" "}
             <a href="https://www.lockedinai.com/refund-policy" target="_blank" rel="nofollow noopener noreferrer" className="underline">
               refund policy
             </a>
@@ -196,9 +199,9 @@ export default function LockedInAiAlternativePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="rounded-2xl border border-gray-200 p-6">
               <p className="text-sm font-semibold text-gray-500 mb-1">LockedIn AI, Credits plan</p>
-              <p className="text-4xl font-bold text-gray-900">₹6,213</p>
+              <p className="text-4xl font-bold text-gray-900">~$66</p>
               <p className="text-sm text-gray-500 mt-2">
-                About $66: one month with the current 50% promo (₹12,426 regular), non-refundable once started
+                One month with the current 50% promo (about $132 regular), non-refundable once started
               </p>
             </div>
             <div className="rounded-2xl border-2 border-sky-400 bg-sky-50 p-6">

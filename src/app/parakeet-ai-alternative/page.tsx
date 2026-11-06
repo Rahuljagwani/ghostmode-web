@@ -7,8 +7,9 @@ import { ArrowRight02Icon } from "@hugeicons/core-free-icons";
 const URL = "https://renekin.com/parakeet-ai-alternative";
 
 // ParakeetAI prices, credit rules, free trial and refund terms read from parakeet-ai.com (pricing section
-// and billing FAQ) on Nov 6, 2026. The site showed rupees to a visitor in India; dollar figures are
-// converted at ₹94.48 = $1 (ECB rate that week), matching the LockedIn AI page. Recheck before editing.
+// and billing FAQ) on Nov 6, 2026. US dollar prices come from the site's own price data (planPrices.USD),
+// not a conversion: 1 credit $25, 3 for $39, 8 for $78, 15 for $117; unlimited $52/week, $99.90/month,
+// $399.90/year. Recheck before editing.
 // Ghost per-interview cost: a typical interview uses 50 to 60 credits (pricing page FAQ).
 export const metadata: Metadata = {
   title: { absolute: "Parakeet AI Alternative (2026): Ghost vs Parakeet AI" },
@@ -34,8 +35,8 @@ export const metadata: Metadata = {
 
 const rows: [string, string, string][] = [
   ["How you pay", "Per question: 1 credit for text, 2 for a screenshot, 3 for voice", "Per call time: 0.5 credit for every 30 minutes, or an unlimited subscription"],
-  ["Cost of a typical 1-hour interview", "About $2 to $3 (50 to 60 credits)", "1 credit: ₹738 to ₹2,360 (about $8 to $25), depending on pack size"],
-  ["Smallest purchase", "$10 for 200 credits (about 3–4 interviews)", "₹2,360 (about $25) for 1 credit, or ₹3,690 (about $39) for 3"],
+  ["Cost of a typical 1-hour interview", "About $2 to $3 (50 to 60 credits)", "1 credit: $7.80 to $25, depending on pack size"],
+  ["Smallest purchase", "$10 for 200 credits (about 3–4 interviews)", "$25 for 1 credit, or $39 for 3"],
   ["Free trial", "20 credits with every feature unlocked", "10 sessions of up to 10 minutes each, plus 1 free mock interview"],
   ["Credits expire", "Never", "Never"],
   ["Refunds", "Credits are non-refundable, but every feature can be tried free first", "7 days for unused purchases; 28 days for an unused renewal"],
@@ -51,11 +52,11 @@ const faqs: Faq[] = [
   },
   {
     q: "How much does Parakeet AI cost?",
-    a: "On November 6, 2026, ParakeetAI's website showed visitors in India credit packs of 3 credits for ₹3,690, 8 for ₹7,380 and 15 for ₹11,070, or a single credit for ₹2,360. One credit covers an hour of call time. Unlimited plans were ₹9,470 a month, ₹37,900 a year or ₹4,980 a week. Prices vary by country, so check parakeet-ai.com for yours.",
+    a: "As of November 2026, ParakeetAI lists credit packs of 3 credits for $39, 8 for $78 and 15 for $117, or a single credit for $25. One credit covers an hour of call time. Unlimited plans are $52 a week, $99.90 a month or $399.90 a year. Check parakeet-ai.com for current prices.",
   },
   {
     q: "Is Ghost cheaper than Parakeet AI?",
-    a: "For most interviews, yes. Ghost charges per question rather than per minute, and a typical interview uses 50 to 60 credits, about $2 to $3 on the $10 pack and less on larger packs. A 1-hour ParakeetAI session costs 1 credit, which was ₹738 to ₹2,360 (about $8 to $25) depending on the pack.",
+    a: "For most interviews, yes. Ghost charges per question rather than per minute, and a typical interview uses 50 to 60 credits, about $2 to $3 on the $10 pack and less on larger packs. A 1-hour ParakeetAI session costs 1 credit, which costs $7.80 to $25 depending on the pack.",
   },
   {
     q: "Do Ghost credits expire?",
@@ -108,8 +109,8 @@ export default function ParakeetAiAlternativePage() {
             <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">The short answer</h2>
             <p className="text-gray-600 text-lg leading-relaxed">
               ParakeetAI and Ghost both sell credits that never expire, but they count differently. ParakeetAI charges
-              for call time: <strong className="text-gray-900">1 credit per hour</strong>, which was{" "}
-              <strong className="text-gray-900">₹738 to ₹2,360 (about $8 to $25)</strong>. Ghost charges per
+              for call time: <strong className="text-gray-900">1 credit per hour</strong>, which costs{" "}
+              <strong className="text-gray-900">$7.80 to $25</strong>. Ghost charges per
               question, so a typical interview costs <strong className="text-gray-900">about $2 to $3</strong>. If
               you want the lowest cost per interview, Ghost is cheaper. If you want browser and phone access or
               built-in mock interviews, ParakeetAI covers more.
@@ -147,9 +148,8 @@ export default function ParakeetAiAlternativePage() {
             <a href="https://www.parakeet-ai.com/" target="_blank" rel="nofollow noopener noreferrer" className="underline">
               ParakeetAI&apos;s website
             </a>{" "}
-            on November 6, 2026, as shown to a visitor in India in rupees; dollar amounts are converted at ₹94.48 per
-            dollar. Prices vary by country and may change. Ghost&apos;s per-interview cost assumes a typical interview
-            uses 50 to 60 credits.
+            as of November 2026, in US dollars, and may change. Ghost&apos;s per-interview cost assumes a typical
+            interview uses 50 to 60 credits.
           </p>
         </div>
       </section>
@@ -194,8 +194,8 @@ export default function ParakeetAiAlternativePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="rounded-2xl border border-gray-200 p-6">
               <p className="text-sm font-semibold text-gray-500 mb-1">ParakeetAI, credit pack</p>
-              <p className="text-4xl font-bold text-gray-900">₹7,380</p>
-              <p className="text-sm text-gray-500 mt-2">About $78: the 8-credit pack, the cheapest way to cover 5 hours</p>
+              <p className="text-4xl font-bold text-gray-900">$78</p>
+              <p className="text-sm text-gray-500 mt-2">The 8-credit pack, the cheapest way to cover 5 hours</p>
             </div>
             <div className="rounded-2xl border-2 border-sky-400 bg-sky-50 p-6">
               <p className="text-sm font-semibold text-sky-700 mb-1">Ghost, live answers</p>
