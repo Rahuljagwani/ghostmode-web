@@ -1,19 +1,65 @@
 import { apiFetch } from "./api";
 
-export type PaymentProvider = "razorpay" | "stripe";
+export type PaymentProvider = "razorpay" | "paypal";
 
 /**
- * Auto-detect whether to show Razorpay (India) or Stripe (international).
- * User can override manually.
+ * Guess whether to show Razorpay (India) or PayPal (everyone else) first. The user can switch.
  */
 export function detectPaymentProvider(): PaymentProvider {
-  if (typeof navigator === "undefined") return "stripe";
+  if (typeof navigator === "undefined") return "razorpay";
   const lang = navigator.language || "";
   const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
-  if (lang.startsWith("hi") || lang.endsWith("-IN") || tz.includes("Kolkata")) {
+  if (lang.startsWith("hi") || lang.endsWith("-IN") || tz.includes("Kolkata") || tz.includes("Calcutta")) {
     return "razorpay";
   }
-  return "stripe";
+  return "paypal";
+}
+
+// ── PayPal (international) ──
+
+export interface PayPalConfig {
+  enabled: boolean;
+  client_id?: string | null;
+}
+
+export function fetchPayPalConfig(): Promise<PayPalConfig> {
+  return apiFetch<PayPalConfig>("/payments/paypal/config");
+}
+
+// Loaded on demand, so PayPal's script and cookies only arrive when someone opens the PayPal option.
+let paypalScript: Promise<void> | null = null;
+export function loadPayPal(clientId: string): Promise<void> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if ((window as any).paypal) return Promise.resolve();
+  if (!paypalScript) {
+    paypalScript = new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      const params = new URLSearchParams({ "client-id": clientId, currency: "USD", intent: "capture", components: "buttons", "disable-funding": "paylater" });
+      script.src = `https://www.paypal.com/sdk/js?${params}`;
+      script.onload = () => resolve();
+      script.onerror = () => {
+        paypalScript = null;
+        reject(new Error("Couldn't load PayPal. Check your connection and try again."));
+      };
+      document.body.appendChild(script);
+    });
+  }
+  return paypalScript;
+}
+
+export async function createPayPalOrder(planName: string): Promise<string> {
+  const { order_id } = await apiFetch<{ order_id: string }>("/payments/paypal/create-order", {
+    method: "POST",
+    body: JSON.stringify({ plan_name: planName }),
+  });
+  return order_id;
+}
+
+export async function capturePayPalOrder(orderId: string): Promise<{ credits_added: number }> {
+  return apiFetch<{ credits_added: number; remaining_credits: number }>("/payments/paypal/capture", {
+    method: "POST",
+    body: JSON.stringify({ order_id: orderId }),
+  });
 }
 
 // ── Razorpay ──

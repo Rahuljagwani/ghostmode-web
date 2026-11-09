@@ -4,12 +4,8 @@ import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { apiFetch, fetchPlans, PlanData } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
-import {
-  payWithRazorpay,
-  // payWithStripe,
-  // detectPaymentProvider,
-  // PaymentProvider,
-} from "@/lib/payments";
+import { detectPaymentProvider, fetchPayPalConfig, payWithRazorpay, PaymentProvider } from "@/lib/payments";
+import PayPalCheckout from "@/components/PayPalCheckout";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { CreditCardIcon, Clock01Icon, Loading03Icon, CheckmarkCircle02Icon, CancelCircleIcon } from "@hugeicons/core-free-icons";
 
@@ -37,15 +33,18 @@ function BillingContent() {
   const [plans, setPlans] = useState<PlanData[]>([]);
   const [plansLoading, setPlansLoading] = useState(true);
   const [history, setHistory] = useState<PaymentItem[]>([]);
-  // Stripe disabled for now — Razorpay only
-  // const [provider, setProvider] = useState<PaymentProvider>("stripe");
-  // const provider = "razorpay" as const;
+  // Razorpay for India (UPI, Indian cards); PayPal for everyone else, once it's configured on the server.
+  const [provider, setProvider] = useState<PaymentProvider>("razorpay");
+  const [paypalClientId, setPaypalClientId] = useState<string | null>(null);
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [buying, setBuying] = useState<string | null>(null);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
   useEffect(() => {
-    // setProvider(detectPaymentProvider());
+    setProvider(detectPaymentProvider());
+    fetchPayPalConfig()
+      .then((c) => setPaypalClientId(c.enabled && c.client_id ? c.client_id : null))
+      .catch(() => {});
     fetchPlans()
       .then(setPlans)
       .catch(() => {})
@@ -80,10 +79,6 @@ function BillingContent() {
         text: `Payment successful! ${result.credits_added} credits added to your account.`,
       });
       await refreshProfile();
-      // Stripe disabled for now
-      // if (provider === "stripe") {
-      //   await payWithStripe(plan.name);
-      // }
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Payment failed";
       if (msg !== "Payment cancelled") {
@@ -119,7 +114,6 @@ function BillingContent() {
         </div>
       )}
 
-      {/* Payment provider toggle — Stripe disabled for now, Razorpay only */}
 
       {/* Buy credits */}
       <h2 className="text-lg font-semibold text-gray-900 mb-4">Buy Credits</h2>
@@ -161,7 +155,51 @@ function BillingContent() {
             })}
           </div>
 
-          {/* Buy button */}
+          {/* Payment method: shown only when PayPal is switched on */}
+          {paypalClientId && (
+            <div className="mb-5">
+              <p className="text-sm font-medium text-gray-700 mb-2">Pay with</p>
+              <div className="inline-flex rounded-xl border border-gray-200 bg-white p-1 gap-1">
+                {(
+                  [
+                    ["paypal", "PayPal or card", "International"],
+                    ["razorpay", "UPI or Indian card", "India (Razorpay)"],
+                  ] as const
+                ).map(([id, label, sub]) => (
+                  <button
+                    key={id}
+                    onClick={() => setProvider(id)}
+                    disabled={buying !== null}
+                    className={`px-4 py-2 rounded-lg text-left transition-colors ${
+                      provider === id ? "bg-sky-600 text-white" : "text-gray-700 hover:bg-gray-50"
+                    }`}
+                  >
+                    <span className="block text-sm font-semibold">{label}</span>
+                    <span className={`block text-xs ${provider === id ? "text-sky-100" : "text-gray-400"}`}>{sub}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {paypalClientId && provider === "paypal" ? (
+            <div className="mb-10">
+              {selectedPlan ? (
+                <PayPalCheckout
+                  key={selectedPlan}
+                  clientId={paypalClientId}
+                  planName={selectedPlan}
+                  onSuccess={async (credits) => {
+                    setMessage({ type: "success", text: `Payment successful! ${credits} credits added to your account.` });
+                    await refreshProfile();
+                  }}
+                  onError={(text) => setMessage({ type: "error", text })}
+                />
+              ) : (
+                <p className="text-sm text-gray-500">Select a plan above to pay with PayPal or a card.</p>
+              )}
+            </div>
+          ) : (
           <button
             onClick={() => {
               const plan = plans.find((p) => p.name === selectedPlan);
@@ -181,6 +219,7 @@ function BillingContent() {
               "Select a plan"
             )}
           </button>
+          )}
         </>
       )}
 
