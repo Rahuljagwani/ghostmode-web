@@ -21,6 +21,7 @@ import sagaPatternDistributedTransactions from "./saga-pattern-distributed-trans
 import reduceLlmLatencyAndCost from "./reduce-llm-latency-and-cost.md";
 import databaseIndexingInterviewQuestions from "./database-indexing-interview-questions.md";
 import semanticCacheLlm from "./semantic-cache-llm.md";
+import flashSaleSystemDesign from "./flash-sale-system-design.md";
 
 export const markdownSources: string[] = [
   aiEngineerInterviewQuestions,
@@ -44,4 +45,5 @@ export const markdownSources: string[] = [
   reduceLlmLatencyAndCost,
   databaseIndexingInterviewQuestions,
   semanticCacheLlm,
+  flashSaleSystemDesign,
 ];
