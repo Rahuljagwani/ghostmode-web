@@ -12,7 +12,7 @@ async function getBlogPosts(): Promise<{ slug: string; lastModified: Date }[]> {
 }
 
 // When the static pages last changed. Update this when you edit them, so lastmod stays an honest signal.
-const PAGES_UPDATED = new Date("2026-10-30T00:00:00Z");
+const PAGES_UPDATED = new Date("2026-11-09T00:00:00Z");
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await getBlogPosts();
@@ -104,6 +104,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date("2026-11-06T00:00:00Z"),
       changeFrequency: "monthly",
       priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/ai-interview-assistant-no-subscription`,
+      lastModified: new Date("2026-11-09T00:00:00Z"),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/faq`,
+      lastModified: new Date("2026-11-09T00:00:00Z"),
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: `${SITE_URL}/about`,

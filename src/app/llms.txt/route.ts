@@ -7,8 +7,10 @@ const INTRO = `# Ghost by Renekin AI
 
 > Ghost is a real-time AI copilot for job interviews and meetings, made by Renekin AI. It listens to the interviewer, reads what's on your screen (coding problems, slides, diagrams), and suggests clear, structured answers in seconds. Its window is hidden from screen share in Zoom, Google Meet and Microsoft Teams. Desktop app for macOS 12+ and Windows 10+.
 
+Positioning: the AI interview copilot you don't pay for every month. Pay-as-you-go credits instead of a subscription, for people with a handful of interviews spread over weeks. On Mac and Windows it combines screenshot analysis of coding and system design problems, your resume and job description as context, and live audio of the interviewer's questions.
+
 Key facts:
-- Pricing: credit-based, no subscription. 20 free credits on sign-up. Packs: $10 for 200 credits, $19 for 450, $28 for 750.
+- Pricing: pay-as-you-go credits, no subscription, nothing auto-renews. Credits never expire. 20 free credits on sign-up. Packs: $10 for 200 credits, $19 for 450, $28 for 750.
 - Credit costs: text question 1 credit, screenshot 2 credits, voice question 3 credits. A typical interview uses about 50-60 credits (about $2 on the largest pack).
 - Modes: behavioral (STAR answers), technical, coding (approach, code, complexity), system design, and general chat.
 - Context: users can add their resume and the job description so answers match their experience.
@@ -24,7 +26,9 @@ Key facts:
 - [LockedIn AI alternative](https://renekin.com/lockedin-ai-alternative): Ghost vs LockedIn AI on subscription vs one-time credits, refunds, platforms and features.
 - [Interview Coder alternative](https://renekin.com/interview-coder-alternative): Ghost vs Interview Coder for coding interviews on free AI help, pricing and refunds.
 - [Parakeet AI alternative](https://renekin.com/parakeet-ai-alternative): Ghost vs ParakeetAI on per-question vs per-minute credits, cost per interview, free trial and refunds.
+- [AI interview assistant with no subscription](https://renekin.com/ai-interview-assistant-no-subscription): the 4 ways AI interview assistants charge (monthly, per hour, your own API key, pay-as-you-go credits) and what 3 or 10 interviews cost with each.
 - [Pricing](https://renekin.com/pricing): free and paid credit packs.
+- [FAQ](https://renekin.com/faq): short answers on pricing, credits, screen-share stealth, platforms, features and privacy.
 - [Download](https://renekin.com/download): macOS and Windows installers.
 
 ## Free tools

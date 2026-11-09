@@ -1,0 +1,87 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1600px; height: 1000px; overflow: hidden; }
+  body { font-family: -apple-system, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 45%, #38bdf8 100%); position: relative; }
+  .mono { font-family: "SF Mono", Menlo, monospace; }
+
+  /* Desktop: a code editor with the problem, and a video call */
+  .editor { position: absolute; left: 60px; top: 70px; width: 900px; height: 860px; border-radius: 16px;
+    background: #0f172a; box-shadow: 0 30px 80px rgba(0,0,0,.45); overflow: hidden; }
+  .bar { height: 40px; background: #1e293b; display: flex; align-items: center; gap: 8px; padding: 0 16px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .bar span { color: #94a3b8; font-size: 14px; margin-left: 14px; }
+  .problem { padding: 28px 34px; color: #cbd5e1; font-size: 18px; line-height: 1.6; border-bottom: 1px solid #1e293b; }
+  .problem h3 { color: #f8fafc; font-size: 22px; margin-bottom: 10px; }
+  .problem code { background: #1e293b; padding: 2px 6px; border-radius: 4px; color: #7dd3fc; }
+  .code { padding: 24px 34px; font-size: 17px; line-height: 1.75; color: #64748b; }
+  .call { position: absolute; left: 700px; top: 620px; width: 320px; height: 200px; border-radius: 14px;
+    background: linear-gradient(160deg, #334155, #1e293b); box-shadow: 0 20px 50px rgba(0,0,0,.5);
+    display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px; }
+  .avatar { width: 74px; height: 74px; border-radius: 50%; background: #64748b; display: flex; align-items: center;
+    justify-content: center; color: #f1f5f9; font-size: 28px; font-weight: 600; }
+  .call p { color: #e2e8f0; font-size: 14px; }
+  .live { position: absolute; top: 12px; left: 12px; background: #dc2626; color: white; font-size: 11px;
+    font-weight: 700; padding: 3px 8px; border-radius: 4px; letter-spacing: .05em; }
+
+  /* Ghost overlay */
+  .ghost { position: absolute; right: 60px; top: 110px; width: 600px; border-radius: 16px;
+    background: rgba(10, 12, 18, .88); border: 1px solid rgba(255,255,255,.10);
+    box-shadow: 0 30px 90px rgba(0,0,0,.55); backdrop-filter: blur(20px); overflow: hidden; }
+  .gbar { display: flex; align-items: center; justify-content: space-between; padding: 12px 18px;
+    border-bottom: 1px solid rgba(255,255,255,.06); }
+  .brand { display: flex; align-items: center; gap: 10px; color: #f1f5f9; font-weight: 700; font-size: 16px; }
+  .brand img { width: 26px; height: 26px; border-radius: 7px; }
+  .pill { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
+  .mode { background: rgba(59,130,246,.18); color: #93c5fd; border: 1px solid rgba(59,130,246,.35); }
+  .hidden { background: rgba(16,185,129,.15); color: #6ee7b7; border: 1px solid rgba(16,185,129,.35); margin-left: 8px; }
+  .heard { margin: 18px 18px 0; padding: 12px 14px; border-radius: 10px; background: rgba(255,255,255,.05);
+    color: #cbd5e1; font-size: 15px; line-height: 1.5; }
+  .heard b { color: #93c5fd; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; display: block; margin-bottom: 4px; }
+  .answer { padding: 18px 20px 6px; color: #f1f5f9; font-size: 17px; line-height: 1.6; }
+  .answer p { margin-bottom: 10px; }
+  .answer .k { color: #93c5fd; font-weight: 600; }
+  .dim { color: #94a3b8; }
+  pre { margin: 6px 20px 18px; padding: 16px 18px; border-radius: 10px; background: rgba(0,0,0,.45);
+    border: 1px solid rgba(255,255,255,.06); font-size: 15px; line-height: 1.65; color: #e2e8f0; }
+  .kw { color: #60a5fa; } .fn { color: #fde047; } .cm { color: #64748b; }
+  .foot { display: flex; justify-content: space-between; padding: 10px 18px; border-top: 1px solid rgba(255,255,255,.06);
+    color: #64748b; font-size: 12.5px; }
+</style></head>
+<body>
+  <div class="editor">
+    <div class="bar"><div class="dot" style="background:#ef4444"></div><div class="dot" style="background:#f59e0b"></div><div class="dot" style="background:#22c55e"></div><span>interview.py · Shared screen</span></div>
+    <div class="problem">
+      <h3>Two Sum</h3>
+      Given an array of integers <code>nums</code> and an integer <code>target</code>, return the indices of the two
+      numbers that add up to <code>target</code>. Each input has exactly one solution.
+    </div>
+    <div class="code mono">
+      <div><span style="color:#60a5fa">def</span> <span style="color:#fde047">two_sum</span>(nums, target):</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#475569"># your code here</span></div>
+    </div>
+  </div>
+  <div class="call"><div class="live">LIVE</div><div class="avatar">JM</div><p>Interviewer</p></div>
+
+  <div class="ghost">
+    <div class="gbar">
+      <div class="brand"><img src="logo.png" alt="">Ghost</div>
+      <div><span class="pill mode">Coding</span><span class="pill hidden">Hidden from screen share</span></div>
+    </div>
+    <div class="heard"><b>Heard</b>"Can you walk me through an efficient approach and its complexity?"</div>
+    <div class="answer">
+      <p><span class="k">Approach:</span> One pass with a hash map from value to index. For each number, check if
+        <span class="mono">target - n</span> is already in the map.</p>
+      <p class="dim"><span class="k">Complexity:</span> O(n) time, O(n) space, versus O(n²) for the brute-force double loop.</p>
+    </div>
+<pre class="mono"><span class="kw">def</span> <span class="fn">two_sum</span>(nums, target):
+    seen = {}  <span class="cm"># value -> index</span>
+    <span class="kw">for</span> i, n <span class="kw">in</span> <span class="fn">enumerate</span>(nums):
+        <span class="kw">if</span> target - n <span class="kw">in</span> seen:
+            <span class="kw">return</span> [seen[target - n], i]
+        seen[n] = i</pre>
+    <div class="foot"><span>Uses your resume and job description</span><span>Alt+S screenshot · Alt+R voice · Alt+N notes</span></div>
+  </div>
+</body></html>

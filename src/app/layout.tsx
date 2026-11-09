@@ -28,7 +28,7 @@ const siteName = "Renekin AI";
 // Brand first: people who saw a reel search "ghost ai interview", "interview ghost ai" and similar.
 const siteTitle = "Ghost: AI Interview Assistant & Copilot | Renekin AI";
 const siteDescription =
-  "Ghost AI by Renekin is a real-time AI interview copilot for coding, technical and HR interviews. Live answers on Mac and Windows, hidden from screen share.";
+  "No-subscription AI interview copilot: pay-as-you-go credits for live help in coding, system design and HR interviews. Mac and Windows, hidden from screen share.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -59,8 +59,12 @@ export const metadata: Metadata = {
   creator: "Renekin AI",
   publisher: "Renekin AI",
   icons: {
-    icon: "/favicon.svg",
-    apple: "/renekin-logo-blue.svg",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: { url: "/apple-touch-icon.png", sizes: "180x180" },
   },
   openGraph: {
     type: "website",

@@ -140,7 +140,12 @@ const jsonLd = [
     name: "Renekin AI",
     alternateName: ["Renekin"],
     url: SITE_URL,
-    logo: `${SITE_URL}/renekin-logo-blue.svg`,
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/renekin-logo-512.png`,
+      width: 512,
+      height: 512,
+    },
     email: "socials@renekin.com",
     publishingPrinciples: `${SITE_URL}/how-we-write`,
     sameAs: SOCIAL_LINKS.map((l) => l.href),
@@ -168,9 +173,17 @@ const jsonLd = [
       "Answers tailored to your resume and the job description",
       "Behavioral, technical, coding, system design and general modes",
       "Hidden from screen share in Zoom, Google Meet and Microsoft Teams",
-      "Credit-based pricing with no subscription",
+      "Pay-as-you-go credits with no subscription",
     ],
     url: SITE_URL,
+    image: `${SITE_URL}/ghost-screenshot.png`,
+    screenshot: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/ghost-screenshot.png`,
+      width: 1600,
+      height: 1000,
+      caption: "Ghost by Renekin AI answering a coding interview question next to a shared code editor",
+    },
     downloadUrl: `${SITE_URL}/download`,
     publisher: { "@id": `${SITE_URL}/#organization` },
     offers: {
@@ -199,15 +212,13 @@ export default function Home() {
                 <span className="block w-fit mb-4 sm:mb-6 rounded-full bg-white/20 border border-white/30 px-4 py-1.5 text-xs sm:text-sm font-semibold tracking-wide uppercase leading-normal drop-shadow-none">
                   Ghost AI Interview Copilot
                 </span>
-                Think better.
-                <br />
-                Answer faster.
+                The interview copilot you don&apos;t pay for every month.
               </h1>
 
               <p className="mt-4 sm:mt-6 text-base sm:text-lg text-white/90 max-w-lg leading-relaxed">
-                <span className="text-white font-semibold">Ghost</span> by Renekin AI is a real-time
-                AI interview assistant for coding, technical and HR interviews, and your meetings
-                too. It listens, reads your screen and suggests smart answers in seconds, completely
+                <span className="text-white font-semibold">Ghost</span> by Renekin AI gives you real-time
+                answers in coding, system design and behavioral interviews. Buy credits once and use them
+                only when you have an interview. It listens, reads your screen, uses your resume, and stays
                 hidden from screen sharing on Zoom, Google Meet and Teams.
               </p>
               <p className="mt-4 text-sm font-medium text-white/85">
@@ -224,6 +235,16 @@ export default function Home() {
                 </Link>
               </div>
             </div>
+
+            {/* Phones and tablets: the animated mockup is desktop-only, so show a still of the app */}
+            <Image
+              src="/ghost-screenshot.png"
+              alt="Ghost by Renekin AI answering a coding interview question next to a shared code editor"
+              width={1600}
+              height={1000}
+              sizes="100vw"
+              className="lg:hidden w-full h-auto rounded-xl shadow-2xl"
+            />
 
             {/* Right — App mockup */}
             <div className="hidden lg:flex justify-end -mt-12">
