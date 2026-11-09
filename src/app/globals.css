@@ -91,4 +91,16 @@ body {
   .article pre code {
     @apply bg-transparent p-0 text-gray-100;
   }
+  .article figure {
+    @apply my-8;
+  }
+  .article figure img {
+    @apply w-full h-auto rounded-xl border border-gray-200;
+  }
+  .article figure a {
+    @apply block no-underline;
+  }
+  .article figcaption {
+    @apply mt-2 text-center text-sm text-gray-500;
+  }
 }

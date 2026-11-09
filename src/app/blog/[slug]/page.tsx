@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getLivePosts, getPost, formatDate, isScheduled, BlogPost, SITE_URL } from "@/lib/blog";
-import { renderPostBody } from "@/lib/markdown";
+import { renderPostBody, postImages } from "@/lib/markdown";
 import { FREE_TOOLS } from "@/lib/freeTools";
 import { postContent } from "@/content/blog";
 
@@ -103,7 +103,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       "@type": "BlogPosting",
       headline: post.title,
       description: post.description,
-      image: `${url}/opengraph-image`,
+      image: [`${url}/opengraph-image`, ...(post.markdown ? postImages(post.markdown) : [])],
       datePublished: post.published,
       dateModified: post.updated,
       mainEntityOfPage: url,
@@ -112,7 +112,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       publisher: {
         "@type": "Organization",
         name: "Renekin AI",
-        logo: { "@type": "ImageObject", url: `${SITE_URL}/renekin-logo-blue.svg` },
+        logo: { "@type": "ImageObject", url: `${SITE_URL}/renekin-logo-512.png`, width: 512, height: 512 },
       },
     },
     {

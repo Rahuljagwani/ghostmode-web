@@ -27,7 +27,7 @@ const jsonLd = {
     "@id": "https://renekin.com/#organization",
     name: "Renekin AI",
     url: "https://renekin.com",
-    logo: "https://renekin.com/renekin-logo-blue.svg",
+    logo: "https://renekin.com/renekin-logo-512.png",
     email: "socials@renekin.com",
     slogan: "Renaissance knowledge meets modern AI.",
     publishingPrinciples: "https://renekin.com/how-we-write",

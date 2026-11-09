@@ -17,6 +17,13 @@ const marked = new Marked({
       const text = this.parser.parseInline(tokens);
       return `<h${depth} id="${slugify(text)}">${text}</h${depth}>\n`;
     },
+    // Diagrams: ![alt](/blog-images/<slug>/<name>.png "caption"). Every diagram is exported at 1600x900, so the
+    // size is fixed here to reserve space and avoid layout shift.
+    image({ href, title, text }) {
+      const caption = title ? `<figcaption>${title}</figcaption>` : "";
+      // Linked to the full-size file so phone readers can open it and zoom in.
+      return `<figure><a href="${href}" target="_blank" rel="noopener"><img src="${href}" alt="${text}" width="1600" height="900" loading="lazy" decoding="async" /></a>${caption}</figure>`;
+    },
     link({ href, title, tokens }) {
       const text = this.parser.parseInline(tokens);
       // A link to a post that isn't live yet would be a 404, so show plain text until it goes live.
@@ -40,4 +47,9 @@ export function renderPostBody(markdown: string): string[] {
     .replace(/<table>/g, '<div class="table-wrap"><table>')
     .replace(/<\/table>/g, "</table></div>");
   return html.split(/<!--\s*cta\s*-->/);
+}
+
+/** Diagram URLs used in a post, for the BlogPosting structured data. */
+export function postImages(markdown: string): string[] {
+  return Array.from(markdown.matchAll(/!\[[^\]]*\]\((\/blog-images\/[^\s)]+)/g), (m) => `${SITE_URL}${m[1]}`);
 }

@@ -14,6 +14,13 @@ import debugRagSystem from "./debug-rag-system.md";
 import llmEvalsCatchRegressions from "./llm-evals-catch-regressions.md";
 import zeroDowntimeDatabaseMigrations from "./zero-downtime-database-migrations.md";
 import rateLimiterSystemDesign from "./rate-limiter-system-design.md";
+import cachingStrategiesSystemDesign from "./caching-strategies-system-design.md";
+import kafkaVsRabbitmqVsSqs from "./kafka-vs-rabbitmq-vs-sqs.md";
+import llmToolCallingAgentDesign from "./llm-tool-calling-agent-design.md";
+import sagaPatternDistributedTransactions from "./saga-pattern-distributed-transactions.md";
+import reduceLlmLatencyAndCost from "./reduce-llm-latency-and-cost.md";
+import databaseIndexingInterviewQuestions from "./database-indexing-interview-questions.md";
+import semanticCacheLlm from "./semantic-cache-llm.md";
 
 export const markdownSources: string[] = [
   aiEngineerInterviewQuestions,
@@ -30,4 +37,11 @@ export const markdownSources: string[] = [
   llmEvalsCatchRegressions,
   zeroDowntimeDatabaseMigrations,
   rateLimiterSystemDesign,
+  cachingStrategiesSystemDesign,
+  kafkaVsRabbitmqVsSqs,
+  llmToolCallingAgentDesign,
+  sagaPatternDistributedTransactions,
+  reduceLlmLatencyAndCost,
+  databaseIndexingInterviewQuestions,
+  semanticCacheLlm,
 ];
