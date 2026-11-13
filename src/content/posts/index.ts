@@ -22,6 +22,7 @@ import reduceLlmLatencyAndCost from "./reduce-llm-latency-and-cost.md";
 import databaseIndexingInterviewQuestions from "./database-indexing-interview-questions.md";
 import semanticCacheLlm from "./semantic-cache-llm.md";
 import flashSaleSystemDesign from "./flash-sale-system-design.md";
+import microsoftOutageRetryStorms from "./microsoft-outage-retry-storms.md";
 
 export const markdownSources: string[] = [
   aiEngineerInterviewQuestions,
@@ -46,4 +47,5 @@ export const markdownSources: string[] = [
   databaseIndexingInterviewQuestions,
   semanticCacheLlm,
   flashSaleSystemDesign,
+  microsoftOutageRetryStorms,
 ];
