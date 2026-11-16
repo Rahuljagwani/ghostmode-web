@@ -23,6 +23,13 @@ import databaseIndexingInterviewQuestions from "./database-indexing-interview-qu
 import semanticCacheLlm from "./semantic-cache-llm.md";
 import flashSaleSystemDesign from "./flash-sale-system-design.md";
 import microsoftOutageRetryStorms from "./microsoft-outage-retry-storms.md";
+import consistentHashingExplained from "./consistent-hashing-explained.md";
+import urlShortenerSystemDesign from "./url-shortener-system-design.md";
+import vectorDatabaseInterviewQuestions from "./vector-database-interview-questions.md";
+import sqlVsNosqlSystemDesign from "./sql-vs-nosql-system-design.md";
+import fineTuningVsRag from "./fine-tuning-vs-rag.md";
+import notificationSystemDesign from "./notification-system-design.md";
+import greatestWeaknessInterviewAnswer from "./greatest-weakness-interview-answer.md";
 
 export const markdownSources: string[] = [
   aiEngineerInterviewQuestions,
@@ -48,4 +55,11 @@ export const markdownSources: string[] = [
   semanticCacheLlm,
   flashSaleSystemDesign,
   microsoftOutageRetryStorms,
+  consistentHashingExplained,
+  urlShortenerSystemDesign,
+  vectorDatabaseInterviewQuestions,
+  sqlVsNosqlSystemDesign,
+  fineTuningVsRag,
+  notificationSystemDesign,
+  greatestWeaknessInterviewAnswer,
 ];
