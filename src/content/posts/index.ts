@@ -30,6 +30,12 @@ import sqlVsNosqlSystemDesign from "./sql-vs-nosql-system-design.md";
 import fineTuningVsRag from "./fine-tuning-vs-rag.md";
 import notificationSystemDesign from "./notification-system-design.md";
 import greatestWeaknessInterviewAnswer from "./greatest-weakness-interview-answer.md";
+import aiInterviewCopilotPricing from "./ai-interview-copilot-pricing.md";
+import cluelyPricing from "./cluely-pricing.md";
+import resumeBulletPointsExamples from "./resume-bullet-points-examples.md";
+import hotKeyProblemRedis from "./hot-key-problem-redis.md";
+import cursorPaginationVsOffset from "./cursor-pagination-vs-offset.md";
+import llmChatbotMemory from "./llm-chatbot-memory.md";
 
 export const markdownSources: string[] = [
   aiEngineerInterviewQuestions,
@@ -62,4 +68,10 @@ export const markdownSources: string[] = [
   fineTuningVsRag,
   notificationSystemDesign,
   greatestWeaknessInterviewAnswer,
+  aiInterviewCopilotPricing,
+  cluelyPricing,
+  resumeBulletPointsExamples,
+  hotKeyProblemRedis,
+  cursorPaginationVsOffset,
+  llmChatbotMemory,
 ];
