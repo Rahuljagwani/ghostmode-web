@@ -12,6 +12,7 @@ import {
   FlashIcon,
 } from "@hugeicons/core-free-icons";
 import type { IconSvgElement } from "@hugeicons/react";
+import { assistantHreflang } from "@/lib/i18n";
 
 const URL = "https://renekin.com/ai-interview-assistant";
 
@@ -33,7 +34,8 @@ export const metadata: Metadata = {
     "AI interview copilot",
     "interview assistant app",
   ],
-  alternates: { canonical: URL },
+  // hreflang links to the translated versions (src/lib/i18n.ts).
+  alternates: { canonical: URL, languages: assistantHreflang() },
   openGraph: {
     url: URL,
     title: "Ghost AI: Real-Time AI Interview Assistant | Renekin",

@@ -23,6 +23,10 @@ const nextConfig = {
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), browsing-topics=()" },
         ],
       },
+      // Translated pages (src/lib/i18n.ts). Bing reads Content-Language; Google detects the language from the text.
+      { source: "/es/:path*", headers: [{ key: "Content-Language", value: "es" }] },
+      { source: "/fr/:path*", headers: [{ key: "Content-Language", value: "fr" }] },
+      { source: "/pt/:path*", headers: [{ key: "Content-Language", value: "pt" }] },
     ];
   },
   webpack(config) {

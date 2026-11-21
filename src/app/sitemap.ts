@@ -1,5 +1,9 @@
 import { MetadataRoute } from "next";
 import { getLivePosts, publishTime, SITE_URL } from "@/lib/blog";
+import { ASSISTANT_PAGES, assistantHreflang, type AssistantLang } from "@/lib/i18n";
+
+// When the translated pages last changed.
+const TRANSLATIONS_UPDATED = new Date("2026-11-21T00:00:00Z");
 
 // Picks up scheduled blog posts as they go live.
 export const revalidate = 600;
@@ -32,7 +36,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: PAGES_UPDATED,
       changeFrequency: "monthly",
       priority: 0.9,
+      alternates: { languages: assistantHreflang() },
     },
+    // Translated versions of the page above (src/lib/i18n.ts).
+    ...(Object.keys(ASSISTANT_PAGES) as AssistantLang[])
+      .filter((lang) => lang !== "en")
+      .map((lang) => ({
+        url: `${SITE_URL}${ASSISTANT_PAGES[lang]}`,
+        lastModified: TRANSLATIONS_UPDATED,
+        changeFrequency: "monthly" as const,
+        priority: 0.8,
+        alternates: { languages: assistantHreflang() },
+      })),
     {
       url: `${SITE_URL}/ai-coding-interview-assistant`,
       lastModified: PAGES_UPDATED,

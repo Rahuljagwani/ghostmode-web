@@ -6,6 +6,7 @@ import Icon from "@/components/Icon";
 import { InstagramIcon, YoutubeIcon, Linkedin01Icon } from "@hugeicons/core-free-icons";
 import { SOCIAL_LINKS } from "@/lib/social";
 import { FREE_TOOLS } from "@/lib/freeTools";
+import { ASSISTANT_PAGES, LANGUAGE_NAMES, type AssistantLang } from "@/lib/i18n";
 
 const SOCIAL_ICONS = { Instagram: InstagramIcon, YouTube: YoutubeIcon, LinkedIn: Linkedin01Icon };
 
@@ -103,6 +104,16 @@ export default function Footer() {
 
         <div className="mt-10 pt-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-gray-500">
           <span>&copy; {new Date().getFullYear()} Renekin AI. All rights reserved.</span>
+          {/* Translated pages, so every page links to them (src/lib/i18n.ts). */}
+          <span className="flex items-center gap-3">
+            {(Object.keys(ASSISTANT_PAGES) as AssistantLang[])
+              .filter((lang) => lang !== "en")
+              .map((lang) => (
+                <Link key={lang} href={ASSISTANT_PAGES[lang]} hrefLang={lang} lang={lang} className="hover:text-sky-600 transition-colors">
+                  {LANGUAGE_NAMES[lang]}
+                </Link>
+              ))}
+          </span>
           <span>Renaissance knowledge meets modern AI.</span>
         </div>
       </div>
