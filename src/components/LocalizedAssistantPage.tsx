@@ -11,7 +11,8 @@ import {
   LanguageSkillIcon,
   FlashIcon,
 } from "@hugeicons/core-free-icons";
-import { ASSISTANT_PAGES, type AssistantLang } from "@/lib/i18n";
+import { ASSISTANT_PAGES, BLOG_STRINGS, type AssistantLang } from "@/lib/i18n";
+import { getLivePosts, postPath } from "@/lib/blog";
 
 // Shared layout for the translated versions of /ai-interview-assistant (src/app/{es,fr,pt}/...).
 // Each language page passes its own text; the layout, icons and order stay the same everywhere.
@@ -45,6 +46,7 @@ const CAPABILITY_STYLE = [
 export const linkClass = "text-sky-600 underline underline-offset-2 hover:text-sky-700";
 
 export default function LocalizedAssistantPage({ c }: { c: AssistantPageContent }) {
+  const guides = getLivePosts(new Date(), c.lang).slice(0, 6);
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -178,6 +180,29 @@ export default function LocalizedAssistantPage({ c }: { c: AssistantPageContent 
           <p className="mt-10 text-gray-600 leading-relaxed">{c.useCases.note}</p>
         </div>
       </section>
+
+      {/* Latest guides in this language: the main internal link into /<lang>/blog. */}
+      {guides.length > 0 && (
+        <section className="bg-white">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 pb-16 sm:pb-20">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">{BLOG_STRINGS[c.lang].guidesHeading}</h2>
+            <ul className="space-y-3">
+              {guides.map((p) => (
+                <li key={p.slug}>
+                  <Link href={postPath(p)} className={`${linkClass} text-lg`}>
+                    {p.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-5">
+              <Link href={`/${c.lang}/blog`} className="text-sm font-semibold text-sky-600 hover:text-sky-700">
+                {BLOG_STRINGS[c.lang].blogTitle} →
+              </Link>
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* Pricing */}
       <section className="bg-gray-50">

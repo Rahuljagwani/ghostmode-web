@@ -52,16 +52,9 @@ export default function Footer() {
           <div>
             <h3 className="text-gray-900 font-semibold mb-3 text-sm">Product</h3>
             <div className="flex flex-col gap-2 text-sm text-gray-500">
+              {/* Kept short on purpose. The comparison and use-case pages are still linked from the homepage, the FAQ,
+                  each other and blog posts, so none of them is orphaned. */}
               <Link href="/#ghost" className="hover:text-sky-600 transition-colors">Ghost</Link>
-              <Link href="/#features" className="hover:text-sky-600 transition-colors">Features</Link>
-              <Link href="/ai-interview-assistant" className="hover:text-sky-600 transition-colors">AI Interview Assistant</Link>
-              <Link href="/ai-coding-interview-assistant" className="hover:text-sky-600 transition-colors">AI Coding Interview Assistant</Link>
-              <Link href="/cluely-alternative" className="hover:text-sky-600 transition-colors">Cluely Alternative</Link>
-              <Link href="/final-round-ai-alternative" className="hover:text-sky-600 transition-colors">Final Round AI Alternative</Link>
-              <Link href="/lockedin-ai-alternative" className="hover:text-sky-600 transition-colors">LockedIn AI Alternative</Link>
-              <Link href="/interview-coder-alternative" className="hover:text-sky-600 transition-colors">Interview Coder Alternative</Link>
-              <Link href="/parakeet-ai-alternative" className="hover:text-sky-600 transition-colors">Parakeet AI Alternative</Link>
-              <Link href="/ai-interview-assistant-no-subscription" className="hover:text-sky-600 transition-colors">No-Subscription Pricing Compared</Link>
               <Link href="/pricing" className="hover:text-sky-600 transition-colors">Pricing</Link>
               <Link href="/faq" className="hover:text-sky-600 transition-colors">FAQ</Link>
               <Link href="/download" className="hover:text-sky-600 transition-colors">Download</Link>

@@ -27,6 +27,9 @@ const nextConfig = {
       { source: "/es/:path*", headers: [{ key: "Content-Language", value: "es" }] },
       { source: "/fr/:path*", headers: [{ key: "Content-Language", value: "fr" }] },
       { source: "/pt/:path*", headers: [{ key: "Content-Language", value: "pt" }] },
+      { source: "/uk/:path*", headers: [{ key: "Content-Language", value: "uk" }] },
+      { source: "/ru/:path*", headers: [{ key: "Content-Language", value: "ru" }] },
+      { source: "/az/:path*", headers: [{ key: "Content-Language", value: "az" }] },
     ];
   },
   webpack(config) {

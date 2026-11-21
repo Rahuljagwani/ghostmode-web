@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { getLivePosts, publishTime, SITE_URL } from "@/lib/blog";
+import { getLivePosts, postPath, publishTime, SITE_URL } from "@/lib/blog";
 import { ASSISTANT_PAGES, assistantHreflang, type AssistantLang } from "@/lib/i18n";
 
 // When the translated pages last changed.
@@ -193,5 +193,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       }]
     : [];
 
-  return [...staticPages, ...blogIndex, ...blogPages];
+  // Blogs in other languages: /<lang>/blog and /<lang>/blog/<slug>. These posts have no English twin, so no hreflang.
+  const localizedBlogs: MetadataRoute.Sitemap = (Object.keys(ASSISTANT_PAGES) as AssistantLang[])
+    .filter((lang): lang is Exclude<AssistantLang, "en"> => lang !== "en")
+    .flatMap((lang) => {
+      const langPosts = getLivePosts(new Date(), lang).map((p) => ({
+        url: `${SITE_URL}${postPath(p)}`,
+        lastModified: p.updated > p.published ? new Date(`${p.updated}T00:00:00Z`) : publishTime(p),
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+      }));
+      if (!langPosts.length) return [];
+      const newest = langPosts.reduce((d, p) => (p.lastModified > d ? p.lastModified : d), new Date(0));
+      return [
+        { url: `${SITE_URL}/${lang}/blog`, lastModified: newest, changeFrequency: "weekly" as const, priority: 0.6 },
+        ...langPosts,
+      ];
+    });
+
+  return [...staticPages, ...blogIndex, ...blogPages, ...localizedBlogs];
 }

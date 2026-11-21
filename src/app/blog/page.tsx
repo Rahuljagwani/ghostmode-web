@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Link from "next/link";
+import BlogList from "@/components/BlogList";
 import { getLivePosts, formatDate, isScheduled, SITE_URL } from "@/lib/blog";
 
 export const metadata: Metadata = {
@@ -24,26 +24,19 @@ export default function BlogIndex() {
           Honest comparisons, interview tips and product news from the Ghost team.
         </p>
 
-        <div className="space-y-5">
-          {getLivePosts().map((p) => (
-            <Link
-              key={p.slug}
-              href={`/blog/${p.slug}`}
-              className="block bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-sm hover:border-sky-300 hover:shadow-md transition-all"
-            >
-              <div className="flex items-center gap-3 text-xs text-gray-500 mb-3">
-                <span className="bg-sky-50 text-sky-700 font-semibold px-2.5 py-1 rounded-full">{p.tag}</span>
-                <time dateTime={p.published}>{formatDate(p.published)}</time>
-                <span>· {p.readingMinutes} min read</span>
-                {isScheduled(p) && (
-                  <span className="rounded-full bg-amber-100 px-2.5 py-0.5 font-semibold text-amber-800">Scheduled</span>
-                )}
-              </div>
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 leading-snug mb-2">{p.title}</h2>
-              <p className="text-gray-600 leading-relaxed">{p.excerpt}</p>
-            </Link>
-          ))}
-        </div>
+        <BlogList
+          posts={getLivePosts().map((p) => ({
+            href: `/blog/${p.slug}`,
+            title: p.title,
+            excerpt: p.excerpt,
+            tag: p.tag,
+            keywords: p.keywords,
+            published: p.published,
+            dateLabel: formatDate(p.published),
+            readingMinutes: p.readingMinutes,
+            scheduled: isScheduled(p),
+          }))}
+        />
       </div>
     </div>
   );

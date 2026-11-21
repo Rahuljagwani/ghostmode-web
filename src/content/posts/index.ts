@@ -37,6 +37,20 @@ import hotKeyProblemRedis from "./hot-key-problem-redis.md";
 import cursorPaginationVsOffset from "./cursor-pagination-vs-offset.md";
 import llmChatbotMemory from "./llm-chatbot-memory.md";
 
+// Posts in other languages (front matter `lang`), served at /<lang>/blog/<slug>.
+import esComoUsarIaParaPrepararEntrevista from "./es/como-usar-ia-para-preparar-entrevista.md";
+import esEntrevistaEnInglesPreguntasYRespuestas from "./es/entrevista-en-ingles-preguntas-y-respuestas.md";
+import frEntretienEnAnglaisQuandOnEstNul from "./fr/entretien-en-anglais-quand-on-est-nul.md";
+import frEntretienEnAnglaisQuestionsReponses from "./fr/entretien-en-anglais-questions-reponses.md";
+import ptEntrevistaEmInglesPerguntasERespostas from "./pt/entrevista-em-ingles-perguntas-e-respostas.md";
+import ptIaParaTreinarEntrevistaDeEmprego from "./pt/ia-para-treinar-entrevista-de-emprego.md";
+import ukSpivbesidaAnhliiskoiuPytanniaVidpovidi from "./uk/spivbesida-anhliiskoiu-pytannia-vidpovidi.md";
+import ukTekhnichnaSpivbesidaQa from "./uk/tekhnichna-spivbesida-qa.md";
+import ruSobesedovanieNaAngliyskomVoprosyOtvety from "./ru/sobesedovanie-na-angliyskom-voprosy-otvety.md";
+import ruSobesedovaniePythonJuniorVoprosy from "./ru/sobesedovanie-python-junior-voprosy.md";
+import azIngilisDilindeMusahibe from "./az/ingilis-dilinde-musahibe.md";
+import azIsMusahibesiSuallariVeCavablari from "./az/is-musahibesi-suallari-ve-cavablari.md";
+
 export const markdownSources: string[] = [
   aiEngineerInterviewQuestions,
   howToPrepareForAiEngineerInterview,
@@ -74,4 +88,16 @@ export const markdownSources: string[] = [
   hotKeyProblemRedis,
   cursorPaginationVsOffset,
   llmChatbotMemory,
+  esComoUsarIaParaPrepararEntrevista,
+  esEntrevistaEnInglesPreguntasYRespuestas,
+  frEntretienEnAnglaisQuandOnEstNul,
+  frEntretienEnAnglaisQuestionsReponses,
+  ptEntrevistaEmInglesPerguntasERespostas,
+  ptIaParaTreinarEntrevistaDeEmprego,
+  ukSpivbesidaAnhliiskoiuPytanniaVidpovidi,
+  ukTekhnichnaSpivbesidaQa,
+  ruSobesedovanieNaAngliyskomVoprosyOtvety,
+  ruSobesedovaniePythonJuniorVoprosy,
+  azIngilisDilindeMusahibe,
+  azIsMusahibesiSuallariVeCavablari,
 ];

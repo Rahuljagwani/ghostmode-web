@@ -11,8 +11,14 @@ export interface Faq {
   a: string;
 }
 
+/** Blog languages. English posts live at /blog/<slug>; the others at /<lang>/blog/<slug>. */
+export const POST_LANGS = ["en", "es", "fr", "pt", "uk", "ru", "az"] as const;
+export type PostLang = (typeof POST_LANGS)[number];
+
 export interface BlogPost {
   slug: string;
+  /** Front matter `lang`, default "en". */
+  lang: PostLang;
   /** On-page headline (H1). */
   title: string;
   /** <title> tag, written for search. */
@@ -34,7 +40,7 @@ export interface BlogPost {
 }
 
 // Posts written as React components in src/content/blog.
-const tsxPosts: BlogPost[] = [
+const tsxPosts: Omit<BlogPost, "lang">[] = [
   {
     slug: "how-to-beat-ats-resume",
     title: "How to get your resume past ATS in 2026: a checklist that actually works",
@@ -116,8 +122,11 @@ function isoDate(value: unknown): string {
 const markdownPosts: BlogPost[] = markdownSources.map((source) => {
   const { data, content } = matter(source);
   const published = isoDate(data.date);
+  const lang: PostLang = data.lang ?? "en";
+  if (!POST_LANGS.includes(lang)) throw new Error(`Unknown blog post lang "${lang}" in ${data.slug}`);
   return {
     slug: data.slug,
+    lang,
     title: data.title,
     seoTitle: data.seoTitle ?? data.title,
     description: data.description,
@@ -135,7 +144,9 @@ const markdownPosts: BlogPost[] = markdownSources.map((source) => {
 });
 
 // Every post, scheduled ones included. Newest first.
-const allPosts = [...tsxPosts, ...markdownPosts].sort((a, b) => b.published.localeCompare(a.published));
+const allPosts: BlogPost[] = [...tsxPosts.map((p) => ({ ...p, lang: "en" as const })), ...markdownPosts].sort((a, b) =>
+  b.published.localeCompare(a.published),
+);
 
 const seen = new Set<string>();
 for (const p of allPosts) {
@@ -154,17 +165,27 @@ export function isScheduled(post: BlogPost, now = new Date()): boolean {
   return publishTime(post) > now;
 }
 
-/** Posts visitors can see right now, newest first. */
-export function getLivePosts(now = new Date()): BlogPost[] {
+/** Posts in one language that visitors can see right now, newest first. English by default. */
+export function getLivePosts(now = new Date(), lang: PostLang = "en"): BlogPost[] {
+  return allPosts.filter((p) => p.lang === lang && (showScheduled || !isScheduled(p, now)));
+}
+
+/** Live posts in every language, for the sitemap and the publish cron. */
+export function getAllLivePosts(now = new Date()): BlogPost[] {
   return allPosts.filter((p) => showScheduled || !isScheduled(p, now));
 }
 
-export function getPost(slug: string): BlogPost | undefined {
-  return getLivePosts().find((p) => p.slug === slug);
+export function getPost(slug: string, lang: PostLang = "en"): BlogPost | undefined {
+  return getLivePosts(new Date(), lang).find((p) => p.slug === slug);
 }
 
-export function formatDate(iso: string): string {
-  return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-US", {
+/** Path of a post: /blog/<slug> in English, /<lang>/blog/<slug> otherwise. */
+export function postPath(post: Pick<BlogPost, "slug" | "lang">): string {
+  return post.lang === "en" ? `/blog/${post.slug}` : `/${post.lang}/blog/${post.slug}`;
+}
+
+export function formatDate(iso: string, locale = "en-US"): string {
+  return new Date(`${iso}T00:00:00Z`).toLocaleDateString(locale, {
     year: "numeric",
     month: "long",
     day: "numeric",

@@ -1,12 +1,16 @@
 import { Marked } from "marked";
 import { getLivePosts, SITE_URL } from "./blog";
 
+// Built with the constructor because the TypeScript target (ES5) rejects the `u` flag in a literal.
+const NOT_LETTER_OR_DIGIT = new RegExp("[^\\p{L}\\p{N}]+", "gu");
+
 function slugify(html: string): string {
   return html
     .replace(/<[^>]+>/g, "")
     .replace(/&[^;]+;/g, "")
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
+    // Letters in any script, so Cyrillic and other non-Latin headings get ids too. Latin-only ids are unchanged.
+    .replace(NOT_LETTER_OR_DIGIT, "-")
     .replace(/^-|-$/g, "");
 }
 

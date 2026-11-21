@@ -1,5 +1,5 @@
 import { revalidatePath } from "next/cache";
-import { getLivePosts, publishTime, SITE_URL } from "@/lib/blog";
+import { getAllLivePosts, postPath, publishTime, SITE_URL } from "@/lib/blog";
 import sitemap from "@/app/sitemap";
 
 export const dynamic = "force-dynamic";
@@ -35,13 +35,17 @@ export async function GET(request: Request) {
   }
 
   const now = Date.now();
-  const fresh = getLivePosts().filter((p) => {
+  // Every language: English posts at /blog/<slug>, the others at /<lang>/blog/<slug>.
+  const fresh = getAllLivePosts().filter((p) => {
     const age = now - publishTime(p).getTime();
     return age >= 0 && age < 24 * 60 * 60 * 1000;
   });
 
   for (const path of ["/blog", "/sitemap.xml", "/llms.txt", "/blog/rss.xml"]) revalidatePath(path);
-  for (const p of fresh) revalidatePath(`/blog/${p.slug}`);
+  for (const p of fresh) {
+    revalidatePath(postPath(p));
+    if (p.lang !== "en") revalidatePath(`/${p.lang}/blog`);
+  }
 
   const isMonday = new Date(now).getUTCDay() === 1;
   let urlList: string[] = [];
@@ -51,7 +55,8 @@ export async function GET(request: Request) {
       .filter((entry) => entry.lastModified && new Date(entry.lastModified).getTime() >= weekAgo)
       .map((entry) => entry.url);
   } else if (fresh.length) {
-    urlList = [...fresh.map((p) => `${SITE_URL}/blog/${p.slug}`), `${SITE_URL}/blog`];
+    const indexes = new Set(fresh.map((p) => (p.lang === "en" ? `${SITE_URL}/blog` : `${SITE_URL}/${p.lang}/blog`)));
+    urlList = [...fresh.map((p) => `${SITE_URL}${postPath(p)}`), ...Array.from(indexes)];
   }
 
   const indexnow = urlList.length ? await submitToIndexNow(urlList) : "skipped";
