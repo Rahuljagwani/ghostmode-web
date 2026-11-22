@@ -36,6 +36,13 @@ import resumeBulletPointsExamples from "./resume-bullet-points-examples.md";
 import hotKeyProblemRedis from "./hot-key-problem-redis.md";
 import cursorPaginationVsOffset from "./cursor-pagination-vs-offset.md";
 import llmChatbotMemory from "./llm-chatbot-memory.md";
+import websocketsVsSseVsLongPolling from "./websockets-vs-sse-vs-long-polling.md";
+import aiAgentInterviewQuestions from "./ai-agent-interview-questions.md";
+import chatSystemDesign from "./chat-system-design.md";
+import questionsToAskTheInterviewer from "./questions-to-ask-the-interviewer.md";
+import distributedLocksExplained from "./distributed-locks-explained.md";
+import promptEngineeringInterviewQuestions from "./prompt-engineering-interview-questions.md";
+import salaryExpectationsInterviewAnswer from "./salary-expectations-interview-answer.md";
 
 // Posts in other languages (front matter `lang`), served at /<lang>/blog/<slug>.
 import esComoUsarIaParaPrepararEntrevista from "./es/como-usar-ia-para-preparar-entrevista.md";
@@ -88,6 +95,13 @@ export const markdownSources: string[] = [
   hotKeyProblemRedis,
   cursorPaginationVsOffset,
   llmChatbotMemory,
+  websocketsVsSseVsLongPolling,
+  aiAgentInterviewQuestions,
+  chatSystemDesign,
+  questionsToAskTheInterviewer,
+  distributedLocksExplained,
+  promptEngineeringInterviewQuestions,
+  salaryExpectationsInterviewAnswer,
   esComoUsarIaParaPrepararEntrevista,
   esEntrevistaEnInglesPreguntasYRespuestas,
   frEntretienEnAnglaisQuandOnEstNul,
