@@ -162,10 +162,10 @@ function BillingContent() {
               <div className="inline-flex rounded-xl border border-gray-200 bg-white p-1 gap-1">
                 {(
                   [
-                    ["paypal", "PayPal or card", "International"],
-                    ["razorpay", "UPI or Indian card", "India (Razorpay)"],
+                    ["paypal", "PayPal"],
+                    ["razorpay", "Razorpay"],
                   ] as const
-                ).map(([id, label, sub]) => (
+                ).map(([id, label]) => (
                   <button
                     key={id}
                     onClick={() => setProvider(id)}
@@ -175,7 +175,6 @@ function BillingContent() {
                     }`}
                   >
                     <span className="block text-sm font-semibold">{label}</span>
-                    <span className={`block text-xs ${provider === id ? "text-sky-100" : "text-gray-400"}`}>{sub}</span>
                   </button>
                 ))}
               </div>
